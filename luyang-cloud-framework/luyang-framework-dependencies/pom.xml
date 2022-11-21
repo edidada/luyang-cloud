@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>club.luyang</groupId>
+    <artifactId>luyang-framework-dependencies</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+
+    <!-- SpringBoot SpringCloud SpringCloudAlibaba 版本 https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明 -->
+    <properties>
+        <spring-boot-dependencies.version>2.7.5</spring-boot-dependencies.version>
+        <spring-cloud-dependencies.version>2021.0.1</spring-cloud-dependencies.version>
+        <spring-cloud-alibaba-dependencies.version>2021.0.1.0</spring-cloud-alibaba-dependencies.version>
+
+        <luyang.framework.version>1.0.0</luyang.framework.version>
+        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
+        <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
+        <HikariCP.version>5.0.1</HikariCP.version>
+        <hutool.version>5.8.9</hutool.version>
+        <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <!-- region luyang-framework -->
+            <dependency>
+                <groupId>club.luyang</groupId>
+                <artifactId>luyang-framework-base</artifactId>
+                <version>${luyang.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.luyang</groupId>
+                <artifactId>luyang-framework-log</artifactId>
+                <version>${luyang.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.luyang</groupId>
+                <artifactId>luyang-framework-mybatis</artifactId>
+                <version>${luyang.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.luyang</groupId>
+                <artifactId>luyang-framework-utils</artifactId>
+                <version>${luyang.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.luyang</groupId>
+                <artifactId>luyang-framework-validator</artifactId>
+                <version>${luyang.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.luyang</groupId>
+                <artifactId>luyang-framework-web</artifactId>
+                <version>${luyang.framework.version}</version>
+            </dependency>
+            <!-- endregion luyang-framework -->
+
+
+            <!-- region 外部组件 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${HikariCP.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${lombok-mapstruct-binding.version}</version>
+            </dependency>
+            <!-- endregion 外部组件 -->
+        </dependencies>
+    </dependencyManagement>
+</project>
