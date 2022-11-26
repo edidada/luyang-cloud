@@ -9,7 +9,7 @@ import club.luyang.framework.base.IBaseEnum;
  */
 public enum ResultEnum implements IBaseEnum {
 
-	SUCCESS(200, "success"),
+	SUCCESS(0, "success"),
 	FAILURE(-1, "failure"),
 
 	/** 请求未授权 */

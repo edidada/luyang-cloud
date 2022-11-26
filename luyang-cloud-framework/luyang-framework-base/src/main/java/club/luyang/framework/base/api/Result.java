@@ -1,9 +1,6 @@
 package club.luyang.framework.base.api;
 
 import club.luyang.framework.base.IBaseEnum;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -13,8 +10,6 @@ import java.io.Serializable;
  *
  * @author lu_yang
  */
-@Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Result<T> implements Serializable {
 
 	@Serial
@@ -39,6 +34,9 @@ public class Result<T> implements Serializable {
 	 * 承载数据
 	 */
 	private T data;
+
+	private Result() {
+	}
 
 	private Result(IBaseEnum baseEnum) {
 		this(baseEnum, baseEnum.getMessage(), null);
@@ -85,6 +83,22 @@ public class Result<T> implements Serializable {
 
 	public static <T> Result<T> condition(boolean flag) {
 		return flag ? success() : failure(ResultEnum.FAILURE);
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public T getData() {
+		return data;
 	}
 
 	@Override

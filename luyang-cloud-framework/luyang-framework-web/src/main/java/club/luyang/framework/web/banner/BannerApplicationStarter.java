@@ -33,8 +33,10 @@ public record BannerApplicationStarter(Environment environment) implements Appli
 
 			logger.info("""
 				\n==============  Application started successfully! Access URLs:  ==============
-				服务名: {}
-				接口文档: http://{}:{}{}/doc.html
+
+					服务名	: {}
+					接口文档	: http://{}:{}{}/doc.html
+					Gitee	: https://gitee.com/cn-luyang/luyang-cloud
 				""", serverName, ip, port, path);
 		});
 	}

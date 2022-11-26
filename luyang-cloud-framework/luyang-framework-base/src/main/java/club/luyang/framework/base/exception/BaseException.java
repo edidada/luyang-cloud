@@ -2,7 +2,6 @@ package club.luyang.framework.base.exception;
 
 import club.luyang.framework.base.IBaseEnum;
 import club.luyang.framework.base.api.ResultEnum;
-import lombok.Getter;
 
 import java.io.Serial;
 
@@ -16,7 +15,6 @@ public class BaseException extends RuntimeException {
 	@Serial
 	private static final long serialVersionUID = 896984768974997385L;
 
-	@Getter
 	private final IBaseEnum baseEnum;
 
 	public BaseException(String message) {
@@ -32,5 +30,9 @@ public class BaseException extends RuntimeException {
 	public BaseException(IBaseEnum baseEnum, String message) {
 		super(message);
 		this.baseEnum = baseEnum;
+	}
+
+	public IBaseEnum getBaseEnum() {
+		return baseEnum;
 	}
 }

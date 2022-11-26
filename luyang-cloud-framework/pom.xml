@@ -32,6 +32,7 @@
         <module>luyang-framework-utils</module>
         <module>luyang-framework-validator</module>
         <module>luyang-framework-web</module>
+        <module>luyang-framework-xss</module>
     </modules>
 
 
