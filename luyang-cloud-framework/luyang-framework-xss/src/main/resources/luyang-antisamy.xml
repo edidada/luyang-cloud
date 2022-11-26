@@ -11,7 +11,7 @@
         <directive name="omitDoctypeDeclaration" value="true" />
         <directive name="maxInputSize" value="20000" />
         <directive name="formatOutput" value="true" />
-
+        <directive name="noopenerAndNoreferrerAnchors" value="true" />
         <!-- remember, this won't work for relative URIs - AntiSamy doesn't know anything about the URL or your web structure -->
         <directive name="embedStyleSheets" value="false" />
 
@@ -19,7 +19,7 @@
 
     <common-regexps>
 
-        <!-- From W3C: This attribute assigns a class name or set of class names to an element. Any number of elements may be assigned the same 
+        <!-- From W3C: This attribute assigns a class name or set of class names to an element. Any number of elements may be assigned the same
             class name or names. Multiple class names must be separated by white space characters. -->
 
         <!-- The 16 colors defined by the HTML Spec (also used by the CSS Spec) -->
@@ -109,12 +109,12 @@
 
     </common-regexps>
 
-    <!-- Tag.name = a, b, div, body, etc. Tag.action = filter: remove tags, but keep content, validate: keep content as long as it passes rules, 
-        remove: remove tag and contents Attribute.name = id, class, href, align, width, etc. Attribute.onInvalid = what to do when the attribute is invalid, 
-        e.g., remove the tag (removeTag), remove the attribute (removeAttribute), filter the tag (filterTag) Attribute.description = What rules in English 
+    <!-- Tag.name = a, b, div, body, etc. Tag.action = filter: remove tags, but keep content, validate: keep content as long as it passes rules,
+        remove: remove tag and contents Attribute.name = id, class, href, align, width, etc. Attribute.onInvalid = what to do when the attribute is invalid,
+        e.g., remove the tag (removeTag), remove the attribute (removeAttribute), filter the tag (filterTag) Attribute.description = What rules in English
         you want to tell the users they can have for this attribute. Include helpful things so they'll be able to tune their HTML -->
 
-    <!-- Some attributes are common to all (or most) HTML tags. There aren't many that qualify for this. You have to make sure there's no collisions 
+    <!-- Some attributes are common to all (or most) HTML tags. There aren't many that qualify for this. You have to make sure there's no collisions
         between any of these attribute names with attribute names of other tags that are for different purposes. -->
 
     <common-attributes>
@@ -156,7 +156,7 @@
         </attribute>
 
 
-        <!-- the "style" attribute will be validated by an inline stylesheet scanner, so no need to define anything here - i hate having to special 
+        <!-- the "style" attribute will be validated by an inline stylesheet scanner, so no need to define anything here - i hate having to special
             case this but no other choice -->
         <attribute name="style"
             description="The 'style' attribute provides the ability for users to change many attributes of the tag's contents using a strict syntax" />
@@ -195,7 +195,7 @@
 
                 <regexp value="[a-zA-Z0-9\-_\$]+" />
 
-                <!-- have to allow the $ for .NET controls - although, will users be supplying input that has server-generated .NET control names? 
+                <!-- have to allow the $ for .NET controls - although, will users be supplying input that has server-generated .NET control names?
                     methinks not, but i want to pass my test cases -->
 
             </regexp-list>
@@ -456,8 +456,8 @@
     </common-attributes>
 
 
-    <!-- This requires normal updates as browsers continue to diverge from the W3C and each other. As long as the browser wars continue this 
-        is going to continue. I'm not sure war is the right word for what's going on. Doesn't somebody have to win a war after a while? Even wars of 
+    <!-- This requires normal updates as browsers continue to diverge from the W3C and each other. As long as the browser wars continue this
+        is going to continue. I'm not sure war is the right word for what's going on. Doesn't somebody have to win a war after a while? Even wars of
         attrition, surely? -->
 
     <global-tag-attributes>
@@ -638,7 +638,7 @@
             </attribute>
         </tag>
 
-        <!-- no way to do this safely without hooking up the same code to @import to embed the remote stylesheet (malicious user could change 
+        <!-- no way to do this safely without hooking up the same code to @import to embed the remote stylesheet (malicious user could change
             offsite resource to be malicious after validation -->
         <!-- <attribute name="href" onInvalid="removeTag"/> -->
 

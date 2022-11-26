@@ -1,6 +1,7 @@
 package club.luyang.framework.xss.util;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.text.CharSequenceUtil;
+import cn.hutool.core.util.EscapeUtil;
 import org.owasp.validator.html.AntiSamy;
 import org.owasp.validator.html.CleanResults;
 import org.owasp.validator.html.Policy;
@@ -56,14 +57,14 @@ public class XssUtil {
 	}
 
 	/**
-	 * 使用AntiSamy对参数内容进行清理过滤
+	 * 基于AntiSamy对参数内容进行清理过滤
 	 *
 	 * @param value 待过滤的参数内容
 	 * @return String 清理后的参数内容
 	 * @author lu_yang
 	 */
 	public static String xssClean(String value) {
-		if (StringUtils.isNotEmpty(value)) {
+		if (CharSequenceUtil.isEmpty(value)) {
 			return value;
 		}
 
@@ -79,7 +80,8 @@ public class XssUtil {
 			// 扫描传过来的参数内容，并指定策略对象进行过滤
 			final CleanResults cleanResults = antiSamy.scan(value, policy);
 			if (debugEnabled) {
-				cleanResults.getErrorMessages().forEach(logger::debug);
+				cleanResults.getErrorMessages().forEach(logger::info);
+				logger.debug("Xss参数内容扫描时间 {}秒", cleanResults.getScanTime());
 			}
 
 			// 获取过滤之后的结果，替换原始值
@@ -93,6 +95,6 @@ public class XssUtil {
 			logger.error("Xss清理参数失败", e);
 		}
 
-		return value;
+		return EscapeUtil.unescapeHtml4(value);
 	}
 }
