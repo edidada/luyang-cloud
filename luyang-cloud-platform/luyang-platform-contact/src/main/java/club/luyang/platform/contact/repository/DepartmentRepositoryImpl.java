@@ -25,7 +25,7 @@ public class DepartmentRepositoryImpl extends ServiceImpl<DepartmentMapper, Depa
 		return this.lambdaQuery()
 			.eq(DepartmentEntity::getParentId, DepartmentConstant.ROOT_PARENT_ID)
 			.last("limit 1")
-			.count() > 0;
+			.exists();
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class DepartmentRepositoryImpl extends ServiceImpl<DepartmentMapper, Depa
 			.eq(DepartmentEntity::getParentId, parentId)
 			.eq(DepartmentEntity::getName, departmentName)
 			.last("limit 1")
-			.count() > 0;
+			.exists();
 	}
 
 	@Override
