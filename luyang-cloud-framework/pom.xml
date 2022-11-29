@@ -26,6 +26,7 @@
 
     <modules>
         <module>luyang-framework-base</module>
+        <module>luyang-framework-cache</module>
         <module>luyang-framework-dependencies</module>
         <module>luyang-framework-log</module>
         <module>luyang-framework-mybatis</module>

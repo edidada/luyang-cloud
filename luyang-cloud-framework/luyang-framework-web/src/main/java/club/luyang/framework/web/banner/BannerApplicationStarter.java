@@ -26,18 +26,19 @@ public record BannerApplicationStarter(Environment environment) implements Appli
 		ThreadUtil.execute(() -> {
 			ThreadUtil.sleep(1, TimeUnit.SECONDS);
 
-			String ip = NetUtil.getLocalHostName();
+			String ip = NetUtil.getLocalhostStr();
 			String port = CharSequenceUtil.emptyToDefault(environment.getProperty("server.port"), "8080");
 			String path = CharSequenceUtil.emptyToDefault(environment.getProperty("server.servlet.context-path"), CharSequenceUtil.EMPTY);
 			String serverName = CharSequenceUtil.emptyToDefault(environment.getProperty("spring.application.name"), CharSequenceUtil.EMPTY);
+			String apiAddress = "http://" + ip + ":" + port + path + "/doc.html";
 
 			logger.info("""
 				\n==============  Application started successfully! Access URLs:  ==============
 
 					服务名	: {}
-					接口文档	: http://{}:{}{}/doc.html
+					接口文档	: {}
 					Gitee	: https://gitee.com/cn-luyang/luyang-cloud
-				""", serverName, ip, port, path);
+				""", serverName, apiAddress);
 		});
 	}
 }
