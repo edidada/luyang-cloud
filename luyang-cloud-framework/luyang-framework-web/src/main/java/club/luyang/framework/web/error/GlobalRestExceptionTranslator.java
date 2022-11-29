@@ -102,8 +102,7 @@ public class GlobalRestExceptionTranslator {
 
 	@ExceptionHandler(BaseException.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public Result<?> handleError(BaseException e, HttpServletRequest request) {
-//		logger.error("业务异常, uri:{}", request.getRequestURI(), e);
+	public Result<?> handleError(BaseException e) {
 		return Result.failure(e.getBaseEnum(), e.getMessage());
 	}
 }
