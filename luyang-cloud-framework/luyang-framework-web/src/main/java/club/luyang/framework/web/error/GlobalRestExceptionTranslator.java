@@ -3,6 +3,8 @@ package club.luyang.framework.web.error;
 import club.luyang.framework.base.api.Result;
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.BaseException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.PropertySource;
@@ -20,8 +22,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.ValidationException;
 
 /**
  * 全局异常处理

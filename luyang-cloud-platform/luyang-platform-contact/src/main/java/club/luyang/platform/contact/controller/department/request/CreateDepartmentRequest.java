@@ -1,11 +1,11 @@
 package club.luyang.platform.contact.controller.department.request;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotBlank;
 
 /**
  * 创建部门请求体
