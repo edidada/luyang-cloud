@@ -1,1 +1,1 @@
-club.luyang.framework.xss.config.XssAutoConfiguration
+club.luyang.framework.cache.config.RedisConfiguration
