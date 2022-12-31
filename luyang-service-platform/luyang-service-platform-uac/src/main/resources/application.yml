@@ -1,6 +1,6 @@
 spring:
   application:
-    name: luyang-platform-contact
+    name: luyang-service-platform-uac
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
