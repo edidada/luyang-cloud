@@ -4,7 +4,7 @@ import club.luyang.framework.base.ability.AbilityContext;
 import club.luyang.framework.base.ability.BaseAbility;
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
-import club.luyang.framework.validator.util.ValidatorUtil;
+import club.luyang.framework.base.util.validation.ValidationUtil;
 import club.luyang.platform.uac.constant.DepartmentConstant;
 import club.luyang.platform.uac.controller.department.request.CreateDepartmentRequest;
 import club.luyang.platform.uac.domain.model.DepartmentDomain;
@@ -36,7 +36,7 @@ public class DepartmentCreateAbility extends BaseAbility<CreateDepartmentRequest
 	@Override
 	public void checkHandler(CreateDepartmentRequest request) {
 
-		ValidatorUtil.valid(request);
+		ValidationUtil.valid(request);
 
 		String departmentId = request.getDepartmentId();
 		String parentDepartmentId = request.getParentDepartmentId();

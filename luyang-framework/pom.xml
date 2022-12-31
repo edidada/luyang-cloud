@@ -30,8 +30,6 @@
     <modules>
         <module>luyang-framework-base</module>
         <module>luyang-framework-log</module>
-        <module>luyang-framework-utils</module>
-        <module>luyang-framework-validator</module>
         <module>luyang-framework-xss</module>
     </modules>
 

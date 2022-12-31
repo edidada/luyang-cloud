@@ -1,9 +1,10 @@
-package club.luyang.framework.validator.util;
+package club.luyang.framework.base.util.validation;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.ValidationException;
 import jakarta.validation.Validator;
+import lombok.experimental.UtilityClass;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Set;
@@ -13,12 +14,10 @@ import java.util.Set;
  *
  * @author lu_yang
  */
-public class ValidatorUtil {
+@UtilityClass
+public class ValidationUtil {
 
 	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
-
-	private ValidatorUtil() {
-	}
 
 	public static void valid(Object obj, Class<?>... clazz) {
 		valid(VALIDATOR.validate(obj, clazz));
