@@ -1,4 +1,4 @@
-package club.luyang.framework.base.ability;
+package club.luyang.framework.base.util.ability;
 
 import org.springframework.transaction.annotation.Transactional;
 

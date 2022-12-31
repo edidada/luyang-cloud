@@ -32,8 +32,6 @@ luyang-cloud
     ├── luyang-framework
     ├    ├── luyang-framework-base
     ├    ├── luyang-framework-log
-    ├    ├── luyang-framework-utils
-    ├    ├── luyang-framework-validator
     ├    └── luyang-framework-xss
     ├── luyang-framework-boot
     ├    ├── luyang-framework-starter-cache

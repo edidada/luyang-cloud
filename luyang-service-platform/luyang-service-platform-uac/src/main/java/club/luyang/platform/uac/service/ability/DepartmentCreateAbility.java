@@ -1,7 +1,7 @@
 package club.luyang.platform.uac.service.ability;
 
-import club.luyang.framework.base.ability.AbilityContext;
-import club.luyang.framework.base.ability.BaseAbility;
+import club.luyang.framework.base.util.ability.AbilityContext;
+import club.luyang.framework.base.util.ability.BaseAbility;
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
 import club.luyang.framework.base.util.validation.ValidationUtil;
