@@ -23,11 +23,15 @@ public class WebSecurityConfiguration {
 
 	@Bean
 	public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-		http
-			.authorizeHttpRequests(authorize ->
-				authorize.anyRequest().authenticated()
-			)
-			.formLogin(withDefaults());
+		http.authorizeHttpRequests()
+				.requestMatchers("/token/*").permitAll()
+				.anyRequest().authenticated()
+				.and().formLogin(withDefaults());
+//		http
+//			.authorizeHttpRequests(authorize ->
+//				authorize.anyRequest().authenticated()
+//			)
+//			.formLogin(withDefaults());
 		return http.build();
 	}
 
@@ -35,7 +39,7 @@ public class WebSecurityConfiguration {
 	public UserDetailsService users() {
 		UserDetails user = User.withDefaultPasswordEncoder()
 			.username("user1")
-			.password("password")
+			.password("user1")
 			.roles("USER")
 			.build();
 		return new InMemoryUserDetailsManager(user);

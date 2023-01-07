@@ -1,15 +1,9 @@
 package club.luyang.framework.security.config;
 
 import club.luyang.framework.security.config.props.AnonymousUriProperties;
-import cn.hutool.core.util.ArrayUtil;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * 资源服务认证授权配置
@@ -27,18 +21,18 @@ public class ResourceServerConfiguration {
 		this.anonymousUriProperties = anonymousUriProperties;
 	}
 
-	@Bean
-	@Order(Ordered.HIGHEST_PRECEDENCE)
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-			.authorizeHttpRequests(authorize ->
-				authorize
-					// 允许匿名访问
-					.requestMatchers(ArrayUtil.toArray(anonymousUriProperties.getUrls(), String.class)).permitAll()
-					// 所有请求都需要认证
-					.anyRequest().authenticated()
-			);
-
-		return http.build();
-	}
+//	@Bean
+//	@Order(Ordered.HIGHEST_PRECEDENCE)
+//	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//		http
+//			.authorizeHttpRequests(authorize ->
+//				authorize
+//					// 允许匿名访问
+//					.requestMatchers(ArrayUtil.toArray(anonymousUriProperties.getUrls(), String.class)).permitAll()
+//					// 所有请求都需要认证
+//					.anyRequest().authenticated()
+//			);
+//
+//		return http.build();
+//	}
 }
