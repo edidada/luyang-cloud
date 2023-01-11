@@ -1,5 +1,6 @@
-package club.luyang.framework.redisson;
+package club.luyang.framework.redisson.helper;
 
+import club.luyang.framework.redisson.RedissonManager;
 import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Redisson 助手类
+ *
  * @author lu_yang
  */
-public class RedissonLock {
+public class RedissonHelper {
 
-	private static final Logger logger = LoggerFactory.getLogger(RedissonLock.class);
+	private static final Logger logger = LoggerFactory.getLogger(RedissonHelper.class);
 
 	private RedissonManager redissonManager;
 

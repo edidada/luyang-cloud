@@ -1,8 +1,8 @@
 package club.luyang.framework.redisson.config;
 
-import club.luyang.framework.redisson.RedissonLock;
 import club.luyang.framework.redisson.RedissonManager;
 import club.luyang.framework.redisson.config.props.RedissonProperties;
+import club.luyang.framework.redisson.helper.RedissonHelper;
 import org.redisson.jcache.configuration.RedissonConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +42,8 @@ public class RedissonAutoConfiguration {
 	@ConditionalOnMissingBean
 	@DependsOn({"redissonManager"})
 	@ConditionalOnBean(RedissonManager.class)
-	public RedissonLock redissonLock(RedissonManager redissonManager) {
-		var redissonLock = new RedissonLock();
+	public RedissonHelper redissonLock(RedissonManager redissonManager) {
+		var redissonLock = new RedissonHelper();
 		redissonLock.setRedissonManager(redissonManager);
 		logger.info("RedissonLock 构建完成");
 		return redissonLock;

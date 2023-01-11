@@ -1,4 +1,4 @@
-package club.luyang.framework.cache;
+package club.luyang.framework.cache.helper;
 
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -7,11 +7,11 @@ import org.springframework.data.redis.core.RedisTemplate;
  *
  * @author lu_yang
  */
-public class RedisService {
+public class RedisHelper {
 
 	private RedisTemplate<String, Object> redisTemplate;
 
-	public RedisService(RedisTemplate<String, Object> redisTemplate) {
+	public RedisHelper(RedisTemplate<String, Object> redisTemplate) {
 		this.redisTemplate = redisTemplate;
 	}
 }

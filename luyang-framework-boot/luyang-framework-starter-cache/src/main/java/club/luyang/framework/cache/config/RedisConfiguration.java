@@ -1,6 +1,6 @@
 package club.luyang.framework.cache.config;
 
-import club.luyang.framework.cache.RedisService;
+import club.luyang.framework.cache.helper.RedisHelper;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -42,7 +42,7 @@ public class RedisConfiguration {
 
 	@Bean
 	@ConditionalOnBean(name = "redisTemplate")
-	public RedisService redisService(RedisTemplate<String, Object> redisTemplate) {
-		return new RedisService(redisTemplate);
+	public RedisHelper redisHelper(RedisTemplate<String, Object> redisTemplate) {
+		return new RedisHelper(redisTemplate);
 	}
 }
