@@ -21,8 +21,10 @@ import java.util.Set;
  *
  * @author lu_yang
  */
-@ConfigurationProperties(prefix = "luyang.anonymous")
+@ConfigurationProperties(prefix = AnonymousUriProperties.PREFIX)
 public class AnonymousUriProperties implements InitializingBean {
+
+	public static final String PREFIX = "luyang.anonymous";
 
 	private Set<String> urls = new HashSet<>();
 
