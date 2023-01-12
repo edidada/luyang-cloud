@@ -1,4 +1,4 @@
-package club.luyang.platform.uac;
+package club.luyang.platform.uaa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lu_yang
  */
 @SpringBootApplication
-public class UacBootstrap {
+public class UaaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UacBootstrap.class, args);
+		SpringApplication.run(UaaApplication.class, args);
 	}
 }

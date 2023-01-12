@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>luyang-service-platform-cam</module>
         <module>luyang-service-platform-uaa</module>
         <module>luyang-service-platform-uac</module>
     </modules>

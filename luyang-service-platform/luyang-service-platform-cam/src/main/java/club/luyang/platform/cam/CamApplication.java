@@ -1,4 +1,4 @@
-package club.luyang.platform.uaa;
+package club.luyang.platform.cam;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lu_yang
  */
 @SpringBootApplication
-public class UaaBootstrap {
+public class CamApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UaaBootstrap.class, args);
+		SpringApplication.run(CamApplication.class, args);
 	}
 }
