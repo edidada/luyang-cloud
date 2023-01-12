@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author lu_yang
  */
 @AutoConfigureMockMvc
-@SpringBootTest(classes = UacBootstrap.class)
+@SpringBootTest(classes = UacApplication.class)
 class SmokeTest {
 
 	@Resource
