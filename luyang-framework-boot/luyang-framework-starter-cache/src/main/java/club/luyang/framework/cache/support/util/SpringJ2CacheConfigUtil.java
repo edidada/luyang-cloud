@@ -16,6 +16,10 @@ public class SpringJ2CacheConfigUtil {
 
 	private static final String PREFIX_REGION = "region.";
 
+	private SpringJ2CacheConfigUtil() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static J2CacheConfig initFromConfig(J2CacheProperties j2CacheProperties) {
 		J2CacheConfig config = new J2CacheConfig();
 		config.setSerialization(j2CacheProperties.getL2().getSerialization());
