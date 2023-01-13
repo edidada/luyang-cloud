@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  *
  * @author lu_yang
  */
+@SuppressWarnings("all")
 public class RedisHelper {
 
 	private static final Logger logger = LoggerFactory.getLogger(RedisHelper.class);
@@ -26,5 +27,13 @@ public class RedisHelper {
 		}
 
 		this.redisTemplate.opsForValue().set(key, value);
+	}
+
+	public <T> T get(String key) {
+		if (CharSequenceUtil.isBlank(key)) {
+			return null;
+		}
+
+		return (T) redisTemplate.opsForValue().get(key);
 	}
 }
