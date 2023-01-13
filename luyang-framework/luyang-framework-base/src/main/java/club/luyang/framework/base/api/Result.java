@@ -1,6 +1,7 @@
 package club.luyang.framework.base.api;
 
 import club.luyang.framework.base.IBaseEnum;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,21 +19,25 @@ public class Result<T> implements Serializable {
 	/**
 	 * 状态码
 	 */
+	@JsonProperty(index = 1)
 	private int code;
 
 	/**
 	 * 状态码描述
 	 */
+	@JsonProperty(index = 2)
 	private String message;
 
 	/**
 	 * 状态标识
 	 */
+	@JsonProperty(index = 3)
 	private boolean success;
 
 	/**
 	 * 承载数据
 	 */
+	@JsonProperty(index = 4)
 	private T data;
 
 	private Result() {
