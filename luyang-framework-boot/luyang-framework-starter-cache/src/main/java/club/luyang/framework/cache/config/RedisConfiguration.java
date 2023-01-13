@@ -1,6 +1,8 @@
 package club.luyang.framework.cache.config;
 
 import club.luyang.framework.cache.helper.RedisHelper;
+import club.luyang.framework.cache.redis.RedisKeyStringSerializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -22,21 +24,27 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 public class RedisConfiguration {
 
+	/**
+	 * key前缀
+	 */
+	@Value("${spring.data.redis.key-prefix:}")
+	private String keyPrefix;
+
 	@Bean(name = "redisTemplate")
 	@ConditionalOnClass(RedisOperations.class)
 	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+		RedisKeyStringSerializer keyStringSerializer = new RedisKeyStringSerializer(keyPrefix);
 		RedisTemplate<String, Object> template = new RedisTemplate<>();
 		template.setConnectionFactory(factory);
 		// Key 采用String 的序列化方式
-		template.setKeySerializer(RedisSerializer.string());
+		template.setKeySerializer(keyStringSerializer);
 		// hash 的 key 也采用 String 的序列化方式
-		template.setHashKeySerializer(RedisSerializer.string());
+		template.setHashKeySerializer(keyStringSerializer);
 		// value 序列化方式采用 jackson
 		template.setValueSerializer(RedisSerializer.json());
 		// hash的value序列化方式采用jackson
 		template.setHashValueSerializer(RedisSerializer.json());
 		template.afterPropertiesSet();
-
 		return template;
 	}
 
