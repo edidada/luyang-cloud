@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Redis key序列化
+ *
  * @author lu_yang
  */
 public record RedisKeyStringSerializer(String keyPrefix) implements RedisSerializer<String> {
