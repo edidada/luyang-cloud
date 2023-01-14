@@ -16,7 +16,8 @@
 
 ## 🗿 前言
 
-> 还没想好主要做什么业务，先吧基础组件建设完成吧。。。搞不搞的好都要试一试
+> 主要业务方向还没想好做什么，先完成基础组件(spring boot starter相关组件)、用户中心、认证授权的建设，
+> 搞不搞的好都要试一试
 
 ## 🏁 前期目标
 * [ ] `infra` 基础组件
@@ -37,8 +38,10 @@ luyang-cloud
     ├    ├── luyang-framework-starter-cache
     ├    ├── luyang-framework-starter-mybatisplus
     ├    ├── luyang-framework-starter-redisson
+    ├    ├── luyang-framework-starter-security
     ├    └── luyang-framework-starter-web
     ├── luyang-service-platform
+    ├    ├── luyang-service-platform-cam
     ├    ├── luyang-service-platform-uaa
     └────└── luyang-service-platform-uac
 ```
