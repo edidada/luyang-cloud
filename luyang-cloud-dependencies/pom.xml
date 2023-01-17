@@ -29,6 +29,7 @@
         <antisamy.version>1.7.2</antisamy.version>
         <redisson.version>3.19.0</redisson.version>
         <lunar.version>1.2.28</lunar.version>
+        <caffeine.version>3.1.2</caffeine.version>
     </properties>
 
     <dependencyManagement>
@@ -178,6 +179,11 @@
                 <groupId>cn.6tail</groupId>
                 <artifactId>lunar</artifactId>
                 <version>${lunar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
             </dependency>
             <!-- endregion 外部组件 -->
         </dependencies>

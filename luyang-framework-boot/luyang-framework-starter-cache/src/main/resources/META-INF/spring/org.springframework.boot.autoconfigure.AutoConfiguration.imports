@@ -1,1 +1,2 @@
 club.luyang.framework.cache.config.RedisConfiguration
+club.luyang.framework.cache.config.CaffeineConfiguration
