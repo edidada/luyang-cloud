@@ -2,6 +2,7 @@ package club.luyang.framework.mybatisplus.base;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  *
  * @author lu_yang
  */
-public class BaseEntity implements Serializable {
+public class BaseEntity<T extends Model<?>> extends Model<T> implements Serializable {
 
 	@Serial
 	private static final long serialVersionUID = -6169504899532789482L;

@@ -4,7 +4,7 @@ import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
 import club.luyang.platform.uac.constant.DepartmentConstant;
 import club.luyang.platform.uac.controller.department.request.UpdateDepartmentRequest;
-import club.luyang.platform.uac.domain.convert.DepartmentConvert;
+import club.luyang.platform.uac.convert.DepartmentConvert;
 import club.luyang.platform.uac.domain.model.DepartmentDomain;
 import club.luyang.platform.uac.repository.DepartmentRepository;
 import cn.hutool.core.lang.Assert;

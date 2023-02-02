@@ -1,0 +1,35 @@
+package club.luyang.platform.uac.repository.entity;
+
+import club.luyang.framework.mybatisplus.base.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author lu_yang
+ */
+@Getter
+@Setter
+@TableName("uac_post")
+public class PostEntity extends BaseEntity<PostEntity> {
+
+	/**
+	 * 岗位编码
+	 */
+	private String code;
+
+	/**
+	 * 岗位名称
+	 */
+	private String name;
+
+	/**
+	 * 排序号，值越大越靠前
+	 */
+	private int sortNum;
+
+	/**
+	 * 备注
+	 */
+	private String remark;
+}

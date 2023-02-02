@@ -12,8 +12,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("contact_department")
-public class DepartmentEntity extends BaseEntity {
+@TableName("uac_department")
+public class DepartmentEntity extends BaseEntity<DepartmentEntity> {
 
 	/**
 	 * 父ID

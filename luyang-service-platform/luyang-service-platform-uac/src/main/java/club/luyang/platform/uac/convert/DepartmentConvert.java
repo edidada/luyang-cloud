@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.domain.convert;
+package club.luyang.platform.uac.convert;
 
 import club.luyang.platform.uac.controller.department.request.UpdateDepartmentRequest;
 import club.luyang.platform.uac.domain.model.DepartmentDomain;
