@@ -7,7 +7,11 @@ import club.luyang.platform.uac.repository.entity.PostEntity;
  */
 public interface PostRepository {
 
-	PostEntity selectByCode(String code);
+	PostEntity findByCode(String code);
 
-	PostEntity selectByName(String name);
+	PostEntity findByName(String name);
+
+	boolean hasPostId(String postId);
+
+	void removeById(String id);
 }

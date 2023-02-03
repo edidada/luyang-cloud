@@ -1,6 +1,7 @@
 package club.luyang.platform.uac.convert;
 
 import club.luyang.platform.uac.controller.request.CreatePostRequest;
+import club.luyang.platform.uac.controller.request.UpdatePostRequest;
 import club.luyang.platform.uac.repository.entity.PostEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,7 +18,7 @@ public interface PostConvert {
 	PostConvert INSTANCE = Mappers.getMapper(PostConvert.class);
 
 	/**
-	 * request body -> Entity
+	 * Create request body -> Entity
 	 *
 	 * @param request 创建岗位请求体
 	 * @return PostEntity
@@ -26,4 +27,15 @@ public interface PostConvert {
 	@Mapping(source = "postCode", target = "code")
 	@Mapping(source = "postName", target = "name")
 	PostEntity toEntity(CreatePostRequest request);
+
+	/**
+	 * Update request body -> Entity
+	 *
+	 * @param request 更新岗位请求体
+	 * @return PostEntity
+	 * @author lu_yang
+	 */
+	@Mapping(source = "postCode", target = "code")
+	@Mapping(source = "postName", target = "name")
+	PostEntity toEntity(UpdatePostRequest request);
 }
