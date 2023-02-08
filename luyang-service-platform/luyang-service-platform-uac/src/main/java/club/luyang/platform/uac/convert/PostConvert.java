@@ -1,7 +1,7 @@
 package club.luyang.platform.uac.convert;
 
-import club.luyang.platform.uac.controller.request.CreatePostRequest;
-import club.luyang.platform.uac.controller.request.UpdatePostRequest;
+import club.luyang.platform.uac.beans.request.CreatePostRequest;
+import club.luyang.platform.uac.beans.request.UpdatePostRequest;
 import club.luyang.platform.uac.repository.entity.PostEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

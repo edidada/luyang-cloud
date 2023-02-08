@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.controller.response;
+package club.luyang.platform.uac.beans.response;
 
 /**
  * @author lu_yang

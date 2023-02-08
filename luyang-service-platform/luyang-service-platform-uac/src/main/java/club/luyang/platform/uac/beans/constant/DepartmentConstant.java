@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.constant;
+package club.luyang.platform.uac.beans.constant;
 
 import lombok.experimental.UtilityClass;
 

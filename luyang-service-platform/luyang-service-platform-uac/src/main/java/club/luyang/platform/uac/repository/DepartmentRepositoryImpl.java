@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.repository;
 
-import club.luyang.platform.uac.constant.DepartmentConstant;
+import club.luyang.platform.uac.beans.constant.DepartmentConstant;
 import club.luyang.platform.uac.convert.DepartmentConvert;
 import club.luyang.platform.uac.domain.model.DepartmentDomain;
 import club.luyang.platform.uac.domain.valueobject.DepartmentId;

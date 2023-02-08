@@ -2,7 +2,7 @@ package club.luyang.platform.uac.service;
 
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
-import club.luyang.platform.uac.constant.DepartmentConstant;
+import club.luyang.platform.uac.beans.constant.DepartmentConstant;
 import club.luyang.platform.uac.controller.department.request.UpdateDepartmentRequest;
 import club.luyang.platform.uac.convert.DepartmentConvert;
 import club.luyang.platform.uac.domain.model.DepartmentDomain;

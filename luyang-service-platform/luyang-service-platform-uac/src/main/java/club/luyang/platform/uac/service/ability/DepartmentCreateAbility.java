@@ -5,7 +5,7 @@ import club.luyang.framework.base.exception.DataException;
 import club.luyang.framework.base.util.ability.AbilityContext;
 import club.luyang.framework.base.util.ability.BaseAbility;
 import club.luyang.framework.base.util.validation.ValidationUtil;
-import club.luyang.platform.uac.constant.DepartmentConstant;
+import club.luyang.platform.uac.beans.constant.DepartmentConstant;
 import club.luyang.platform.uac.controller.department.request.CreateDepartmentRequest;
 import club.luyang.platform.uac.domain.model.DepartmentDomain;
 import club.luyang.platform.uac.domain.valueobject.DepartmentId;
