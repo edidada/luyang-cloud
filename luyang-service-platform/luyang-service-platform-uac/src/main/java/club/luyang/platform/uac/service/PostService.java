@@ -10,7 +10,7 @@ import club.luyang.platform.uac.repository.PostRepository;
 import club.luyang.platform.uac.repository.entity.PostEntity;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.text.CharSequenceUtil;
+import cn.hutool.core.util.NumberUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -32,15 +32,15 @@ public class PostService {
 	public void createPost(CreatePostRequest request) {
 		ValidationUtil.valid(request);
 		// 校验岗位编码唯一性
-		checkPostCodeUnique(request.getPostCode());
+		checkPostCodeUnique(null, request.getPostCode());
 		// 校验岗位名称唯一性
-		checkPostNameUnique(request.getPostName());
+		checkPostNameUnique(null, request.getPostName());
 		PostConvert.INSTANCE.toEntity(request).insert();
 	}
 
 	public void updatePost(UpdatePostRequest request) {
 		ValidationUtil.valid(request);
-		String postId = request.getId();
+		Long postId = request.getId();
 		// 校验岗位ID是否存在
 		checkPostIdExists(postId);
 		// 校验岗位编码唯一性
@@ -50,38 +50,34 @@ public class PostService {
 		PostConvert.INSTANCE.toEntity(request).updateById();
 	}
 
-	public void removePost(String id) {
-		postRepository.removeById(id);
+	public void removePost(Long postId) {
+		postRepository.removeById(postId);
 	}
 
-	private void checkPostIdExists(String id) {
-		boolean exist = postRepository.hasPostId(id);
-		Assert.isFalse(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
+	private void checkPostIdExists(Long postId) {
+		boolean exist = postRepository.hasPostId(postId);
+		Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
 	}
 
-	private void checkPostCodeUnique(String code) {
-		checkPostCodeUnique(null, code);
-	}
-
-	private void checkPostCodeUnique(String postId, String code) {
+	private void checkPostCodeUnique(Long postId, String code) {
 		PostEntity entity = postRepository.findByCode(code);
 		if (BeanUtil.isEmpty(entity)) {
 			return;
 		}
 
-		Assert.isFalse(!CharSequenceUtil.equals(postId, entity.getId()), () -> new DataException(ResultEnum.DATA_EXIST, "岗位编号已存在"));
+		if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
+			throw new DataException(ResultEnum.DATA_EXIST, "岗位编号已存在");
+		}
 	}
 
-	private void checkPostNameUnique(String name) {
-		checkPostNameUnique(null, name);
-	}
-
-	private void checkPostNameUnique(String postId, String name) {
+	private void checkPostNameUnique(Long postId, String name) {
 		PostEntity entity = postRepository.findByName(name);
 		if (BeanUtil.isEmpty(entity)) {
 			return;
 		}
 
-		Assert.isFalse(!CharSequenceUtil.equals(postId, entity.getId()), () -> new DataException(ResultEnum.DATA_EXIST, "岗位名称已存在"));
+		if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
+			throw new DataException(ResultEnum.DATA_EXIST, "岗位名称已存在");
+		}
 	}
 }

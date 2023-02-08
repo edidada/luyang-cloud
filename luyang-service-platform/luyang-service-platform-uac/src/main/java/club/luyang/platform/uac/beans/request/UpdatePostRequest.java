@@ -18,8 +18,8 @@ public class UpdatePostRequest {
 	/**
 	 * 岗位ID
 	 */
-	@NotBlank
-	private String id;
+	@NotNull
+	private Long id;
 
 	/**
 	 * 岗位编码

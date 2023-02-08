@@ -11,7 +11,7 @@ public interface PostRepository {
 
 	PostEntity findByName(String name);
 
-	boolean hasPostId(String postId);
+	boolean hasPostId(Long postId);
 
-	void removeById(String id);
+	void removeById(Long id);
 }

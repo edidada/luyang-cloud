@@ -3,7 +3,6 @@ package club.luyang.platform.uac.repository;
 import club.luyang.platform.uac.repository.entity.PostEntity;
 import club.luyang.platform.uac.repository.mapper.PostMapper;
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Repository;
@@ -27,14 +26,14 @@ public class PostRepositoryImpl extends ServiceImpl<PostMapper, PostEntity> impl
 	}
 
 	@Override
-	public boolean hasPostId(String id) {
-		Assert.notEmpty(id);
+	public boolean hasPostId(Long id) {
+		Assert.notNull(id);
 		return this.lambdaQuery().eq(PostEntity::getId, id).exists();
 	}
 
 	@Override
-	public void removeById(String id) {
-		if (CharSequenceUtil.isBlank(id)) {
+	public void removeById(Long id) {
+		if (null == id) {
 			return;
 		}
 

@@ -45,7 +45,7 @@ public class PostController {
 	}
 
 	@DeleteMapping("/remove")
-	public Result<Void> removePost(@RequestParam("id") String id) {
+	public Result<Void> removePost(@RequestParam("id") Long id) {
 		postService.removePost(id);
 		return Result.success();
 	}

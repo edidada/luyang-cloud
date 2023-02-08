@@ -105,4 +105,11 @@ public class GlobalRestExceptionTranslator {
 	public Result<?> handleError(BaseException e) {
 		return Result.failure(e.getBaseEnum(), e.getMessage());
 	}
+
+	@ExceptionHandler(Throwable.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public Result<?> handleError(Throwable e) {
+		logger.error("服务器异常", e);
+		return Result.failure(ResultEnum.INTERNAL_SERVER_ERROR);
+	}
 }
