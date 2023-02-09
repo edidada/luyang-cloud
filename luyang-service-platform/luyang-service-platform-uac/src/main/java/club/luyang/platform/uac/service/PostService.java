@@ -3,8 +3,8 @@ package club.luyang.platform.uac.service;
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
 import club.luyang.framework.base.util.validation.ValidationUtil;
-import club.luyang.platform.uac.beans.request.CreatePostRequest;
-import club.luyang.platform.uac.beans.request.UpdatePostRequest;
+import club.luyang.platform.uac.beans.request.post.CreatePostRequest;
+import club.luyang.platform.uac.beans.request.post.UpdatePostRequest;
 import club.luyang.platform.uac.convert.PostConvert;
 import club.luyang.platform.uac.repository.PostRepository;
 import club.luyang.platform.uac.repository.entity.PostEntity;
@@ -42,7 +42,7 @@ public class PostService {
 		ValidationUtil.valid(request);
 		Long postId = request.getId();
 		// 校验岗位ID是否存在
-		checkPostIdExists(postId);
+		checkPostIdExist(postId);
 		// 校验岗位编码唯一性
 		checkPostCodeUnique(postId, request.getPostCode());
 		// 校验岗位名称唯一性
@@ -54,7 +54,7 @@ public class PostService {
 		postRepository.removeById(postId);
 	}
 
-	private void checkPostIdExists(Long postId) {
+	private void checkPostIdExist(Long postId) {
 		boolean exist = postRepository.hasPostId(postId);
 		Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
 	}

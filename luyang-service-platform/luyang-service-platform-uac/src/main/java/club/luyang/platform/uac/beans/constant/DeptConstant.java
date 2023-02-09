@@ -11,10 +11,14 @@ import lombok.experimental.UtilityClass;
 public class DeptConstant {
 
 	/** 根部门父ID */
-	public static final String ROOT_PARENT_ID = "0";
+	public static final Long ROOT_PARENT_ID = 0L;
 
-	/**
-	 * 部门层级深度
-	 */
+	/** 部门层级深度 */
 	public static final int DEPARTMENT_HIERARCHY_DEPTH = 15;
+
+	/** 祖级列表路径 */
+	public static final String FULL_PATH = "fullPath";
+
+	/** 祖级列表名称 */
+	public static final String FULL_NAME = "fullName";
 }

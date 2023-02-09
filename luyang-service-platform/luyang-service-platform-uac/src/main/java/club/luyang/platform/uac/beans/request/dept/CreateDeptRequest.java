@@ -1,6 +1,7 @@
-package club.luyang.platform.uac.controller.department.request;
+package club.luyang.platform.uac.beans.request.dept;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -14,30 +15,20 @@ import org.hibernate.validator.constraints.Range;
  */
 @Getter
 @Setter
-public class CreateDepartmentRequest {
-
-	/**
-	 * 部门ID，为空则自动生成 <br/>
-	 * 长度限制为1~64个字符
-	 */
-	@Length(max = 64)
-	private String departmentId;
+public class CreateDeptRequest {
 
 	/**
 	 * 父ID，创建根部门，该参数值为0 <br/>
-	 * 长度限制为1~64个字符
 	 */
-	@NotBlank
-	@Length(max = 64)
-	private String parentDepartmentId;
+	@NotNull
+	private Long parentDeptId;
 
 	/**
 	 * 部门名称
 	 */
 	@NotBlank
-//	@Pattern(regexp = "")
 	@Length(max = 128)
-	private String departmentName;
+	private String deptName;
 
 	/**
 	 * 排序号，值越大越靠前 <br/>

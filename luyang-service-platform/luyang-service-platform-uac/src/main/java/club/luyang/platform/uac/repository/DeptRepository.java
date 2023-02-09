@@ -9,5 +9,9 @@ import club.luyang.platform.uac.repository.entity.DeptEntity;
  */
 public interface DeptRepository {
 
-	DeptEntity findById(String parentId);
+	DeptEntity findById(Long parentId);
+
+	boolean hasRootDept();
+
+	boolean hasDeptNameSame(Long parentDeptId, String deptName);
 }

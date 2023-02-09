@@ -32,6 +32,8 @@ spring:
         shutdown-timeout: 100 # 关闭超时时间
 
 mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       logic-delete-field: hasDelete # 全局逻辑删除的实体字段名，也可实体类字段上加上@TableLogic注解

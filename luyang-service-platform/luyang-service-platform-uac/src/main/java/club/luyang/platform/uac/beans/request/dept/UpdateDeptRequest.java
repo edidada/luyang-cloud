@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.beans.request;
+package club.luyang.platform.uac.beans.request.dept;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,36 +9,37 @@ import org.hibernate.validator.constraints.Range;
 
 
 /**
+ * 创建部门请求体
+ *
  * @author lu_yang
  */
 @Getter
 @Setter
-public class CreatePostRequest {
+public class UpdateDeptRequest {
 
 	/**
-	 * 岗位编码
+	 * 部门ID
 	 */
-	@NotBlank
-	@Length(max = 12)
-	private String postCode;
+	@NotNull
+	private Long deptId;
 
 	/**
-	 * 岗位名称
+	 * 父ID
+	 */
+	@NotNull
+	private Long parentDeptId;
+
+	/**
+	 * 部门名称
 	 */
 	@NotBlank
-	@Length(max = 64)
-	private String postName;
+	@Length(max = 128)
+	private String deptName;
 
 	/**
 	 * 排序号，值越大越靠前 <br/>
 	 * 取值范围(0, 2^32)
 	 */
-	@NotNull
 	@Range(min = 1, max = 255)
-	private Integer sortNum;
-
-	/**
-	 * 备注
-	 */
-	private String remark;
+	private int sortNum;
 }

@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.beans.request;
+package club.luyang.platform.uac.beans.request.post;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

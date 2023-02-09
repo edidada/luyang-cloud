@@ -5,5 +5,5 @@ package club.luyang.platform.uac.beans.response;
  *
  * @author lu_yang
  */
-public record CreateDeptResponse(String deptId) {
+public record CreateDeptResponse(Long deptId) {
 }
