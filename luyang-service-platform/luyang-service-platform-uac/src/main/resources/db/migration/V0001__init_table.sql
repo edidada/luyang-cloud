@@ -88,6 +88,13 @@ CREATE TABLE `uac_post`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
   ROW_FORMAT = DYNAMIC COMMENT = '岗位表';
+INSERT INTO `uac_post` (`id`, `code`, `name`, `sort_num`, `remark`, `has_delete`, `update_time`, `create_time`) VALUES (1624071119451258880, 'QA', '测试', 2, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+INSERT INTO `uac_post` (`id`, `code`, `name`, `sort_num`, `remark`, `has_delete`, `update_time`, `create_time`) VALUES (1624071119463841792, 'OP', '运维', 7, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+INSERT INTO `uac_post` (`id`, `code`, `name`, `sort_num`, `remark`, `has_delete`, `update_time`, `create_time`) VALUES (1624071119463841793, 'RD', '研发', 3, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+INSERT INTO `uac_post` (`id`, `code`, `name`, `sort_num`, `remark`, `has_delete`, `update_time`, `create_time`) VALUES (1624071119468036096, 'DBA', '数据库管理员', 1, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+INSERT INTO `uac_post` (`id`, `code`, `name`, `sort_num`, `remark`, `has_delete`, `update_time`, `create_time`) VALUES (1624071119468036097, 'PM', '产品经理', 9, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+INSERT INTO `uac_post` (`id`, `code`, `name`, `sort_num`, `remark`, `has_delete`, `update_time`, `create_time`) VALUES (1624071119468036098, 'FE', '前端开发', 5, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+
 
 CREATE TABLE `uac_user_dept`
 (
