@@ -18,7 +18,7 @@ public class DeptEntity extends BaseEntity<DeptEntity> {
 	/**
 	 * 父ID
 	 */
-	private String parentId;
+	private Long parentId;
 
 	/**
 	 * 部门名称

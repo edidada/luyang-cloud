@@ -1,6 +1,7 @@
 package club.luyang.platform.uac.convert;
 
 import club.luyang.platform.uac.beans.request.dept.CreateDeptRequest;
+import club.luyang.platform.uac.beans.request.dept.UpdateDeptRequest;
 import club.luyang.platform.uac.repository.entity.DeptEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -26,4 +27,15 @@ public interface DeptConvert {
 	@Mapping(source = "deptName", target = "name")
 	@Mapping(source = "parentDeptId", target = "parentId")
 	DeptEntity toEntity(CreateDeptRequest request);
+
+	/**
+	 * Update request body -> Entity
+	 *
+	 * @param request  创建部门请求体
+	 * @return DeptEntity 部门实体
+	 * @author lu_yang
+	 */
+	@Mapping(source = "deptName", target = "name")
+	@Mapping(source = "parentDeptId", target = "parentId")
+	DeptEntity toEntity(UpdateDeptRequest request);
 }
