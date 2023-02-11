@@ -1,4 +1,4 @@
-package club.luyang.framework.mybatisplus.ext;
+package club.luyang.framework.mybatisplus.support;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.ArrayUtils;
