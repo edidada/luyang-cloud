@@ -25,7 +25,7 @@ public class UpdatePostRequest {
 	 * 岗位编码
 	 */
 	@NotBlank
-	@Length(max = 64)
+	@Length(max = 16)
 	private String postCode;
 
 	/**
@@ -43,5 +43,9 @@ public class UpdatePostRequest {
 	@Range(min = 1, max = 255)
 	private Integer sortNum;
 
+	/**
+	 * 备注
+	 */
+	@Length(max = 255)
 	private String remark;
 }

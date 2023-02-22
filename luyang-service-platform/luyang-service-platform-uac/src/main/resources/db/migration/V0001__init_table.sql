@@ -76,8 +76,8 @@ CREATE TABLE `uac_dept`
 CREATE TABLE `uac_post`
 (
     `id`          BIGINT       NOT NULL COMMENT '主键ID',
-    `code`        VARCHAR(64)  NOT NULL COMMENT '岗位编码',
-    `name`        VARCHAR(128) NOT NULL COMMENT '岗位名称',
+    `code`        VARCHAR(16)  NOT NULL COMMENT '岗位编码',
+    `name`        VARCHAR(64) NOT NULL COMMENT '岗位名称',
     `sort_num`    INT COMMENT '排序号，值越大越靠前',
     `remark`      VARCHAR(255) DEFAULT NULL COMMENT '备注',
     `has_delete`  bit(1)       DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',

@@ -19,7 +19,7 @@ public class CreatePostRequest {
 	 * 岗位编码
 	 */
 	@NotBlank
-	@Length(max = 12)
+	@Length(max = 16)
 	private String postCode;
 
 	/**
@@ -40,5 +40,6 @@ public class CreatePostRequest {
 	/**
 	 * 备注
 	 */
+	@Length(max = 255)
 	private String remark;
 }
