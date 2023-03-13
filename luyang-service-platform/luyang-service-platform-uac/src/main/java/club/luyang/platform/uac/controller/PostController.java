@@ -4,7 +4,7 @@ import club.luyang.framework.base.api.PageResult;
 import club.luyang.framework.base.api.Result;
 import club.luyang.platform.uac.beans.request.post.CreatePostRequest;
 import club.luyang.platform.uac.beans.request.post.UpdatePostRequest;
-import club.luyang.platform.uac.service.PostService;
+import club.luyang.platform.uac.service.post.PostService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

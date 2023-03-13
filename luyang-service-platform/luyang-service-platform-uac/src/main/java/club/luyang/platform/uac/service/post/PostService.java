@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.service;
+package club.luyang.platform.uac.service.post;
 
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
@@ -6,28 +6,22 @@ import club.luyang.framework.base.util.validation.ValidationUtil;
 import club.luyang.platform.uac.beans.request.post.CreatePostRequest;
 import club.luyang.platform.uac.beans.request.post.UpdatePostRequest;
 import club.luyang.platform.uac.convert.PostConvert;
-import club.luyang.platform.uac.repository.PostRepository;
-import club.luyang.platform.uac.repository.entity.PostEntity;
+import club.luyang.platform.uac.repository.post.PostRepository;
+import club.luyang.platform.uac.repository.post.entity.PostEntity;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.NumberUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
  * @author lu_yang
  */
 @Service
+@RequiredArgsConstructor
 public class PostService {
 
-	private static final Logger logger = LoggerFactory.getLogger(PostService.class);
-
 	private final PostRepository postRepository;
-
-	public PostService(PostRepository postRepository) {
-		this.postRepository = postRepository;
-	}
 
 	public void createPost(CreatePostRequest request) {
 		ValidationUtil.valid(request);
@@ -55,7 +49,7 @@ public class PostService {
 	}
 
 	private void checkPostIdExist(Long postId) {
-		boolean exist = postRepository.hasPostId(postId);
+		boolean exist = postRepository.existById(postId);
 		Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
 	}
 

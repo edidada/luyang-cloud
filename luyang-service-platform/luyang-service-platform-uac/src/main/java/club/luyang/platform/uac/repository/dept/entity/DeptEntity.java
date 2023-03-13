@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.repository.entity;
+package club.luyang.platform.uac.repository.dept.entity;
 
 import club.luyang.framework.mybatisplus.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;

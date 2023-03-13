@@ -1,6 +1,6 @@
-package club.luyang.platform.uac.repository.mapper;
+package club.luyang.platform.uac.repository.post.mapper;
 
-import club.luyang.platform.uac.repository.entity.PostEntity;
+import club.luyang.platform.uac.repository.post.entity.PostEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

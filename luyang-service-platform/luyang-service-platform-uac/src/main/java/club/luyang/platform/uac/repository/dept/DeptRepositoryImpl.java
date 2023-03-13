@@ -1,8 +1,8 @@
-package club.luyang.platform.uac.repository;
+package club.luyang.platform.uac.repository.dept;
 
 import club.luyang.platform.uac.beans.constant.DeptConstant;
-import club.luyang.platform.uac.repository.entity.DeptEntity;
-import club.luyang.platform.uac.repository.mapper.DeptMapper;
+import club.luyang.platform.uac.repository.dept.entity.DeptEntity;
+import club.luyang.platform.uac.repository.dept.mapper.DeptMapper;
 import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
-package club.luyang.platform.uac.repository;
+package club.luyang.platform.uac.repository.dept;
 
-import club.luyang.platform.uac.repository.entity.DeptEntity;
+import club.luyang.platform.uac.repository.dept.entity.DeptEntity;
 
 /**
  * 部门仓储接口

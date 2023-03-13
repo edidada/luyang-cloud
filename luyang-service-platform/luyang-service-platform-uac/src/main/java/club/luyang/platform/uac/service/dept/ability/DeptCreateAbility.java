@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.service.ability;
+package club.luyang.platform.uac.service.dept.ability;
 
 import club.luyang.framework.base.util.ability.AbilityContext;
 import club.luyang.framework.base.util.ability.BaseAbility;
@@ -6,8 +6,8 @@ import club.luyang.framework.base.util.validation.ValidationUtil;
 import club.luyang.platform.uac.beans.constant.DeptConstant;
 import club.luyang.platform.uac.beans.request.dept.CreateDeptRequest;
 import club.luyang.platform.uac.convert.DeptConvert;
-import club.luyang.platform.uac.repository.entity.DeptEntity;
-import club.luyang.platform.uac.service.DeptService;
+import club.luyang.platform.uac.repository.dept.entity.DeptEntity;
+import club.luyang.platform.uac.service.dept.DeptService;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.IdUtil;
 import lombok.RequiredArgsConstructor;
