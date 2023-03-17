@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.controller;
+package club.luyang.platform.uac.controller.post;
 
 import club.luyang.framework.base.api.PageResult;
 import club.luyang.framework.base.api.Result;

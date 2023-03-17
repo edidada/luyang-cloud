@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.controller;
+package club.luyang.platform.uac.controller.dept;
 
 import club.luyang.framework.base.api.Result;
 import club.luyang.platform.uac.beans.request.dept.CreateDeptRequest;
