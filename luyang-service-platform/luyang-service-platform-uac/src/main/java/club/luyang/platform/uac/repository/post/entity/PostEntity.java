@@ -16,17 +16,17 @@ public class PostEntity extends BaseEntity<PostEntity> {
 	/**
 	 * 岗位编码
 	 */
-	private String code;
+	private String postCode;
 
 	/**
 	 * 岗位名称
 	 */
-	private String name;
+	private String postName;
 
 	/**
 	 * 排序号，值越大越靠前
 	 */
-	private int sortNum;
+	private Integer sortNum;
 
 	/**
 	 * 备注

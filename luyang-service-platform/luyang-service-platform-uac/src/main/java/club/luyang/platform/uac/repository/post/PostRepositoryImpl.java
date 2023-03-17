@@ -14,12 +14,12 @@ public class PostRepositoryImpl extends ServiceImpl<PostMapper, PostEntity> impl
 
 	@Override
 	public PostEntity findByCode(String postCode) {
-		return this.lambdaQuery().eq(PostEntity::getCode, postCode).one();
+		return this.lambdaQuery().eq(PostEntity::getPostCode, postCode).one();
 	}
 
 	@Override
 	public PostEntity findByName(String postName) {
-		return this.lambdaQuery().eq(PostEntity::getCode, postName).one();
+		return this.lambdaQuery().eq(PostEntity::getPostCode, postName).one();
 	}
 
 	@Override

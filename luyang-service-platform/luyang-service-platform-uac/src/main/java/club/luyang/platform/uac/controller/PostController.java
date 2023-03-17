@@ -5,6 +5,7 @@ import club.luyang.framework.base.api.Result;
 import club.luyang.platform.uac.beans.request.post.CreatePostRequest;
 import club.luyang.platform.uac.beans.request.post.UpdatePostRequest;
 import club.luyang.platform.uac.service.post.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,14 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @author lu_yang
  */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/post")
 public class PostController {
 
 	private final PostService postService;
-
-	public PostController(PostService postService) {
-		this.postService = postService;
-	}
 
 	@GetMapping("/page")
 	public Result<PageResult<?>> getPostPage(){

@@ -4,7 +4,6 @@ import club.luyang.platform.uac.beans.request.post.CreatePostRequest;
 import club.luyang.platform.uac.beans.request.post.UpdatePostRequest;
 import club.luyang.platform.uac.repository.post.entity.PostEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -24,8 +23,6 @@ public interface PostConvert {
 	 * @return PostEntity
 	 * @author lu_yang
 	 */
-	@Mapping(source = "postCode", target = "code")
-	@Mapping(source = "postName", target = "name")
 	PostEntity toEntity(CreatePostRequest request);
 
 	/**
@@ -35,7 +32,5 @@ public interface PostConvert {
 	 * @return PostEntity
 	 * @author lu_yang
 	 */
-	@Mapping(source = "postCode", target = "code")
-	@Mapping(source = "postName", target = "name")
 	PostEntity toEntity(UpdatePostRequest request);
 }

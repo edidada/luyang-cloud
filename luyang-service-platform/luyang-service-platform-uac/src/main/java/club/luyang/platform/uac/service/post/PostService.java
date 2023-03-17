@@ -53,8 +53,8 @@ public class PostService {
 		Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
 	}
 
-	private void checkPostCodeUnique(Long postId, String code) {
-		PostEntity entity = postRepository.findByCode(code);
+	private void checkPostCodeUnique(Long postId, String postCode) {
+		PostEntity entity = postRepository.findByCode(postCode);
 		if (BeanUtil.isEmpty(entity)) {
 			return;
 		}
@@ -64,8 +64,8 @@ public class PostService {
 		}
 	}
 
-	private void checkPostNameUnique(Long postId, String name) {
-		PostEntity entity = postRepository.findByName(name);
+	private void checkPostNameUnique(Long postId, String postName) {
+		PostEntity entity = postRepository.findByName(postName);
 		if (BeanUtil.isEmpty(entity)) {
 			return;
 		}

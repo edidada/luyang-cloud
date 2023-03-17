@@ -1,0 +1,2 @@
+MySql8保留关键字
+    https://dev.mysql.com/doc/refman/8.0/en/keywords.html
