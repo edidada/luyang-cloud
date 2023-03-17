@@ -3,7 +3,6 @@ package club.luyang.framework.redisson.config;
 import club.luyang.framework.redisson.RedissonManager;
 import club.luyang.framework.redisson.config.props.RedissonProperties;
 import club.luyang.framework.redisson.helper.RedissonHelper;
-import org.redisson.jcache.configuration.RedissonConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -22,7 +21,7 @@ import org.springframework.context.annotation.DependsOn;
 @EnableConfigurationProperties(RedissonProperties.class)
 public class RedissonAutoConfiguration {
 
-	private static final Logger logger = LoggerFactory.getLogger(RedissonConfiguration.class);
+	private static final Logger logger = LoggerFactory.getLogger(RedissonAutoConfiguration.class);
 
 	@Bean
 	@ConditionalOnMissingBean

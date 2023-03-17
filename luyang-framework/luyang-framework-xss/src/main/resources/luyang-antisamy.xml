@@ -292,7 +292,6 @@
         <attribute name="nowrap" description="The 'nowrap' attribute tells the browser not to wrap text that goes over one line">
             <regexp-list>
                 <regexp name="anything" />
-                <!-- <regexp value="(nowrap){0,1}"/> -->
             </regexp-list>
         </attribute>
 
@@ -640,11 +639,8 @@
 
         <!-- no way to do this safely without hooking up the same code to @import to embed the remote stylesheet (malicious user could change
             offsite resource to be malicious after validation -->
-        <!-- <attribute name="href" onInvalid="removeTag"/> -->
 
         <tag name="link" action="validate">
-
-            <!-- <attribute name="href" onInvalid="removeTag"/> -->
 
             <attribute name="media" />
 
