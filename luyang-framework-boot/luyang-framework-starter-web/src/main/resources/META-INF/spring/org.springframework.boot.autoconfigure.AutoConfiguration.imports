@@ -1,2 +1,3 @@
 club.luyang.framework.web.banner.BannerApplicationStarter
 club.luyang.framework.web.error.GlobalRestExceptionTranslator
+club.luyang.framework.web.i18n.I18nConfiguration
