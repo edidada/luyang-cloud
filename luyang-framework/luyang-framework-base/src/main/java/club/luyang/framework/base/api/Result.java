@@ -20,7 +20,7 @@ public class Result<T> implements Serializable {
 	 * 状态码
 	 */
 	@JsonProperty(index = 1)
-	private int code;
+	private String code;
 
 	/**
 	 * 状态码描述
@@ -55,10 +55,10 @@ public class Result<T> implements Serializable {
 		this(baseEnum.getCode(), message, data);
 	}
 
-	private Result(int code, String message, T data) {
+	private Result(String code, String message, T data) {
 		this.code = code;
 		this.message = message;
-		this.success = ResultEnum.SUCCESS.getCode() == code;
+		this.success = ResultEnum.SUCCESS.getCode().equals(code);
 		this.data = data;
 	}
 
@@ -74,7 +74,7 @@ public class Result<T> implements Serializable {
 		return new Result<>(ResultEnum.FAILURE, message);
 	}
 
-	public static <T> Result<T> failure(int code, String message) {
+	public static <T> Result<T> failure(String code, String message) {
 		return new Result<>(code, message, null);
 	}
 
@@ -90,7 +90,7 @@ public class Result<T> implements Serializable {
 		return flag ? success() : failure(ResultEnum.FAILURE);
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 

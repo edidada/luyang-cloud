@@ -20,7 +20,7 @@ public interface IBaseEnum extends Serializable {
 	 * @return int 状态码
 	 * @author lu_yang
 	 */
-	int getCode();
+	String getCode();
 
 	/**
 	 * 获取状态码描述
@@ -42,9 +42,9 @@ public interface IBaseEnum extends Serializable {
 	 * @return T
 	 * @author lu_yang
 	 */
-	static <T extends IBaseEnum> T getByCode(Class<T> tClass, int code) {
+	static <T extends IBaseEnum> T getByCode(Class<T> tClass, String code) {
 		return Arrays.stream(tClass.getEnumConstants())
-			.filter(v -> Objects.equals(v.getCode(), code))
+			.filter(v -> v.getCode().equals(code))
 			.findFirst()
 			.orElse(null);
 	}
@@ -62,7 +62,7 @@ public interface IBaseEnum extends Serializable {
 	 * @return T
 	 * @author lu_yang
 	 */
-	static <T extends IBaseEnum, X extends Throwable> T getByCode(Class<T> tClass, int code, Supplier<X> errorSupplier) throws X {
+	static <T extends IBaseEnum, X extends Throwable> T getByCode(Class<T> tClass, String code, Supplier<X> errorSupplier) throws X {
 		T anyEnum = getByCode(tClass, code);
 		if (null == anyEnum) {
 			throw errorSupplier.get();

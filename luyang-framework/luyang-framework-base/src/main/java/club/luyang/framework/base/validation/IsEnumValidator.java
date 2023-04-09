@@ -9,7 +9,7 @@ import jakarta.validation.ConstraintValidatorContext;
  *
  * @author lu_yang
  */
-public class IsEnumValidator implements ConstraintValidator<IsEnum, Integer> {
+public class IsEnumValidator implements ConstraintValidator<IsEnum, String> {
 
 	private IsEnum annotation;
 
@@ -19,7 +19,7 @@ public class IsEnumValidator implements ConstraintValidator<IsEnum, Integer> {
 	}
 
 	@Override
-	public boolean isValid(Integer val, ConstraintValidatorContext context) {
+	public boolean isValid(String val, ConstraintValidatorContext context) {
 		boolean allowEmpty = annotation.allowEmpty();
 		// 允许为空且值为null 则放行
 		if (allowEmpty && null == val) {
@@ -28,7 +28,7 @@ public class IsEnumValidator implements ConstraintValidator<IsEnum, Integer> {
 
 		IBaseEnum[] enumConstants = annotation.value().getEnumConstants();
 		for (IBaseEnum iEnum : enumConstants) {
-			if (iEnum.getCode() == val) {
+			if (iEnum.getCode().equals(val)) {
 				return true;
 			}
 		}
