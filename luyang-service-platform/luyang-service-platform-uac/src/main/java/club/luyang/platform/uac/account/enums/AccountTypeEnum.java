@@ -13,16 +13,16 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum AccountTypeEnum implements IBaseEnum {
 
-	MOBILE_NUM("01", "手机号"),
-	MAILBOX_NUM("02", "邮箱号"),
-	JOB_NUM("03", "工号");
+	MOBILE_NUM(1, "手机号"),
+	MAILBOX_NUM(2, "邮箱号"),
+	JOB_NUM(3, "工号");
 
 	@EnumValue
-	private final String code;
+	private final int code;
 	private final String message;
 
 	@Override
-	public String getCode() {
+	public int getCode() {
 		return this.code;
 	}
 

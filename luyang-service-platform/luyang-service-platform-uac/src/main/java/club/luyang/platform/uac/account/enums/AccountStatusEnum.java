@@ -11,16 +11,15 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum AccountStatusEnum implements IBaseEnum {
 
-	ACTIVATE("01", "未激活"),
-	UNACTIVATED("02", "激活")
-	;
+	ACTIVATE(1, "未激活"),
+	UNACTIVATED(2, "激活");
 
 	@EnumValue
-	private final String code;
+	private final int code;
 	private final String message;
 
 	@Override
-	public String getCode() {
+	public int getCode() {
 		return this.code;
 	}
 

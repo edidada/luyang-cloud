@@ -11,14 +11,14 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum AccountSourceEnum implements IBaseEnum {
 
-	INSIDE("01", "内部系统");
+	INSIDE(1, "内部系统");
 
 	@EnumValue
-	private final String code;
+	private final int code;
 	private final String message;
 
 	@Override
-	public String getCode() {
+	public int getCode() {
 		return this.code;
 	}
 

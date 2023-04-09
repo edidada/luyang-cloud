@@ -35,8 +35,8 @@ public class ResultOps<T> {
 	 * @return boolean {@code true}相等 {@code false}不等
 	 * @author lu_yang
 	 */
-	private boolean codeEquals(String code) {
-		return this.value.getCode().equals(code);
+	private boolean codeEquals(int code) {
+		return this.value.getCode() == code;
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class ResultOps<T> {
 	 * @return boolean {@code true}不等 {@code false}相等
 	 * @author lu_yang
 	 */
-	private boolean codeNotEquals(String code) {
+	private boolean codeNotEquals(int code) {
 		return !codeEquals(code);
 	}
 
@@ -96,7 +96,7 @@ public class ResultOps<T> {
 	 * @throws X 断言失败时抛出
 	 * @author lu_yang
 	 */
-	public <X extends Throwable> ResultOps<T> assertCode(String expectCode, Function<? super Result<T>, ? extends X> func) throws X {
+	public <X extends Throwable> ResultOps<T> assertCode(int expectCode, Function<? super Result<T>, ? extends X> func) throws X {
 		if (codeNotEquals(expectCode)) {
 			throw func.apply(value);
 		}
@@ -117,7 +117,7 @@ public class ResultOps<T> {
 	 * @throws X 断言失败时抛出
 	 * @author lu_yang
 	 */
-	public <X extends Throwable> ResultOps<T> assertCode(String expectCode, Supplier<X> errorSupplier) throws X {
+	public <X extends Throwable> ResultOps<T> assertCode(int expectCode, Supplier<X> errorSupplier) throws X {
 		if (codeNotEquals(expectCode)) {
 			throw errorSupplier.get();
 		}
