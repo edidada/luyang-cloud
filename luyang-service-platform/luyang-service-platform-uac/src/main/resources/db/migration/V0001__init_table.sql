@@ -1,21 +1,21 @@
 CREATE TABLE `uac_account`
 (
-    `id`                          BIGINT       NOT NULL COMMENT '主键ID',
-    `user_id`                     BIGINT       NOT NULL COMMENT '用户ID',
-    `identifier`                  VARCHAR(64)  NOT NULL COMMENT '识别码(账号)',
-    `credential`                  VARCHAR(128) NOT NULL COMMENT '密码凭证',
-    `identity_type`               CHAR(2)     DEFAULT '01' COMMENT '识别码类型 {[01:工号] [02:邮箱] [03:手机号]}',
-    `source`                      CHAR(2)     DEFAULT '01' COMMENT '账号来源 {[01:内部系统]}',
-    `status`                      CHAR(2)     DEFAULT '01' COMMENT '账号状态 {[01:激活] [02:未激活] [03:停用]}',
-    `has_delete`                  bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
-    `credential_last_change_date` date        DEFAULT NULL COMMENT '密码凭证上次变更日期',
-    `update_time`                 datetime(3) DEFAULT NULL COMMENT '更新时间',
-    `create_time`                 datetime(3) DEFAULT NULL COMMENT '创建时间',
+    `id`                     BIGINT       NOT NULL COMMENT '主键ID',
+    `user_id`                BIGINT       NOT NULL COMMENT '用户ID',
+    `account`                VARCHAR(64)  NOT NULL COMMENT '账号',
+    `credential`             VARCHAR(128) NOT NULL COMMENT '密码凭证',
+    `account_type`           CHAR(2)     DEFAULT '01' COMMENT '识别码类型 {[01:手机号] [02:邮箱] [03:工号]}',
+    `account_source`         CHAR(2)     DEFAULT '01' COMMENT '账号来源 {[01:内部系统]}',
+    `account_status`         CHAR(2)     DEFAULT '01' COMMENT '账号状态 {[01:激活] [02:未激活] [03:停用]}',
+    `credential_change_date` date        DEFAULT NULL COMMENT '密码凭证上次变更日期',
+    `has_delete`             bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `update_time`            datetime(3) DEFAULT NULL COMMENT '更新时间',
+    `create_time`            datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE,
-    UNIQUE INDEX `uniq_identifier` (`identifier`) USING BTREE COMMENT '识别码唯一索引',
+    UNIQUE INDEX `uniq_identifier` (`account`) USING BTREE COMMENT '识别码唯一索引',
     INDEX `idx_user_id` (`user_id`) USING BTREE COMMENT '用户ID普通索引'
 ) ENGINE = INNODB
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
   ROW_FORMAT = DYNAMIC COMMENT = '账号表';
 
