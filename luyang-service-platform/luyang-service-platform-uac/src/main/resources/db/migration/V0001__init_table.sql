@@ -4,7 +4,7 @@ CREATE TABLE `uac_account`
     `user_id`                BIGINT       NOT NULL COMMENT '用户ID',
     `account`                VARCHAR(64)  NOT NULL COMMENT '账号',
     `credential`             VARCHAR(128) NOT NULL COMMENT '密码凭证',
-    `account_type`           CHAR(2)     DEFAULT '01' COMMENT '识别码类型 {[01:手机号] [02:邮箱] [03:工号]}',
+    `account_type`           CHAR(2)     DEFAULT '01' COMMENT '账号类型 {[01:手机号] [02:邮箱] [03:工号]}',
     `account_source`         CHAR(2)     DEFAULT '01' COMMENT '账号来源 {[01:内部系统]}',
     `account_status`         CHAR(2)     DEFAULT '01' COMMENT '账号状态 {[01:激活] [02:未激活] [03:停用]}',
     `credential_change_date` date        DEFAULT NULL COMMENT '密码凭证上次变更日期',

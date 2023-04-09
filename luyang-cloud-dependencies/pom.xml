@@ -30,6 +30,7 @@
         <redisson.version>3.19.0</redisson.version>
         <lunar.version>1.2.28</lunar.version>
         <caffeine.version>3.1.2</caffeine.version>
+        <passay.version>1.6.3</passay.version>
     </properties>
 
     <dependencyManagement>
@@ -184,6 +185,11 @@
                 <groupId>com.github.ben-manes.caffeine</groupId>
                 <artifactId>caffeine</artifactId>
                 <version>${caffeine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.passay</groupId>
+                <artifactId>passay</artifactId>
+                <version>${passay.version}</version>
             </dependency>
             <!-- endregion 外部组件 -->
         </dependencies>
