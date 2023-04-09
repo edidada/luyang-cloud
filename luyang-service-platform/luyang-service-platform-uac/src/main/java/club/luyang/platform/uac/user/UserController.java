@@ -20,8 +20,8 @@ public class UserController {
 
 	private final UserService userService;
 
-	@GetMapping("/create-jobNum")
-	public Result<String> createJobNum() {
+	@GetMapping("/generate-job-num")
+	public Result<String> generateJobNum() {
 		return Result.success("CN-" + RandomUtil.randomInt(10000, 20000));
 	}
 
