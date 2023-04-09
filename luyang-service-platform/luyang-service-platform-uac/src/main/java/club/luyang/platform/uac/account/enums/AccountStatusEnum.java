@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 /**
+ * 账号状态
+ *
  * @author lu_yang
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
