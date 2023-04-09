@@ -6,7 +6,7 @@ CREATE TABLE `uac_account`
     `credential`             VARCHAR(128) NOT NULL COMMENT '密码凭证',
     `account_type`           CHAR(2)     DEFAULT '01' COMMENT '账号类型 {[01:手机号] [02:邮箱] [03:工号]}',
     `account_source`         CHAR(2)     DEFAULT '01' COMMENT '账号来源 {[01:内部系统]}',
-    `account_status`         CHAR(2)     DEFAULT '01' COMMENT '账号状态 {[01:激活] [02:未激活] [03:停用]}',
+    `account_status`         CHAR(2)     DEFAULT '01' COMMENT '账号状态 {[01:未激活] [02:激活] [03:停用]}',
     `credential_change_date` date        DEFAULT NULL COMMENT '密码凭证上次变更日期',
     `has_delete`             bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
     `update_time`            datetime(3) DEFAULT NULL COMMENT '更新时间',
