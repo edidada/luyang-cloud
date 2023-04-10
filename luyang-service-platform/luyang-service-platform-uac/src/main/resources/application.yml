@@ -35,7 +35,7 @@ spring:
 
 mybatis-plus:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       logic-delete-field: hasDelete # 全局逻辑删除的实体字段名，也可实体类字段上加上@TableLogic注解
