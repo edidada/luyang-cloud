@@ -1,6 +1,8 @@
 package club.luyang.platform.uac.account;
 
 import club.luyang.framework.mybatisplus.base.BaseEntity;
+import club.luyang.platform.uac.account.enums.AccountStatusEnum;
+import club.luyang.platform.uac.account.enums.IdentityTypeEnum;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +18,9 @@ import java.time.LocalDate;
 public class AccountEntity extends BaseEntity<AccountEntity> {
 
 	private Long userId;
-	private String account;
+	private String identifier;
 	private String credential;
 	private LocalDate credentialChangeDate;
+	private IdentityTypeEnum identityType;
+	private AccountStatusEnum status;
 }

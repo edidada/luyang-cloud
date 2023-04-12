@@ -1,4 +1,4 @@
-package club.luyang.platform.uac.user.enums;
+package club.luyang.platform.uac.account.enums;
 
 import club.luyang.framework.base.IBaseEnum;
 import com.baomidou.mybatisplus.annotation.EnumValue;
@@ -6,15 +6,15 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 /**
- * 性别
+ * 账号状态
  *
  * @author lu_yang
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public enum UserGenderEnum implements IBaseEnum {
-	MEN(1, "男"),
-	WOMEN(2, "女"),
-	SECRECY(3, "保密");
+public enum AccountStatusEnum implements IBaseEnum {
+
+	UNACTIVATED(1, "未激活"),
+	ACTIVATE(2, "激活");
 
 	@EnumValue
 	private final int code;

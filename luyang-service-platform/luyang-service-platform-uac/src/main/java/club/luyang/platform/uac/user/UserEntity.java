@@ -1,7 +1,7 @@
 package club.luyang.platform.uac.user;
 
 import club.luyang.framework.mybatisplus.base.BaseEntity;
-import club.luyang.platform.uac.user.enums.UserGenderEnum;
+import club.luyang.platform.uac.user.enums.GenderEnum;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +17,7 @@ public class UserEntity extends BaseEntity<UserEntity> {
 	private String jobNum;
 	private String name;
 	private String email;
+	private String avatar;
 	private String remark;
-	private UserGenderEnum userGender;
+	private GenderEnum gender;
 }

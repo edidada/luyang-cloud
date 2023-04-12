@@ -6,6 +6,7 @@ import club.luyang.platform.uac.user.request.AddUserRequest;
 import cn.hutool.core.lang.Assert;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author lu_yang
@@ -20,11 +21,13 @@ public class UserService {
 	public void addUser(AddUserRequest request) {
 		ValidationUtil.valid(request);
 		// 校验工号唯一性
-		checkJobNumUnique(request.getJobNum());
+		checkJobNumUnique(request.jobNum());
 		// 校验邮箱唯一性
-		checkEmailUnique(request.getEmail());
+		checkEmailUnique(request.email());
 		UserEntity userEntity = UserConvert.INSTANCE.toEntity(request);
 		userEntity.insert();
+
+		accountService.addAccount(userEntity.getId(), userEntity.getEmail());
 	}
 
 	private void checkJobNumUnique(String jobNum){
