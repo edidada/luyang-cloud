@@ -14,5 +14,6 @@ public interface UserConvert {
 	UserConvert INSTANCE = Mappers.getMapper(UserConvert.class);
 
 	@Mapping(target = "gender", expression = "java(club.luyang.framework.base.IBaseEnum.getByCode(club.luyang.platform.uac.user.enums.GenderEnum.class, request.gender()))")
-	UserEntity toEntity(AddUserRequest request);
+	@Mapping(target = "id", source = "userId")
+	UserEntity toEntity(AddUserRequest request, long userId);
 }

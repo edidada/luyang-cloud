@@ -16,7 +16,7 @@ public class AccountService {
 		AccountEntity entity = new AccountEntity();
 		entity.setUserId(userId);
 		entity.setIdentifier(identifier);
-//		entity.setCredential(BCrypt.hashpw("123456", BCrypt.gensalt(12)));
+		entity.setCredential("123456");
 		entity.insert();
 	}
 }

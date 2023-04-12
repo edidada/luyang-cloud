@@ -4,9 +4,9 @@ import club.luyang.framework.base.util.validation.ValidationUtil;
 import club.luyang.platform.uac.account.AccountService;
 import club.luyang.platform.uac.user.request.AddUserRequest;
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.IdUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author lu_yang
@@ -20,14 +20,11 @@ public class UserService {
 
 	public void addUser(AddUserRequest request) {
 		ValidationUtil.valid(request);
-		// 校验工号唯一性
 		checkJobNumUnique(request.jobNum());
-		// 校验邮箱唯一性
 		checkEmailUnique(request.email());
-		UserEntity userEntity = UserConvert.INSTANCE.toEntity(request);
-		userEntity.insert();
-
-		accountService.addAccount(userEntity.getId(), userEntity.getEmail());
+		long userId = IdUtil.getSnowflakeNextId();
+		UserConvert.INSTANCE.toEntity(request, userId).insert();
+		accountService.addAccount(userId, request.email());
 	}
 
 	private void checkJobNumUnique(String jobNum){
