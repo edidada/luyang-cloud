@@ -19,11 +19,11 @@ public class UserTool {
 	}
 
 	static void checkJobNumUnique(String jobNum){
-		Assert.isNull(userRepository.findByJobNum(jobNum));
+		Assert.isNull(getUserRepository().findByJobNum(jobNum));
 	}
 
 	static void checkEmailUnique(String email){
-		Assert.isNull(userRepository.findByEmail(email));
+		Assert.isNull(getUserRepository().findByEmail(email));
 	}
 
 }
