@@ -1,5 +1,7 @@
 package club.luyang.platform.uac.account;
 
+import club.luyang.platform.uac.account.repository.AccountEntity;
+import club.luyang.platform.uac.account.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,6 @@ public class AccountService {
 		entity.setIdentifier(identifier);
 		entity.setCredential("123456");
 		entity.insert();
+		// 发送邮件
 	}
 }

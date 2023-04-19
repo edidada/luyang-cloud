@@ -1,3 +1,17 @@
+create table `uac_tenant`
+(
+    `id`          BIGINT       NOT NULL COMMENT '主键ID',
+    `name`        varchar(128) not null comment '租户名',
+    `has_delete`  bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `update_time` datetime(3) DEFAULT NULL COMMENT '更新时间',
+    `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = INNODB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci
+  ROW_FORMAT = DYNAMIC COMMENT = '租户表';
+INSERT INTO `uac_tenant` (`id`, `name`, `has_delete`, `update_time`, `create_time`) VALUES (1648683282704912385, '鲁哈哈TEST', b'0', '2023-04-19 21:41:40.309', '2023-04-19 21:41:40.309');
+
 CREATE TABLE `uac_account`
 (
     `id`                     BIGINT       NOT NULL COMMENT '主键ID',
@@ -103,10 +117,12 @@ VALUES (1624071119468036098, 'FE', '前端开发', 5, NULL, b'0', '2023-02-10 23
 
 CREATE TABLE `uac_user_dept`
 (
-    `id`         BIGINT NOT NULL COMMENT '主键ID',
-    `user_id`    BIGINT NOT NULL COMMENT '用户ID',
-    `dept_id`    BIGINT NOT NULL COMMENT '部门ID',
-    `has_delete` bit(1) DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `id`          BIGINT NOT NULL COMMENT '主键ID',
+    `user_id`     BIGINT NOT NULL COMMENT '用户ID',
+    `dept_id`     BIGINT NOT NULL COMMENT '部门ID',
+    `has_delete`  bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `update_time` datetime(3) DEFAULT NULL COMMENT '更新时间',
+    `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4
