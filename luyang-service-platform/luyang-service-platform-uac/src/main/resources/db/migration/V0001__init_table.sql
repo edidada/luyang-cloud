@@ -48,7 +48,6 @@ CREATE TABLE `uac_credential_record`
 CREATE TABLE `uac_user`
 (
     `id`          BIGINT       NOT NULL COMMENT '主键ID',
-    `job_num`     VARCHAR(16)  NOT NULL COMMENT '工号',
     `name`        VARCHAR(128) NOT NULL COMMENT '姓名',
     `email`       VARCHAR(64)  NOT NULL COMMENT '邮箱',
     `gender`      int          DEFAULT 3 COMMENT '性别 {[1:男] [2:女] [3:保密]}',

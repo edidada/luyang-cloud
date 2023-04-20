@@ -9,6 +9,5 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public interface UserRepository {
 
-	UserEntity findByJobNum(@NotBlank String jobNum);
 	UserEntity findByEmail(@NotBlank String email);
 }

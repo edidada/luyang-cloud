@@ -18,12 +18,7 @@ public class UserTool {
 		return BeanUtil.isNotEmpty(userRepository) ? userRepository : SpringUtil.getBean(UserRepository.class);
 	}
 
-	static void checkJobNumUnique(String jobNum){
-		Assert.isNull(getUserRepository().findByJobNum(jobNum));
-	}
-
 	static void checkEmailUnique(String email){
 		Assert.isNull(getUserRepository().findByEmail(email));
 	}
-
 }

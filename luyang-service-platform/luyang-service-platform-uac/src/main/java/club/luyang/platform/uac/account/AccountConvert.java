@@ -1,0 +1,28 @@
+package club.luyang.platform.uac.account;
+
+import club.luyang.platform.uac.account.constant.AccountConstant;
+import club.luyang.platform.uac.account.constant.enums.AccountStatusEnum;
+import club.luyang.platform.uac.account.constant.enums.IdentityTypeEnum;
+import club.luyang.platform.uac.account.repository.AccountEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+/**
+ * @author lu_yang
+ */
+@Mapper
+public interface AccountConvert {
+
+	AccountConvert INSTANCE = Mappers.getMapper(AccountConvert.class);
+
+	default AccountEntity toEntity(Long userId, String identifier) {
+		AccountEntity entity = new AccountEntity();
+		entity.setUserId(userId);
+		entity.setIdentifier(identifier);
+		entity.setIdentityType(IdentityTypeEnum.getByVal(identifier));
+		entity.setCredentialChangeDate(null);
+		entity.setCredential(AccountConstant.DEFAULT_CREDENTIAL);
+		entity.setStatus(AccountStatusEnum.UNACTIVATED);
+		return entity;
+	}
+}

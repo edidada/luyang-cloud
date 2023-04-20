@@ -14,10 +14,6 @@ import java.util.List;
 public record AddUserRequest(
 
 	@NotBlank
-	@Length(max = 16)
-	String jobNum,
-
-	@NotBlank
 	@Length(max = 128)
 	String name,
 

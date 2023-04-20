@@ -21,7 +21,6 @@ public class UserService {
 	public void addUser(AddUserRequest request) {
 
 		ValidationUtil.valid(request);
-		UserTool.checkJobNumUnique(request.jobNum());
 		UserTool.checkEmailUnique(request.email());
 
 		long userId = IdUtil.getSnowflakeNextId();
