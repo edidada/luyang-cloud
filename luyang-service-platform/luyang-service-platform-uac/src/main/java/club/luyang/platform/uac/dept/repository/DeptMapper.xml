@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.luyang.platform.uac.dept.repository.DeptMapper">
+
+    <insert id="insertUserToDept">
+        INSERT INTO uac_user_dept ( `user_id`, `dept_id` ) VALUES ( #{userId}, #{deptId} )
+    </insert>
+
+    <select id="selectUserBindDept" resultType="java.lang.Long">
+        SELECT
+            dept_id
+        FROM
+            uac_user_dept
+        WHERE
+            user_id = #{userId}
+    </select>
+</mapper>

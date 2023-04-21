@@ -2,6 +2,7 @@ package club.luyang.platform.uac.user;
 
 import club.luyang.framework.base.util.validation.ValidationUtil;
 import club.luyang.platform.uac.account.AccountService;
+import club.luyang.platform.uac.dept.DeptService;
 import club.luyang.platform.uac.user.request.AddUserRequest;
 import cn.hutool.core.util.IdUtil;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
 	private final AccountService accountService;
+	private final DeptService deptService;
 
 	@Transactional
 	public void addUser(AddUserRequest request) {
@@ -25,6 +27,7 @@ public class UserService {
 
 		long userId = IdUtil.getSnowflakeNextId();
 		accountService.addAccount(userId, request.email());
+		request.deptIds().forEach(item -> deptService.addUserToDept(userId, item));
 		UserConvert.INSTANCE.toEntity(request, userId).insert();
 	}
 }

@@ -12,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
- * 部门应用服务
- *
  * @author lu_yang
  */
 @Service
@@ -36,5 +34,11 @@ public class DeptService {
 
 		DeptConvert.INSTANCE.toEntity(request).updateById();
 		// TODO: 2022/11/20 更新子孙部门列表路径
+	}
+
+	public void addUserToDept(Long userId, Long deptId) {
+		boolean hasBindDept = deptRepository.hasBindDept(userId, deptId);
+		Assert.isFalse(hasBindDept, () -> new DataException(ResultEnum.DATA_EXIST, "请勿重复绑定部门"));
+		deptRepository.saveUserToDept(userId, deptId);
 	}
 }

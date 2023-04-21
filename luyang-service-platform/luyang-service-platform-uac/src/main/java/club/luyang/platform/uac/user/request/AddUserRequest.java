@@ -17,7 +17,7 @@ public record AddUserRequest(
 	@Length(max = 128)
 	String name,
 
-	List<String> deptIds,
+	List<Long> deptIds,
 
 	@IsEmail
 	String email,
