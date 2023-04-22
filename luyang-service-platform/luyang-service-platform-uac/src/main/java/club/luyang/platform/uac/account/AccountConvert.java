@@ -4,6 +4,7 @@ import club.luyang.platform.uac.account.constant.AccountConstant;
 import club.luyang.platform.uac.account.constant.enums.AccountStatusEnum;
 import club.luyang.platform.uac.account.constant.enums.IdentityTypeEnum;
 import club.luyang.platform.uac.account.repository.AccountEntity;
+import cn.dev33.satoken.secure.BCrypt;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -21,7 +22,7 @@ public interface AccountConvert {
 		entity.setIdentifier(identifier);
 		entity.setIdentityType(IdentityTypeEnum.getByVal(identifier));
 		entity.setCredentialChangeDate(null);
-		entity.setCredential(AccountConstant.DEFAULT_CREDENTIAL);
+		entity.setCredential(BCrypt.hashpw(AccountConstant.DEFAULT_CREDENTIAL));
 		entity.setStatus(AccountStatusEnum.UNACTIVATED);
 		return entity;
 	}

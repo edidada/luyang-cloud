@@ -3,7 +3,7 @@
 <mapper namespace="club.luyang.platform.uac.dept.repository.DeptMapper">
 
     <insert id="insertUserToDept">
-        INSERT INTO uac_user_dept ( `user_id`, `dept_id` ) VALUES ( #{userId}, #{deptId} )
+        INSERT INTO uac_user_dept ( `id`, `user_id`, `dept_id` ) VALUES ( '${@cn.hutool.core.util.IdUtil@getSnowflakeNextId()}', #{userId}, #{deptId} )
     </insert>
 
     <select id="selectUserBindDept" resultType="java.lang.Long">
