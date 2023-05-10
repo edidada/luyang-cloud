@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author lu_yang
  */
-public record AddUserRequest(
+public record CreateUserRequest(
 
 	@NotBlank
 	@Length(max = 128)

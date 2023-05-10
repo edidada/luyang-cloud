@@ -1,7 +1,7 @@
 package club.luyang.platform.uac.user;
 
 import club.luyang.platform.uac.user.repository.UserEntity;
-import club.luyang.platform.uac.user.request.AddUserRequest;
+import club.luyang.platform.uac.user.request.CreateUserRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -16,5 +16,5 @@ public interface UserConvert {
 
 	@Mapping(target = "gender", expression = "java(club.luyang.framework.base.IBaseEnum.getByCode(club.luyang.platform.uac.user.constant.enums.GenderEnum.class, request.gender()))")
 	@Mapping(target = "id", source = "userId")
-    UserEntity toEntity(AddUserRequest request, long userId);
+    UserEntity toEntity(CreateUserRequest request, long userId);
 }
