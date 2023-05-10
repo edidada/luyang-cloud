@@ -20,6 +20,7 @@ public class AccountEntity extends BaseEntity<AccountEntity> {
 	private Long userId;
 	private String identifier;
 	private String credential;
+	private String salt;
 	private LocalDate credentialChangeDate;
 	private IdentityTypeEnum identityType;
 	private AccountStatusEnum status;

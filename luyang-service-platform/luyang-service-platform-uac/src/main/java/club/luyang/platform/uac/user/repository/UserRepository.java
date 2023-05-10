@@ -8,6 +8,4 @@ import org.springframework.validation.annotation.Validated;
  */
 @Validated
 public interface UserRepository {
-
-	UserEntity findByEmail(@NotBlank String email);
 }

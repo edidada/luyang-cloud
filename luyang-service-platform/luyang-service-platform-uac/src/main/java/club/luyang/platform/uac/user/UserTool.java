@@ -2,7 +2,6 @@ package club.luyang.platform.uac.user;
 
 import club.luyang.platform.uac.user.repository.UserRepository;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.lang.Assert;
 import cn.hutool.extra.spring.SpringUtil;
 import lombok.experimental.UtilityClass;
 
@@ -16,9 +15,5 @@ public class UserTool {
 
 	private static UserRepository getUserRepository() {
 		return BeanUtil.isNotEmpty(userRepository) ? userRepository : SpringUtil.getBean(UserRepository.class);
-	}
-
-	static void checkEmailUnique(String email){
-		Assert.isNull(getUserRepository().findByEmail(email));
 	}
 }

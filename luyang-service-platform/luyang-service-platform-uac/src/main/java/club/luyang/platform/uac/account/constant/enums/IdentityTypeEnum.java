@@ -1,8 +1,7 @@
 package club.luyang.platform.uac.account.constant.enums;
 
 import club.luyang.framework.base.IBaseEnum;
-import club.luyang.framework.base.api.ResultEnum;
-import club.luyang.framework.base.exception.DataException;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import lombok.AccessLevel;
@@ -16,12 +15,24 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum IdentityTypeEnum implements IBaseEnum {
 
-	EMAIL(1, "邮箱号"),
-	MOBILE(2, "手机号");
+	EMAIL(1, "邮箱号"){
+		@Override
+		public void checkAccountNorm(String val) {
+			Assert.isTrue(Validator.isEmail(val));
+		}
+	},
+
+	MOBILE(2, "手机号"){
+		@Override
+		public void checkAccountNorm(String val) {
+			// TODO document why this method is empty
+		}
+	};
 
 	@EnumValue
 	private final int code;
 	private final String message;
+	public abstract void checkAccountNorm(String identity);
 
 	@Override
 	public int getCode() {
@@ -31,18 +42,5 @@ public enum IdentityTypeEnum implements IBaseEnum {
 	@Override
 	public String getMessage() {
 		return this.message;
-	}
-
-	public static IdentityTypeEnum getByVal(String identityVal) {
-
-		if (Validator.isEmail(identityVal)) {
-			return IdentityTypeEnum.EMAIL;
-		}
-
-		if (Validator.isMobile(identityVal)) {
-			return IdentityTypeEnum.MOBILE;
-		}
-
-		throw new DataException(ResultEnum.DATA_NOT_FOUND, "识别码格式有误");
 	}
 }

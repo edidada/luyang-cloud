@@ -9,4 +9,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class AccountRepositoryImpl extends ServiceImpl<AccountMapper, AccountEntity> implements AccountRepository, IService<AccountEntity> {
+
+
+	@Override
+	public boolean hasAccount(String identifier) {
+		return this.lambdaQuery()
+			.eq(AccountEntity::getIdentifier, identifier)
+			.exists();
+	}
 }

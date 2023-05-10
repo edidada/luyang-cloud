@@ -15,7 +15,6 @@ import lombok.Setter;
 public class UserEntity extends BaseEntity<UserEntity> {
 
 	private String name;
-	private String email;
 	private String avatar;
 	private String remark;
 	private GenderEnum gender;

@@ -9,9 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserRepositoryImpl extends ServiceImpl<UserMapper, UserEntity> implements UserRepository, IService<UserEntity> {
-
-	@Override
-	public UserEntity findByEmail(String email) {
-		return this.lambdaQuery().eq(UserEntity::getEmail, email).one();
-	}
 }

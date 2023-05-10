@@ -1,9 +1,11 @@
+DROP TABLE IF EXISTS `uac_account`;
 CREATE TABLE `uac_account`
 (
     `id`                     BIGINT       NOT NULL COMMENT '主键ID',
     `user_id`                BIGINT       NOT NULL COMMENT '用户ID',
     `identifier`             VARCHAR(64)  NOT NULL COMMENT '识别码(账号)',
     `credential`             VARCHAR(128) NOT NULL COMMENT '密码凭证',
+    `salt`                   VARCHAR(128) NOT NULL COMMENT '盐',
     `identity_type`          int         DEFAULT 1 COMMENT '识别码类型(账号) {[1:邮箱号] [2:手机号] [3:工号]}',
     `credential_change_date` date        DEFAULT NULL COMMENT '密码凭证上次变更日期',
     `status`                 int         default 1 comment '账号状态{[1:未激活] [2:激活]}',
@@ -18,6 +20,7 @@ CREATE TABLE `uac_account`
   COLLATE = utf8mb4_general_ci
   ROW_FORMAT = DYNAMIC COMMENT = '账号表';
 
+DROP TABLE IF EXISTS `uac_credential_record`;
 CREATE TABLE `uac_credential_record`
 (
     `id`          BIGINT NOT NULL COMMENT '主键ID',
@@ -31,6 +34,7 @@ CREATE TABLE `uac_credential_record`
   COLLATE = utf8mb4_general_ci
   ROW_FORMAT = DYNAMIC COMMENT = '密码凭证变更记录表';
 
+DROP TABLE IF EXISTS `uac_user`;
 CREATE TABLE `uac_user`
 (
     `id`          BIGINT       NOT NULL COMMENT '主键ID',
@@ -47,6 +51,7 @@ CREATE TABLE `uac_user`
   COLLATE = utf8mb4_general_ci
   ROW_FORMAT = DYNAMIC COMMENT = '用户表';
 
+DROP TABLE IF EXISTS `uac_dept`;
 CREATE TABLE `uac_dept`
 (
     `id`          BIGINT        NOT NULL COMMENT '主键ID',
@@ -64,6 +69,7 @@ CREATE TABLE `uac_dept`
   COLLATE = utf8mb4_general_ci
   ROW_FORMAT = DYNAMIC COMMENT = '部门表';
 
+DROP TABLE IF EXISTS `uac_post`;
 CREATE TABLE `uac_post`
 (
     `id`          BIGINT      NOT NULL COMMENT '主键ID',
@@ -98,7 +104,7 @@ INSERT INTO `uac_post` (`id`, `post_code`, `post_name`, `sort_num`, `remark`, `h
                         `create_time`)
 VALUES (1624071119468036098, 'FE', '前端开发', 5, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
 
-
+DROP TABLE IF EXISTS `uac_user_dept`;
 CREATE TABLE `uac_user_dept`
 (
     `id`          BIGINT NOT NULL COMMENT '主键ID',
