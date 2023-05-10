@@ -41,8 +41,9 @@ public class DeptService {
 	public void addUserToDept(Long userId, List<Long> deptIds) {
 		for (Long deptId : deptIds) {
 			boolean hasBindDept = deptRepository.hasBindDept(userId, deptId);
-			Assert.isFalse(hasBindDept, () -> new DataException(ResultEnum.DATA_EXIST, "请勿重复绑定部门"));
-			deptRepository.saveUserToDept(userId, deptId);
+			if (!hasBindDept) {
+				deptRepository.saveUserToDept(userId, deptId);
+			}
 		}
 	}
 }
