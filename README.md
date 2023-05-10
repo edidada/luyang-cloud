@@ -19,31 +19,4 @@
 > 主要业务方向还没想好做什么，先完成基础组件(spring boot starter相关组件)、用户中心、认证授权的建设，
 > 搞不搞的好都要试一试
 
-## 🏁 前期目标
-* [ ] `infra` 基础组件
-* [ ] `boot` starter组件
-* [ ] `platform` 数据与权限中台
-* [ ] `bpm` 工作流服务
-* [ ] `other` 业务服务
-
-## 📙 文件结构
-```
-luyang-cloud
-    ├── luyang-cloud-dependencies
-    ├── luyang-framework
-    ├    ├── luyang-framework-base
-    ├    ├── luyang-framework-log
-    ├    └── luyang-framework-xss
-    ├── luyang-framework-boot
-    ├    ├── luyang-framework-starter-cache
-    ├    ├── luyang-framework-starter-mybatisplus
-    ├    ├── luyang-framework-starter-redisson
-    ├    ├── luyang-framework-starter-security
-    ├    └── luyang-framework-starter-web
-    ├── luyang-service-platform
-    ├    ├── luyang-service-platform-cam
-    ├    ├── luyang-service-platform-uaa
-    └────└── luyang-service-platform-uac
-```
-
 项目加速建设中。。。
