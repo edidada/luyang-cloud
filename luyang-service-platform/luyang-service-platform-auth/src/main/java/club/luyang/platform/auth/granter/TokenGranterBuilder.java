@@ -18,8 +18,8 @@ public class TokenGranterBuilder {
 	private static final Map<String, ITokenGranter> GRANTER_POOL = new ConcurrentHashMap<>();
 
 	static {
-		GRANTER_POOL.put("password", SpringUtil.getBean(PasswordTokenGranter.class));
-		GRANTER_POOL.put("sms", SpringUtil.getBean(SmsTokenGranter.class));
+		GRANTER_POOL.put(PasswordTokenGranter.GRANT_TYPE, SpringUtil.getBean(PasswordTokenGranter.class));
+		GRANTER_POOL.put(SmsTokenGranter.GRANT_TYPE, SpringUtil.getBean(SmsTokenGranter.class));
 	}
 
 	public static ITokenGranter getGranter(String grantType) {
