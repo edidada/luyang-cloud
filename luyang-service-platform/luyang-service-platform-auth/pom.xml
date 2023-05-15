@@ -19,5 +19,9 @@
             <groupId>club.luyang</groupId>
             <artifactId>luyang-framework-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-sso</artifactId>
+        </dependency>
     </dependencies>
 </project>

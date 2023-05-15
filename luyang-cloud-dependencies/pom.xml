@@ -14,7 +14,7 @@
         <spring-boot-dependencies.version>3.0.2</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2022.0.0</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2022.0.0.0-RC2</spring-cloud-alibaba-dependencies.version>
-        <spring-security-oauth2-authorization-server.version>1.0.0</spring-security-oauth2-authorization-server.version>
+        <spring-security-oauth2-authorization-server.version>1.0.2</spring-security-oauth2-authorization-server.version>
 
         <luyang.framework.version>1.0.0</luyang.framework.version>
 
@@ -201,6 +201,11 @@
                 <groupId>org.passay</groupId>
                 <artifactId>passay</artifactId>
                 <version>${passay.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-sso</artifactId>
+                <version>${sa-token-spring-boot3-starter.version}</version>
             </dependency>
             <!-- endregion 外部组件 -->
         </dependencies>
