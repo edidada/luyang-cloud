@@ -13,8 +13,6 @@ import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -35,8 +33,6 @@ import java.util.TimeZone;
 @ConditionalOnClass(ObjectMapper.class)
 @AutoConfigureBefore(JacksonAutoConfiguration.class)
 public class JacksonConfiguration {
-
-	private static final Logger logger = LoggerFactory.getLogger(JacksonConfiguration.class);
 
 	@Bean
 	@ConditionalOnMissingBean
@@ -68,7 +64,6 @@ public class JacksonConfiguration {
 			simpleModule.addSerializer(Instant.class, InstantSerializer.INSTANCE);
 			simpleModule.addDeserializer(Instant.class, InstantDeserializer.INSTANT);
 			builder.modules(simpleModule);
-			logger.info("初始化 jackson 配置");
 		};
 	}
 }
