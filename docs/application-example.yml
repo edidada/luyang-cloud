@@ -6,9 +6,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST}/uac?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&&serverTimezone=Asia/Shanghai&useSSL=false
-    username: ${MYSQL_NAME}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/uac?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&&serverTimezone=Asia/Shanghai&useSSL=false
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
     hikari:
       minimum-idle: 5 # 最小空闲连接数量
       idle-timeout: 600000 # 空闲连接存活最大时间，默认600000（10分钟）
@@ -20,9 +20,9 @@ spring:
       connection-test-query: SELECT 1
   data:
     redis:
-      host: ${REDIS_HOST}
-      password: ${REDIS_PASSWORD}
-      port: ${REDIS_PORT}
+      host: ${REDISHOST}
+      password: ${REDISPASSWORD}
+      port: ${REDISPORT}
       database: 0
       timeout: 10000 # 连接超时时间
       lettuce:
