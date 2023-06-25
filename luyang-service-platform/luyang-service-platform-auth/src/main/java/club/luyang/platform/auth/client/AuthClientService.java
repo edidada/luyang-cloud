@@ -34,7 +34,7 @@ public class AuthClientService implements RegisteredClientRepository {
                 // 客户端秘钥，使用密码解析器加密
                 .clientSecret("{noop}123456")
                 // 客户端认证方式，基于请求头的认证
-//                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                //.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .clientAuthenticationMethods(clientAuthenticationMethods -> {
                     clientAuthenticationMethods.add(ClientAuthenticationMethod.CLIENT_SECRET_BASIC);

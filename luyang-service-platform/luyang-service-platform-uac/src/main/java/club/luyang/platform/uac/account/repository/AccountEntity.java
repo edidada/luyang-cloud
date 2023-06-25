@@ -4,10 +4,10 @@ import club.luyang.framework.mybatisplus.base.BaseEntity;
 import club.luyang.platform.uac.account.constant.enums.AccountStatusEnum;
 import club.luyang.platform.uac.account.constant.enums.IdentityTypeEnum;
 import com.baomidou.mybatisplus.annotation.TableName;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 
 /**
  * @author lu_yang

@@ -5,10 +5,10 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Objects;
+import org.springframework.stereotype.Repository;
+
 
 /**
  * 部门仓储接口实现

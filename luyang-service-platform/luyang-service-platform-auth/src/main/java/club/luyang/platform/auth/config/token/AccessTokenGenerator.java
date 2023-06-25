@@ -2,6 +2,11 @@ package club.luyang.platform.auth.config.token;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.IdUtil;
+import java.time.Instant;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.ClaimAccessor;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
@@ -16,13 +21,7 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
-import java.time.Instant;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
 import org.springframework.util.Assert;
-
 
 /**
  * 自定义 OAuth2Token 生成

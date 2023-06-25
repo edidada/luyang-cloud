@@ -18,7 +18,7 @@ public class AccountTool {
         return BeanUtil.isNotEmpty(accountRepository) ? accountRepository : SpringUtil.getBean(AccountRepository.class);
     }
 
-    static void checkAccountUnique(String identifier){
+    static void checkAccountUnique(String identifier) {
         Assert.isFalse(getAccountRepository().hasAccount(identifier));
     }
 }

@@ -1,5 +1,6 @@
 package club.luyang.platform.uac.dept;
 
+
 import club.luyang.framework.base.api.ResultEnum;
 import club.luyang.framework.base.exception.DataException;
 import club.luyang.framework.base.util.validation.ValidationUtil;
@@ -8,10 +9,9 @@ import club.luyang.platform.uac.dept.repository.DeptRepository;
 import club.luyang.platform.uac.dept.request.UpdateDeptRequest;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.NumberUtil;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author lu_yang

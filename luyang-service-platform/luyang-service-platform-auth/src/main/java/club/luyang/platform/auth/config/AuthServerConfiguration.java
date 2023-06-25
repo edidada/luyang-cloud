@@ -65,6 +65,7 @@ public class AuthServerConfiguration {
 
     /**
      * 自定义TOKEN生成
+     *
      * @return token生成器
      */
     @Bean

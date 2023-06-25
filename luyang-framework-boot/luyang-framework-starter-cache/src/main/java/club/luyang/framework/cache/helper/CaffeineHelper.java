@@ -16,11 +16,11 @@ public class CaffeineHelper {
         this.caffeineCacheManager = caffeineCacheManager;
     }
 
-    public Cache getCache(String name){
+    public Cache getCache(String name) {
         return caffeineCacheManager.getCache(name);
     }
 
-    public void put(String cacheName, String key, Object value){
+    public void put(String cacheName, String key, Object value) {
         Cache cache = this.getCache(cacheName);
         cache.put(key, value);
     }

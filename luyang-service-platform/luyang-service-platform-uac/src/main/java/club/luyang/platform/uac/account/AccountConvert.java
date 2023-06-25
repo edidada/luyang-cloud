@@ -18,13 +18,13 @@ public interface AccountConvert {
 
     default AccountEntity toEntity(CreateAccountParam param) {
         AccountEntity entity = new AccountEntity();
-        String salt = BCrypt.gensalt();
+        //String salt = BCrypt.gensalt();
         entity.setUserId(param.userId());
         entity.setIdentifier(param.identifier());
-        entity.setSalt(salt);
+        //entity.setSalt(salt);
         entity.setIdentityType(param.identityType());
         entity.setCredentialChangeDate(null);
-        entity.setCredential(BCrypt.hashpw(AccountConstant.DEFAULT_CREDENTIAL, salt));
+        //entity.setCredential(BCrypt.hashpw(AccountConstant.DEFAULT_CREDENTIAL, salt));
         entity.setStatus(AccountStatusEnum.UNACTIVATED);
         return entity;
     }
