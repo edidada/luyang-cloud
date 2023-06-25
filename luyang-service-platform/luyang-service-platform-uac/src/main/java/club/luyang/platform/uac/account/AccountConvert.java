@@ -14,18 +14,18 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface AccountConvert {
 
-	AccountConvert INSTANCE = Mappers.getMapper(AccountConvert.class);
+    AccountConvert INSTANCE = Mappers.getMapper(AccountConvert.class);
 
-	default AccountEntity toEntity(CreateAccountParam param) {
-		AccountEntity entity = new AccountEntity();
-		String salt = BCrypt.gensalt();
-		entity.setUserId(param.userId());
-		entity.setIdentifier(param.identifier());
-		entity.setSalt(salt);
-		entity.setIdentityType(param.identityType());
-		entity.setCredentialChangeDate(null);
-		entity.setCredential(BCrypt.hashpw(AccountConstant.DEFAULT_CREDENTIAL, salt));
-		entity.setStatus(AccountStatusEnum.UNACTIVATED);
-		return entity;
-	}
+    default AccountEntity toEntity(CreateAccountParam param) {
+        AccountEntity entity = new AccountEntity();
+        String salt = BCrypt.gensalt();
+        entity.setUserId(param.userId());
+        entity.setIdentifier(param.identifier());
+        entity.setSalt(salt);
+        entity.setIdentityType(param.identityType());
+        entity.setCredentialChangeDate(null);
+        entity.setCredential(BCrypt.hashpw(AccountConstant.DEFAULT_CREDENTIAL, salt));
+        entity.setStatus(AccountStatusEnum.UNACTIVATED);
+        return entity;
+    }
 }

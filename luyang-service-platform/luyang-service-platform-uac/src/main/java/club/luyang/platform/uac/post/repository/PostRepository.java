@@ -10,8 +10,8 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public interface PostRepository {
 
-	boolean existById(@NotNull Long postId);
-	PostEntity findByCode(@NotBlank String postCode);
-	PostEntity findByName(@NotBlank String postName);
-	void removeById(Long postId);
+    boolean existById(@NotNull Long postId);
+    PostEntity findByCode(@NotBlank String postCode);
+    PostEntity findByName(@NotBlank String postName);
+    void removeById(Long postId);
 }

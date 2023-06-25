@@ -20,20 +20,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = UacApplication.class)
 class SmokeTest {
 
-	@Resource
-	private MockMvc mockMvc;
+    @Resource
+    private MockMvc mockMvc;
 
-	/**
-	 * 健康检查<br/>
-	 * 当请求健康端点时应该返回 ok(200)
-	 *
-	 * @author lu_yang
-	 */
-	@Test
-	void should_return_ok_when_request_endpoint_of_health() throws Exception {
-		mockMvc
-			.perform(get("/actuator/health"))
-			.andExpect(status().isOk())
-			.andExpect(jsonPath("$.status").value("UP"));
-	}
+    /**
+     * 健康检查<br/>
+     * 当请求健康端点时应该返回 ok(200)
+     *
+     * @author lu_yang
+     */
+    @Test
+    void should_return_ok_when_request_endpoint_of_health() throws Exception {
+        mockMvc
+            .perform(get("/actuator/health"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.status").value("UP"));
+    }
 }

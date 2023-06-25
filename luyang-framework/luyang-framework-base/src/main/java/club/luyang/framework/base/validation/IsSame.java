@@ -20,14 +20,14 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = IsSameValidator.class)
 public @interface IsSame {
 
-	/**
-	 * 提示消息
-	 */
-	String message() default "比对失败{}";
+    /**
+     * 提示消息
+     */
+    String message() default "比对失败{}";
 
-	String[] fields();
+    String[] fields();
 
-	Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 }

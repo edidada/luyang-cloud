@@ -8,6 +8,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class AccountConstant {
 
-	/** 默认密码 */
-	public static final String DEFAULT_CREDENTIAL = "123456";
+    /** 默认密码 */
+    public static final String DEFAULT_CREDENTIAL = "123456";
 }

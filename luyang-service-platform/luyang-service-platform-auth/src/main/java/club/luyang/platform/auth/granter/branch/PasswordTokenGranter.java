@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class PasswordTokenGranter implements ITokenGranter {
 
-	private static final Logger logger = LoggerFactory.getLogger(PasswordTokenGranter.class);
+    private static final Logger logger = LoggerFactory.getLogger(PasswordTokenGranter.class);
 
-	public static final String GRANT_TYPE = "password";
+    public static final String GRANT_TYPE = "password";
 
-	@Override
-	public void grant() {
-		logger.info("密码登录");
-	}
+    @Override
+    public void grant() {
+        logger.info("密码登录");
+    }
 }

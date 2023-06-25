@@ -12,9 +12,9 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface UserConvert {
 
-	UserConvert INSTANCE = Mappers.getMapper(UserConvert.class);
+    UserConvert INSTANCE = Mappers.getMapper(UserConvert.class);
 
-	@Mapping(target = "gender", expression = "java(club.luyang.framework.base.IBaseEnum.getByCode(club.luyang.platform.uac.user.constant.enums.GenderEnum.class, request.gender()))")
-	@Mapping(target = "id", source = "userId")
+    @Mapping(target = "gender", expression = "java(club.luyang.framework.base.IBaseEnum.getByCode(club.luyang.platform.uac.user.constant.enums.GenderEnum.class, request.gender()))")
+    @Mapping(target = "id", source = "userId")
     UserEntity toEntity(CreateUserRequest request, long userId);
 }

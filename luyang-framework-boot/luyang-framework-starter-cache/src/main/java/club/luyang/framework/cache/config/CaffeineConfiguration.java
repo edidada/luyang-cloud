@@ -24,34 +24,34 @@ import java.util.concurrent.TimeUnit;
 @ConditionalOnProperty(value = CaffeineProperties.PREFIX + ".enable", havingValue = "true", matchIfMissing = true)
 public class CaffeineConfiguration {
 
-	private final CaffeineProperties caffeineProperties;
+    private final CaffeineProperties caffeineProperties;
 
-	public CaffeineConfiguration(CaffeineProperties caffeineProperties) {
-		this.caffeineProperties = caffeineProperties;
-	}
+    public CaffeineConfiguration(CaffeineProperties caffeineProperties) {
+        this.caffeineProperties = caffeineProperties;
+    }
 
-	@Bean
-	public CaffeineCacheManager caffeineCacheManager() {
-		CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
-		caffeineCacheManager.registerCustomCache("sss", caffeineBuilder());
-		caffeineCacheManager.registerCustomCache("xxx", caffeineBuilder());
-		return new CaffeineCacheManager();
-	}
+    @Bean
+    public CaffeineCacheManager caffeineCacheManager() {
+        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
+        caffeineCacheManager.registerCustomCache("sss", caffeineBuilder());
+        caffeineCacheManager.registerCustomCache("xxx", caffeineBuilder());
+        return new CaffeineCacheManager();
+    }
 
-	private Cache<Object, Object> caffeineBuilder() {
-		Caffeine<Object, Object> caffeine = Caffeine.newBuilder();
-		Optional<CaffeineProperties> properties = Optional.ofNullable(this.caffeineProperties);
-		properties.map(CaffeineProperties::getInitialCapacity).ifPresent(caffeine::initialCapacity);
-		properties.map(CaffeineProperties::getMaximumSize).ifPresent(caffeine::maximumSize);
-		properties.map(CaffeineProperties::getExpireAfterAccess).ifPresent(v -> caffeine.expireAfterAccess(v, TimeUnit.SECONDS));
-		properties.map(CaffeineProperties::getExpireAfterWrite).ifPresent(v -> caffeine.expireAfterWrite(v, TimeUnit.SECONDS));
-		properties.map(CaffeineProperties::getRefreshAfterWrite).ifPresent(v -> caffeine.refreshAfterWrite(v, TimeUnit.SECONDS));
-		return caffeine.build();
-	}
+    private Cache<Object, Object> caffeineBuilder() {
+        Caffeine<Object, Object> caffeine = Caffeine.newBuilder();
+        Optional<CaffeineProperties> properties = Optional.ofNullable(this.caffeineProperties);
+        properties.map(CaffeineProperties::getInitialCapacity).ifPresent(caffeine::initialCapacity);
+        properties.map(CaffeineProperties::getMaximumSize).ifPresent(caffeine::maximumSize);
+        properties.map(CaffeineProperties::getExpireAfterAccess).ifPresent(v -> caffeine.expireAfterAccess(v, TimeUnit.SECONDS));
+        properties.map(CaffeineProperties::getExpireAfterWrite).ifPresent(v -> caffeine.expireAfterWrite(v, TimeUnit.SECONDS));
+        properties.map(CaffeineProperties::getRefreshAfterWrite).ifPresent(v -> caffeine.refreshAfterWrite(v, TimeUnit.SECONDS));
+        return caffeine.build();
+    }
 
-	@Bean
-	@ConditionalOnBean(name = "caffeineCacheManager")
-	public CaffeineHelper caffeineHelper(CaffeineCacheManager caffeineCacheManager) {
-		return new CaffeineHelper(caffeineCacheManager);
-	}
+    @Bean
+    @ConditionalOnBean(name = "caffeineCacheManager")
+    public CaffeineHelper caffeineHelper(CaffeineCacheManager caffeineCacheManager) {
+        return new CaffeineHelper(caffeineCacheManager);
+    }
 }

@@ -10,25 +10,25 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PostRepositoryImpl extends ServiceImpl<PostMapper, PostEntity> implements PostRepository, IService<PostEntity> {
 
-	@Override
-	public PostEntity findByCode(String postCode) {
-		return this.lambdaQuery().eq(PostEntity::getPostCode, postCode).one();
-	}
+    @Override
+    public PostEntity findByCode(String postCode) {
+        return this.lambdaQuery().eq(PostEntity::getPostCode, postCode).one();
+    }
 
-	@Override
-	public PostEntity findByName(String postName) {
-		return this.lambdaQuery().eq(PostEntity::getPostCode, postName).one();
-	}
+    @Override
+    public PostEntity findByName(String postName) {
+        return this.lambdaQuery().eq(PostEntity::getPostCode, postName).one();
+    }
 
-	@Override
-	public boolean existById(Long postId) {
-		return this.lambdaQuery().eq(PostEntity::getId, postId).exists();
-	}
+    @Override
+    public boolean existById(Long postId) {
+        return this.lambdaQuery().eq(PostEntity::getId, postId).exists();
+    }
 
-	@Override
-	public void removeById(Long postId) {
-		if (null != postId) {
-			super.removeById(postId);
-		}
-	}
+    @Override
+    public void removeById(Long postId) {
+        if (null != postId) {
+            super.removeById(postId);
+        }
+    }
 }

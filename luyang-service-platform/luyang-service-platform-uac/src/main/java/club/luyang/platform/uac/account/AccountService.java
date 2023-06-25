@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AccountService {
 
-	private final AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
-	public void createAccount(CreateAccountParam param) {
-		// 账号格式规范校验
-		param.checkAccountNorm();
-		AccountTool.checkAccountUnique(param.identifier());
-		AccountConvert.INSTANCE.toEntity(param).insert();
-	}
+    public void createAccount(CreateAccountParam param) {
+        // 账号格式规范校验
+        param.checkAccountNorm();
+        AccountTool.checkAccountUnique(param.identifier());
+        AccountConvert.INSTANCE.toEntity(param).insert();
+    }
 }

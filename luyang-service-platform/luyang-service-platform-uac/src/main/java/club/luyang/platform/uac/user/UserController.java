@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-	private final UserService userService;
+    private final UserService userService;
 
-	@PostMapping
-	public Result<Void> createUser(@RequestBody CreateUserRequest request) {
-		userService.createUser(request);
-		return Result.success();
-	}
+    @PostMapping
+    public Result<Void> createUser(@RequestBody CreateUserRequest request) {
+        userService.createUser(request);
+        return Result.success();
+    }
 }

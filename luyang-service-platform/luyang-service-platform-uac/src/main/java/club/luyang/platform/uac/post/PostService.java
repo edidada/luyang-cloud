@@ -14,30 +14,30 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostService {
 
-	private final PostRepository postRepository;
+    private final PostRepository postRepository;
 
-	public void createPost(CreatePostRequest request) {
-		ValidationUtil.valid(request);
-		// 校验岗位编码唯一性
-		PostTool.checkPostCodeUnique(null, request.getPostCode());
-		// 校验岗位名称唯一性
-		PostTool.checkPostNameUnique(null, request.getPostName());
-		PostConvert.INSTANCE.toEntity(request).insert();
-	}
+    public void createPost(CreatePostRequest request) {
+        ValidationUtil.valid(request);
+        // 校验岗位编码唯一性
+        PostTool.checkPostCodeUnique(null, request.getPostCode());
+        // 校验岗位名称唯一性
+        PostTool.checkPostNameUnique(null, request.getPostName());
+        PostConvert.INSTANCE.toEntity(request).insert();
+    }
 
-	public void updatePost(UpdatePostRequest request) {
-		ValidationUtil.valid(request);
-		Long postId = request.getId();
-		// 校验岗位ID是否存在
-		PostTool.checkPostIdExist(postId);
-		// 校验岗位编码唯一性
-		PostTool.checkPostCodeUnique(postId, request.getPostCode());
-		// 校验岗位名称唯一性
-		PostTool.checkPostNameUnique(postId, request.getPostName());
-		PostConvert.INSTANCE.toEntity(request).updateById();
-	}
+    public void updatePost(UpdatePostRequest request) {
+        ValidationUtil.valid(request);
+        Long postId = request.getId();
+        // 校验岗位ID是否存在
+        PostTool.checkPostIdExist(postId);
+        // 校验岗位编码唯一性
+        PostTool.checkPostCodeUnique(postId, request.getPostCode());
+        // 校验岗位名称唯一性
+        PostTool.checkPostNameUnique(postId, request.getPostName());
+        PostConvert.INSTANCE.toEntity(request).updateById();
+    }
 
-	public void removePost(Long postId) {
-		postRepository.removeById(postId);
-	}
+    public void removePost(Long postId) {
+        postRepository.removeById(postId);
+    }
 }

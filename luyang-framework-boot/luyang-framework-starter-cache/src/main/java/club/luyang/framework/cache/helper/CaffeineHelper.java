@@ -10,27 +10,27 @@ import org.springframework.cache.caffeine.CaffeineCacheManager;
  */
 public class CaffeineHelper {
 
-	private final CaffeineCacheManager caffeineCacheManager;
+    private final CaffeineCacheManager caffeineCacheManager;
 
-	public CaffeineHelper(CaffeineCacheManager caffeineCacheManager) {
-		this.caffeineCacheManager = caffeineCacheManager;
-	}
+    public CaffeineHelper(CaffeineCacheManager caffeineCacheManager) {
+        this.caffeineCacheManager = caffeineCacheManager;
+    }
 
-	public Cache getCache(String name){
-		return caffeineCacheManager.getCache(name);
-	}
+    public Cache getCache(String name){
+        return caffeineCacheManager.getCache(name);
+    }
 
-	public void put(String cacheName, String key, Object value){
-		Cache cache = this.getCache(cacheName);
-		cache.put(key, value);
-	}
+    public void put(String cacheName, String key, Object value){
+        Cache cache = this.getCache(cacheName);
+        cache.put(key, value);
+    }
 
-	public <T> T get(String cacheName, String key) {
-		Cache cache = this.getCache(cacheName);
-		Cache.ValueWrapper valueWrapper = cache.get(key);
-		if (null == valueWrapper) {
-			return null;
-		}
-		return (T) valueWrapper.get();
-	}
+    public <T> T get(String cacheName, String key) {
+        Cache cache = this.getCache(cacheName);
+        Cache.ValueWrapper valueWrapper = cache.get(key);
+        if (null == valueWrapper) {
+            return null;
+        }
+        return (T) valueWrapper.get();
+    }
 }

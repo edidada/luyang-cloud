@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TimeController {
 
-	@AnonymousAccess
-	@GetMapping("/time")
-	public String retrieveTime() {
-		return DateUtil.now();
-	}
+    @AnonymousAccess
+    @GetMapping("/time")
+    public String retrieveTime() {
+        return DateUtil.now();
+    }
 }

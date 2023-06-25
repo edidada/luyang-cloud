@@ -16,36 +16,36 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class PostTool {
 
-	static PostRepository postRepository;
+    static PostRepository postRepository;
 
-	private static PostRepository getPostRepository() {
-		return BeanUtil.isNotEmpty(postRepository) ? postRepository : SpringUtil.getBean(PostRepository.class);
-	}
+    private static PostRepository getPostRepository() {
+        return BeanUtil.isNotEmpty(postRepository) ? postRepository : SpringUtil.getBean(PostRepository.class);
+    }
 
-	static void checkPostIdExist(Long postId) {
-		boolean exist = getPostRepository().existById(postId);
-		Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
-	}
+    static void checkPostIdExist(Long postId) {
+        boolean exist = getPostRepository().existById(postId);
+        Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
+    }
 
-	static void checkPostCodeUnique(Long postId, String postCode) {
-		PostEntity entity = getPostRepository().findByCode(postCode);
-		if (BeanUtil.isEmpty(entity)) {
-			return;
-		}
+    static void checkPostCodeUnique(Long postId, String postCode) {
+        PostEntity entity = getPostRepository().findByCode(postCode);
+        if (BeanUtil.isEmpty(entity)) {
+            return;
+        }
 
-		if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
-			throw new DataException(ResultEnum.DATA_EXIST, "岗位编号已存在");
-		}
-	}
+        if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
+            throw new DataException(ResultEnum.DATA_EXIST, "岗位编号已存在");
+        }
+    }
 
-	static void checkPostNameUnique(Long postId, String postName) {
-		PostEntity entity = getPostRepository().findByName(postName);
-		if (BeanUtil.isEmpty(entity)) {
-			return;
-		}
+    static void checkPostNameUnique(Long postId, String postName) {
+        PostEntity entity = getPostRepository().findByName(postName);
+        if (BeanUtil.isEmpty(entity)) {
+            return;
+        }
 
-		if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
-			throw new DataException(ResultEnum.DATA_EXIST, "岗位名称已存在");
-		}
-	}
+        if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
+            throw new DataException(ResultEnum.DATA_EXIST, "岗位名称已存在");
+        }
+    }
 }

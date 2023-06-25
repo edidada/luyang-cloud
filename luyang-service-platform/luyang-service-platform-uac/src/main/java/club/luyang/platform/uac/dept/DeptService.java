@@ -20,30 +20,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DeptService {
 
-	private final DeptRepository deptRepository;
+    private final DeptRepository deptRepository;
 
-	public void updateDept(UpdateDeptRequest request) {
-		ValidationUtil.valid(request);
+    public void updateDept(UpdateDeptRequest request) {
+        ValidationUtil.valid(request);
 
-		Long deptId = request.getDeptId();
-		Long parentDeptId = request.getParentDeptId();
-		String deptName = request.getDeptName();
+        Long deptId = request.getDeptId();
+        Long parentDeptId = request.getParentDeptId();
+        String deptName = request.getDeptName();
 
-		Assert.isFalse(NumberUtil.equals(deptId, parentDeptId), () -> new DataException(ResultEnum.DATA_EXCEPTION, "不能设置自己为父部门"));
-		DeptEntity deptEntity = deptRepository.findById(deptId);
-		Assert.notNull(deptEntity, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "部门ID不存在"));
-		DeptTool.checkParentDept(deptId, parentDeptId, deptName);
+        Assert.isFalse(NumberUtil.equals(deptId, parentDeptId), () -> new DataException(ResultEnum.DATA_EXCEPTION, "不能设置自己为父部门"));
+        DeptEntity deptEntity = deptRepository.findById(deptId);
+        Assert.notNull(deptEntity, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "部门ID不存在"));
+        DeptTool.checkParentDept(deptId, parentDeptId, deptName);
 
-		DeptConvert.INSTANCE.toEntity(request).updateById();
-		// TODO: 2022/11/20 更新子孙部门列表路径
-	}
+        DeptConvert.INSTANCE.toEntity(request).updateById();
+        // TODO: 2022/11/20 更新子孙部门列表路径
+    }
 
-	public void addUserToDept(Long userId, List<Long> deptIds) {
-		for (Long deptId : deptIds) {
-			boolean hasBindDept = deptRepository.hasBindDept(userId, deptId);
-			if (!hasBindDept) {
-				deptRepository.saveUserToDept(userId, deptId);
-			}
-		}
-	}
+    public void addUserToDept(Long userId, List<Long> deptIds) {
+        for (Long deptId : deptIds) {
+            boolean hasBindDept = deptRepository.hasBindDept(userId, deptId);
+            if (!hasBindDept) {
+                deptRepository.saveUserToDept(userId, deptId);
+            }
+        }
+    }
 }

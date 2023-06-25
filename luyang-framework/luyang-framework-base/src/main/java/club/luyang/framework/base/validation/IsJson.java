@@ -22,24 +22,24 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
 public @interface IsJson {
 
-	/**
-	 * 提示消息
-	 */
-	String message() default "无效JSON格式";
+    /**
+     * 提示消息
+     */
+    String message() default "无效JSON格式";
 
-	/**
-	 * 是否允许为空 true允许
-	 */
-	boolean allowEmpty() default false;
+    /**
+     * 是否允许为空 true允许
+     */
+    boolean allowEmpty() default false;
 
-	Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 
-	@Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
-	@Retention(RetentionPolicy.RUNTIME)
-	@Documented
-	public @interface List {
-		IsJson[] value();
-	}
+    @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    public @interface List {
+        IsJson[] value();
+    }
 }

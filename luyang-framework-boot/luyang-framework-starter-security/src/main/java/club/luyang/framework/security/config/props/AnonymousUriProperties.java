@@ -24,35 +24,35 @@
 //@ConfigurationProperties(prefix = AnonymousUriProperties.PREFIX)
 //public class AnonymousUriProperties implements InitializingBean {
 //
-//	public static final String PREFIX = "luyang.anonymous";
+//    public static final String PREFIX = "luyang.anonymous";
 //
-//	private Set<String> urls = new HashSet<>();
+//    private Set<String> urls = new HashSet<>();
 //
-//	@Override
-//	public void afterPropertiesSet() throws Exception {
-//		RequestMappingHandlerMapping mapping = SpringUtil.getBean("requestMappingHandlerMapping");
-//		Map<RequestMappingInfo, HandlerMethod> handlerMethodMap = mapping.getHandlerMethods();
-//		if (MapUtil.isEmpty(handlerMethodMap)) {
-//			return;
-//		}
+//    @Override
+//    public void afterPropertiesSet() throws Exception {
+//        RequestMappingHandlerMapping mapping = SpringUtil.getBean("requestMappingHandlerMapping");
+//        Map<RequestMappingInfo, HandlerMethod> handlerMethodMap = mapping.getHandlerMethods();
+//        if (MapUtil.isEmpty(handlerMethodMap)) {
+//            return;
+//        }
 //
-//		handlerMethodMap.forEach((k, v) -> {
-//			AnonymousAccess methodAnnotation = AnnotationUtils.findAnnotation(v.getMethod(), AnonymousAccess.class);
-//			AnonymousAccess classAnnotation = AnnotationUtils.findAnnotation(v.getBeanType(), AnonymousAccess.class);
-//			if (null != methodAnnotation || null != classAnnotation) {
-//				Set<String> paths = Optional.ofNullable(k.getPathPatternsCondition())
-//					.map(PathPatternsRequestCondition::getPatternValues)
-//					.orElse(new HashSet<>());
-//				urls.addAll(paths);
-//			}
-//		});
-//	}
+//        handlerMethodMap.forEach((k, v) -> {
+//            AnonymousAccess methodAnnotation = AnnotationUtils.findAnnotation(v.getMethod(), AnonymousAccess.class);
+//            AnonymousAccess classAnnotation = AnnotationUtils.findAnnotation(v.getBeanType(), AnonymousAccess.class);
+//            if (null != methodAnnotation || null != classAnnotation) {
+//                Set<String> paths = Optional.ofNullable(k.getPathPatternsCondition())
+//                    .map(PathPatternsRequestCondition::getPatternValues)
+//                    .orElse(new HashSet<>());
+//                urls.addAll(paths);
+//            }
+//        });
+//    }
 //
-//	public Set<String> getUrls() {
-//		return urls;
-//	}
+//    public Set<String> getUrls() {
+//        return urls;
+//    }
 //
-//	public void setUrls(Set<String> urls) {
-//		this.urls = urls;
-//	}
+//    public void setUrls(Set<String> urls) {
+//        this.urls = urls;
+//    }
 //}

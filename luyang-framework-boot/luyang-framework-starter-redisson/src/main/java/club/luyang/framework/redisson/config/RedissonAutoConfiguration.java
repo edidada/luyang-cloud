@@ -21,30 +21,30 @@ import org.springframework.context.annotation.DependsOn;
 @EnableConfigurationProperties(RedissonProperties.class)
 public class RedissonAutoConfiguration {
 
-	private static final Logger logger = LoggerFactory.getLogger(RedissonAutoConfiguration.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedissonAutoConfiguration.class);
 
-	@Bean
-	@ConditionalOnMissingBean
-	public RedissonManager redissonManager(RedissonProperties redissonProperties) {
-		RedissonManager redissonManager = null;
-		try {
-			redissonManager = new RedissonManager(redissonProperties);
-			logger.info("RedissonManager组装完毕,当前连接方式:{}", redissonProperties.getType());
-		} catch (Exception e) {
-			logger.error("Redisson 初始化失败", e);
-		}
+    @Bean
+    @ConditionalOnMissingBean
+    public RedissonManager redissonManager(RedissonProperties redissonProperties) {
+        RedissonManager redissonManager = null;
+        try {
+            redissonManager = new RedissonManager(redissonProperties);
+            logger.info("RedissonManager组装完毕,当前连接方式:{}", redissonProperties.getType());
+        } catch (Exception e) {
+            logger.error("Redisson 初始化失败", e);
+        }
 
-		return redissonManager;
-	}
+        return redissonManager;
+    }
 
-	@Bean
-	@ConditionalOnMissingBean
-	@DependsOn({"redissonManager"})
-	@ConditionalOnBean(RedissonManager.class)
-	public RedissonHelper redissonLock(RedissonManager redissonManager) {
-		var redissonLock = new RedissonHelper();
-		redissonLock.setRedissonManager(redissonManager);
-		logger.info("RedissonLock 构建完成");
-		return redissonLock;
-	}
+    @Bean
+    @ConditionalOnMissingBean
+    @DependsOn({"redissonManager"})
+    @ConditionalOnBean(RedissonManager.class)
+    public RedissonHelper redissonLock(RedissonManager redissonManager) {
+        var redissonLock = new RedissonHelper();
+        redissonLock.setRedissonManager(redissonManager);
+        logger.info("RedissonLock 构建完成");
+        return redissonLock;
+    }
 }

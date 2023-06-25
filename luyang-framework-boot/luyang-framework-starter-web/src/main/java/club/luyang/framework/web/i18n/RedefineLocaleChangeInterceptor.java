@@ -20,33 +20,33 @@ import java.util.Arrays;
 @SuppressWarnings("all")
 public class RedefineLocaleChangeInterceptor extends LocaleChangeInterceptor {
 
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
 
-		String newLocale = request.getHeader(this.getParamName());
-		if (CharSequenceUtil.isNotBlank(newLocale) && this.checkHttpMethod(request.getMethod())) {
-			LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-			Assert.notNull(localeResolver, () -> new IllegalStateException("No LocaleResolver found: not in a DispatcherServlet request?"));
+        String newLocale = request.getHeader(this.getParamName());
+        if (CharSequenceUtil.isNotBlank(newLocale) && this.checkHttpMethod(request.getMethod())) {
+            LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+            Assert.notNull(localeResolver, () -> new IllegalStateException("No LocaleResolver found: not in a DispatcherServlet request?"));
 
-			try {
-				localeResolver.setLocale(request, response, super.parseLocaleValue(newLocale));
-			} catch (IllegalArgumentException e) {
-				Assert.isTrue(super.isIgnoreInvalidLocale(), () -> e);
-				if (this.logger.isDebugEnabled()) {
-					this.logger.debug("Ignoring invalid locale value [" + newLocale + "]: " + e.getMessage());
-				}
-			}
-		}
+            try {
+                localeResolver.setLocale(request, response, super.parseLocaleValue(newLocale));
+            } catch (IllegalArgumentException e) {
+                Assert.isTrue(super.isIgnoreInvalidLocale(), () -> e);
+                if (this.logger.isDebugEnabled()) {
+                    this.logger.debug("Ignoring invalid locale value [" + newLocale + "]: " + e.getMessage());
+                }
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	private boolean checkHttpMethod(String currentMethod) {
-		String[] httpMethods = super.getHttpMethods();
-		if (ArrayUtil.isEmpty(httpMethods)) {
-			return true;
-		}
+    private boolean checkHttpMethod(String currentMethod) {
+        String[] httpMethods = super.getHttpMethods();
+        if (ArrayUtil.isEmpty(httpMethods)) {
+            return true;
+        }
 
-		return Arrays.stream(httpMethods).anyMatch(v -> v.equalsIgnoreCase(currentMethod));
-	}
+        return Arrays.stream(httpMethods).anyMatch(v -> v.equalsIgnoreCase(currentMethod));
+    }
 }

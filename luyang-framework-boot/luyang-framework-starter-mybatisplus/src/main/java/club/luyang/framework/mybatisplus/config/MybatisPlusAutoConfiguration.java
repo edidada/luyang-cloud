@@ -20,30 +20,30 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource(value = "classpath:luyang-mp.properties", encoding = "UTF-8")
 public class MybatisPlusAutoConfiguration {
 
-	/**
-	 * mp拦截器
-	 *
-	 * @return MybatisPlusInterceptor mp拦截器
-	 * @author lu_yang
-	 */
-	@Bean
-	public MybatisPlusInterceptor mybatisPlusInterceptor() {
-		MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-		// 分页插件
-		PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
-		paginationInnerInterceptor.setMaxLimit(500L);
-		mybatisPlusInterceptor.addInnerInterceptor(paginationInnerInterceptor);
-		return mybatisPlusInterceptor;
-	}
+    /**
+     * mp拦截器
+     *
+     * @return MybatisPlusInterceptor mp拦截器
+     * @author lu_yang
+     */
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+        // 分页插件
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
+        paginationInnerInterceptor.setMaxLimit(500L);
+        mybatisPlusInterceptor.addInnerInterceptor(paginationInnerInterceptor);
+        return mybatisPlusInterceptor;
+    }
 
-	/**
-	 * 字段自动填充
-	 *
-	 * @return MetaObjectHandler 元数据字段填充控制器
-	 * @author lu_yang
-	 */
-	@Bean
-	public MetaObjectHandler metaObjectHandler() {
-		return new DefaultFieldHandler();
-	}
+    /**
+     * 字段自动填充
+     *
+     * @return MetaObjectHandler 元数据字段填充控制器
+     * @author lu_yang
+     */
+    @Bean
+    public MetaObjectHandler metaObjectHandler() {
+        return new DefaultFieldHandler();
+    }
 }

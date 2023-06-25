@@ -13,23 +13,23 @@ import lombok.Setter;
 @TableName("uac_post")
 public class PostEntity extends BaseEntity<PostEntity> {
 
-	/**
-	 * 岗位编码
-	 */
-	private String postCode;
+    /**
+     * 岗位编码
+     */
+    private String postCode;
 
-	/**
-	 * 岗位名称
-	 */
-	private String postName;
+    /**
+     * 岗位名称
+     */
+    private String postName;
 
-	/**
-	 * 排序号，值越大越靠前
-	 */
-	private Integer sortNum;
+    /**
+     * 排序号，值越大越靠前
+     */
+    private Integer sortNum;
 
-	/**
-	 * 备注
-	 */
-	private String remark;
+    /**
+     * 备注
+     */
+    private String remark;
 }

@@ -17,24 +17,24 @@ import java.util.Set;
 @UtilityClass
 public class ValidationUtil {
 
-	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
+    private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 
-	public static void valid(Object obj, Class<?>... clazz) {
-		valid(VALIDATOR.validate(obj, clazz));
-	}
+    public static void valid(Object obj, Class<?>... clazz) {
+        valid(VALIDATOR.validate(obj, clazz));
+    }
 
-	public static void valid(Object obj, String fieldName, Class<?>... clazz) {
-		valid(VALIDATOR.validateProperty(obj, fieldName, clazz));
-	}
+    public static void valid(Object obj, String fieldName, Class<?>... clazz) {
+        valid(VALIDATOR.validateProperty(obj, fieldName, clazz));
+    }
 
-	private static void valid(Set<ConstraintViolation<Object>> validate) {
+    private static void valid(Set<ConstraintViolation<Object>> validate) {
 
-		if (CollectionUtils.isEmpty(validate)) {
-			return;
-		}
+        if (CollectionUtils.isEmpty(validate)) {
+            return;
+        }
 
-		validate.forEach(v -> {
-			throw new ValidationException(v.getPropertyPath() + ":" + v.getMessage());
-		});
-	}
+        validate.forEach(v -> {
+            throw new ValidationException(v.getPropertyPath() + ":" + v.getMessage());
+        });
+    }
 }

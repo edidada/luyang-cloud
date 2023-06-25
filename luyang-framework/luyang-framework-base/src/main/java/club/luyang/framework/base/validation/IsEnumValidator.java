@@ -11,28 +11,28 @@ import jakarta.validation.ConstraintValidatorContext;
  */
 public class IsEnumValidator implements ConstraintValidator<IsEnum, Integer> {
 
-	private IsEnum annotation;
+    private IsEnum annotation;
 
-	@Override
-	public void initialize(IsEnum constraintAnnotation) {
-		this.annotation = constraintAnnotation;
-	}
+    @Override
+    public void initialize(IsEnum constraintAnnotation) {
+        this.annotation = constraintAnnotation;
+    }
 
-	@Override
-	public boolean isValid(Integer val, ConstraintValidatorContext context) {
-		boolean allowEmpty = annotation.allowEmpty();
-		// 允许为空且值为null 则放行
-		if (allowEmpty && null == val) {
-			return true;
-		}
+    @Override
+    public boolean isValid(Integer val, ConstraintValidatorContext context) {
+        boolean allowEmpty = annotation.allowEmpty();
+        // 允许为空且值为null 则放行
+        if (allowEmpty && null == val) {
+            return true;
+        }
 
-		IBaseEnum[] enumConstants = annotation.value().getEnumConstants();
-		for (IBaseEnum iEnum : enumConstants) {
-			if (iEnum.getCode() == val) {
-				return true;
-			}
-		}
+        IBaseEnum[] enumConstants = annotation.value().getEnumConstants();
+        for (IBaseEnum iEnum : enumConstants) {
+            if (iEnum.getCode() == val) {
+                return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

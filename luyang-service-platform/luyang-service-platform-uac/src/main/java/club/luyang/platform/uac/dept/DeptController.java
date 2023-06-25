@@ -19,18 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/dept")
 public class DeptController {
 
-	private final DeptCreateAbility deptCreateAbility;
-	private final DeptService deptService;
+    private final DeptCreateAbility deptCreateAbility;
+    private final DeptService deptService;
 
-	@PostMapping
-	public Result<AddDeptResponse> addDept(@RequestBody CreateDeptRequest request){
-		Long deptId = deptCreateAbility.executeAbility(request);
-		return Result.success(new AddDeptResponse(deptId));
-	}
+    @PostMapping
+    public Result<AddDeptResponse> addDept(@RequestBody CreateDeptRequest request){
+        Long deptId = deptCreateAbility.executeAbility(request);
+        return Result.success(new AddDeptResponse(deptId));
+    }
 
-	@PutMapping("/update")
-	public Result<Void> updateDept(@RequestBody UpdateDeptRequest request){
-		deptService.updateDept(request);
-		return Result.success();
-	}
+    @PutMapping("/update")
+    public Result<Void> updateDept(@RequestBody UpdateDeptRequest request){
+        deptService.updateDept(request);
+        return Result.success();
+    }
 }

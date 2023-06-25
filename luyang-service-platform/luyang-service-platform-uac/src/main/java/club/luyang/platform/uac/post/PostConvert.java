@@ -14,23 +14,23 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface PostConvert {
 
-	PostConvert INSTANCE = Mappers.getMapper(PostConvert.class);
+    PostConvert INSTANCE = Mappers.getMapper(PostConvert.class);
 
-	/**
-	 * Create request body -> Entity
-	 *
-	 * @param request 创建岗位请求体
-	 * @return PostEntity
-	 * @author lu_yang
-	 */
-	PostEntity toEntity(CreatePostRequest request);
+    /**
+     * Create request body -> Entity
+     *
+     * @param request 创建岗位请求体
+     * @return PostEntity
+     * @author lu_yang
+     */
+    PostEntity toEntity(CreatePostRequest request);
 
-	/**
-	 * Update request body -> Entity
-	 *
-	 * @param request 更新岗位请求体
-	 * @return PostEntity
-	 * @author lu_yang
-	 */
-	PostEntity toEntity(UpdatePostRequest request);
+    /**
+     * Update request body -> Entity
+     *
+     * @param request 更新岗位请求体
+     * @return PostEntity
+     * @author lu_yang
+     */
+    PostEntity toEntity(UpdatePostRequest request);
 }

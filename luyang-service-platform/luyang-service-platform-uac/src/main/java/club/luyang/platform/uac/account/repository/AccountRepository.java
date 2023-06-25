@@ -5,5 +5,5 @@ package club.luyang.platform.uac.account.repository;
  */
 public interface AccountRepository {
 
-	boolean hasAccount(String identifier);
+    boolean hasAccount(String identifier);
 }

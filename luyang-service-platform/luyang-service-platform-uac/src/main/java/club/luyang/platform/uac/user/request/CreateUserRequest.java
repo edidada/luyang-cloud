@@ -15,23 +15,23 @@ import java.util.List;
  */
 public record CreateUserRequest(
 
-	@NotBlank
-	@Length(max = 128)
-	String name,
+    @NotBlank
+    @Length(max = 128)
+    String name,
 
-	@NotNull
-	@Size(min = 1)
-	List<Long> deptIds,
+    @NotNull
+    @Size(min = 1)
+    List<Long> deptIds,
 
-	@IsEmail
-	String email,
+    @IsEmail
+    String email,
 
-	@IsEnum(value = GenderEnum.class)
-	Integer gender,
+    @IsEnum(value = GenderEnum.class)
+    Integer gender,
 
-	@Length(max = 255)
-	String avatar,
+    @Length(max = 255)
+    String avatar,
 
-	@Length(max = 255)
-	String remark
+    @Length(max = 255)
+    String remark
 ) {}

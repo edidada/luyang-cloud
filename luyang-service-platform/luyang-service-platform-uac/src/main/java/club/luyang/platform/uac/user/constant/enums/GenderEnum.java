@@ -12,21 +12,21 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum GenderEnum implements IBaseEnum {
-	MEN(1, "男"),
-	WOMEN(2, "女"),
-	SECRECY(3, "保密");
+    MEN(1, "男"),
+    WOMEN(2, "女"),
+    SECRECY(3, "保密");
 
-	@EnumValue
-	private final int code;
-	private final String message;
+    @EnumValue
+    private final int code;
+    private final String message;
 
-	@Override
-	public int getCode() {
-		return this.code;
-	}
+    @Override
+    public int getCode() {
+        return this.code;
+    }
 
-	@Override
-	public String getMessage() {
-		return this.message;
-	}
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
 }

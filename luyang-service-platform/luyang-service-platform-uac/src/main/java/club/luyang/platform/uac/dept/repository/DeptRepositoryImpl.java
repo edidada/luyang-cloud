@@ -18,42 +18,42 @@ import java.util.Objects;
 @Repository
 public class DeptRepositoryImpl extends ServiceImpl<DeptMapper, DeptEntity> implements DeptRepository, IService<DeptEntity> {
 
-	@Override
-	public DeptEntity findById(Long parentId) {
-		Assert.notNull(parentId);
-		return super.getById(parentId);
-	}
+    @Override
+    public DeptEntity findById(Long parentId) {
+        Assert.notNull(parentId);
+        return super.getById(parentId);
+    }
 
-	@Override
-	public boolean hasRootDept() {
-		return this.lambdaQuery()
-			.eq(DeptEntity::getParentId, DeptConstant.ROOT_PARENT_ID)
-			.exists();
-	}
+    @Override
+    public boolean hasRootDept() {
+        return this.lambdaQuery()
+            .eq(DeptEntity::getParentId, DeptConstant.ROOT_PARENT_ID)
+            .exists();
+    }
 
-	@Override
-	public boolean hasDeptNameSame(Long parentId, String deptName) {
-		Assert.notNull(parentId);
-		Assert.notEmpty(deptName);
-		return this.lambdaQuery()
-			.eq(DeptEntity::getParentId, parentId)
-			.eq(DeptEntity::getName, deptName)
-			.last("limit 1")
-			.exists();
-	}
+    @Override
+    public boolean hasDeptNameSame(Long parentId, String deptName) {
+        Assert.notNull(parentId);
+        Assert.notEmpty(deptName);
+        return this.lambdaQuery()
+            .eq(DeptEntity::getParentId, parentId)
+            .eq(DeptEntity::getName, deptName)
+            .last("limit 1")
+            .exists();
+    }
 
-	@Override
-	public boolean hasBindDept(Long userId, Long deptId) {
-		List<Long> deptIds = this.baseMapper.selectUserBindDept(userId);
-		if (CollUtil.isEmpty(deptIds)) {
-			return false;
-		}
+    @Override
+    public boolean hasBindDept(Long userId, Long deptId) {
+        List<Long> deptIds = this.baseMapper.selectUserBindDept(userId);
+        if (CollUtil.isEmpty(deptIds)) {
+            return false;
+        }
 
-		return deptIds.stream().anyMatch(item -> Objects.equals(item, deptId));
-	}
+        return deptIds.stream().anyMatch(item -> Objects.equals(item, deptId));
+    }
 
-	@Override
-	public void saveUserToDept(Long userId, Long deptId) {
-		this.baseMapper.insertUserToDept(userId, deptId);
-	}
+    @Override
+    public void saveUserToDept(Long userId, Long deptId) {
+        this.baseMapper.insertUserToDept(userId, deptId);
+    }
 }

@@ -11,14 +11,14 @@ import org.redisson.Redisson;
  */
 public class RedissonManager {
 
-	private final Redisson redisson;
+    private final Redisson redisson;
 
-	public Redisson getRedisson() {
-		return this.redisson;
-	}
+    public Redisson getRedisson() {
+        return this.redisson;
+    }
 
-	public RedissonManager(RedissonProperties redissonProperties) {
-		var config = RedissonConfigFactory.getInstance().createConfig(redissonProperties);
-		this.redisson = (Redisson) Redisson.create(config);
-	}
+    public RedissonManager(RedissonProperties redissonProperties) {
+        var config = RedissonConfigFactory.getInstance().createConfig(redissonProperties);
+        this.redisson = (Redisson) Redisson.create(config);
+    }
 }

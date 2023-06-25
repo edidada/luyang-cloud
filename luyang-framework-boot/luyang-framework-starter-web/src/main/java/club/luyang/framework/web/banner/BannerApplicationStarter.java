@@ -19,26 +19,26 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("all")
 public record BannerApplicationStarter(Environment environment) implements ApplicationRunner {
 
-	private static final Logger logger = LoggerFactory.getLogger(BannerApplicationStarter.class);
+    private static final Logger logger = LoggerFactory.getLogger(BannerApplicationStarter.class);
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		ThreadUtil.execute(() -> {
-			ThreadUtil.sleep(1, TimeUnit.SECONDS);
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        ThreadUtil.execute(() -> {
+            ThreadUtil.sleep(1, TimeUnit.SECONDS);
 
-			String ip = NetUtil.getLocalhostStr();
-			String port = CharSequenceUtil.emptyToDefault(environment.getProperty("server.port"), "8080");
-			String path = CharSequenceUtil.emptyToDefault(environment.getProperty("server.servlet.context-path"), CharSequenceUtil.EMPTY);
-			String serverName = CharSequenceUtil.emptyToDefault(environment.getProperty("spring.application.name"), CharSequenceUtil.EMPTY);
-			String apiAddress = "http://" + ip + ":" + port + path + "/doc.html";
+            String ip = NetUtil.getLocalhostStr();
+            String port = CharSequenceUtil.emptyToDefault(environment.getProperty("server.port"), "8080");
+            String path = CharSequenceUtil.emptyToDefault(environment.getProperty("server.servlet.context-path"), CharSequenceUtil.EMPTY);
+            String serverName = CharSequenceUtil.emptyToDefault(environment.getProperty("spring.application.name"), CharSequenceUtil.EMPTY);
+            String apiAddress = "http://" + ip + ":" + port + path + "/doc.html";
 
-			logger.info("""
-				\n==============  Application started successfully! Access URLs:  ==============
+            logger.info("""
+                \n==============  Application started successfully! Access URLs:  ==============
 
-					服务名	: {}
-					接口文档	: {}
-					Gitee	: https://gitee.com/cn-luyang/luyang-cloud
-				""", serverName, apiAddress);
-		});
-	}
+                    服务名    : {}
+                    接口文档    : {}
+                    Gitee    : https://gitee.com/cn-luyang/luyang-cloud
+                """, serverName, apiAddress);
+        });
+    }
 }

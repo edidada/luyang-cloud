@@ -10,17 +10,17 @@ import org.redisson.config.Config;
  */
 public interface RedissonConfigProvide {
 
-	/**
-	 * 构建 Redisson 配置环境
-	 *
-	 * @param redissonProperties redisson 配置属性
-	 * @return Config
-	 * @author lu_yang
-	 */
-	public Config buildRedissonConfig(RedissonProperties redissonProperties);
+    /**
+     * 构建 Redisson 配置环境
+     *
+     * @param redissonProperties redisson 配置属性
+     * @return Config
+     * @author lu_yang
+     */
+    public Config buildRedissonConfig(RedissonProperties redissonProperties);
 
-	/**
-	 * Redis 地址连接前缀
-	 */
-	String REDIS_CONNECTION_PREFIX = "redis://";
+    /**
+     * Redis 地址连接前缀
+     */
+    String REDIS_CONNECTION_PREFIX = "redis://";
 }

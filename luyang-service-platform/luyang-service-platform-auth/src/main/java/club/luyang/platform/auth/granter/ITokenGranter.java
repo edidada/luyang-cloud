@@ -5,5 +5,5 @@ package club.luyang.platform.auth.granter;
  */
 public interface ITokenGranter {
 
-	void grant();
+    void grant();
 }

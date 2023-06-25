@@ -12,6 +12,6 @@ import java.util.List;
 @Mapper
 public interface DeptMapper extends BaseMapper<DeptEntity> {
 
-	int insertUserToDept(@Param("userId") Long userId, @Param("deptId")Long deptId);
-	List<Long> selectUserBindDept(@Param("userId") Long userId);
+    int insertUserToDept(@Param("userId") Long userId, @Param("deptId")Long deptId);
+    List<Long> selectUserBindDept(@Param("userId") Long userId);
 }

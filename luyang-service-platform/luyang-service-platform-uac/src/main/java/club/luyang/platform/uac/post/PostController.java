@@ -20,23 +20,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/post")
 public class PostController {
 
-	private final PostService postService;
+    private final PostService postService;
 
-	@PostMapping
-	public Result<Void> createPost(@RequestBody CreatePostRequest request){
-		postService.createPost(request);
-		return Result.success();
-	}
+    @PostMapping
+    public Result<Void> createPost(@RequestBody CreatePostRequest request){
+        postService.createPost(request);
+        return Result.success();
+    }
 
-	@PutMapping
-	public Result<Void> updatePost(@RequestBody UpdatePostRequest request){
-		postService.updatePost(request);
-		return Result.success();
-	}
+    @PutMapping
+    public Result<Void> updatePost(@RequestBody UpdatePostRequest request){
+        postService.updatePost(request);
+        return Result.success();
+    }
 
-	@DeleteMapping("/{id}")
-	public Result<Void> removePost(@PathVariable("id") Long id) {
-		postService.removePost(id);
-		return Result.success();
-	}
+    @DeleteMapping("/{id}")
+    public Result<Void> removePost(@PathVariable("id") Long id) {
+        postService.removePost(id);
+        return Result.success();
+    }
 }

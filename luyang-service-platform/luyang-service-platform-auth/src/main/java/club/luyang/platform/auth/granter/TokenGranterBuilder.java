@@ -15,16 +15,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @UtilityClass
 public class TokenGranterBuilder {
 
-	private static final Map<String, ITokenGranter> GRANTER_POOL = new ConcurrentHashMap<>();
+    private static final Map<String, ITokenGranter> GRANTER_POOL = new ConcurrentHashMap<>();
 
-	static {
-		GRANTER_POOL.put(PasswordTokenGranter.GRANT_TYPE, SpringUtil.getBean(PasswordTokenGranter.class));
-		GRANTER_POOL.put(SmsTokenGranter.GRANT_TYPE, SpringUtil.getBean(SmsTokenGranter.class));
-	}
+    static {
+        GRANTER_POOL.put(PasswordTokenGranter.GRANT_TYPE, SpringUtil.getBean(PasswordTokenGranter.class));
+        GRANTER_POOL.put(SmsTokenGranter.GRANT_TYPE, SpringUtil.getBean(SmsTokenGranter.class));
+    }
 
-	public static ITokenGranter getGranter(String grantType) {
-		ITokenGranter tokenGranter = GRANTER_POOL.getOrDefault(grantType, SpringUtil.getBean(PasswordTokenGranter.class));
-		Assert.notNull(tokenGranter, "no grantType was found");
-		return tokenGranter;
-	}
+    public static ITokenGranter getGranter(String grantType) {
+        ITokenGranter tokenGranter = GRANTER_POOL.getOrDefault(grantType, SpringUtil.getBean(PasswordTokenGranter.class));
+        Assert.notNull(tokenGranter, "no grantType was found");
+        return tokenGranter;
+    }
 }

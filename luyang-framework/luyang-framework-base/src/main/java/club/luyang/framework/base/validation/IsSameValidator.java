@@ -15,32 +15,32 @@ import java.util.Arrays;
  */
 public class IsSameValidator implements ConstraintValidator<IsSame, Object> {
 
-	private String[] fields;
+    private String[] fields;
 
-	@Override
-	public void initialize(IsSame constraintAnnotation) {
-		this.fields = constraintAnnotation.fields();
-	}
+    @Override
+    public void initialize(IsSame constraintAnnotation) {
+        this.fields = constraintAnnotation.fields();
+    }
 
-	@Override
-	public boolean isValid(Object bean, ConstraintValidatorContext context) {
-		BeanWrapperImpl wrapper = new BeanWrapperImpl(bean);
-		int length = fields.length;
-		for (int i = 0; i < length; i++) {
-			if (i == length - 1) {
-				return true;
-			}
+    @Override
+    public boolean isValid(Object bean, ConstraintValidatorContext context) {
+        BeanWrapperImpl wrapper = new BeanWrapperImpl(bean);
+        int length = fields.length;
+        for (int i = 0; i < length; i++) {
+            if (i == length - 1) {
+                return true;
+            }
 
-			Object obj = wrapper.getPropertyValue(fields[i]);
-			Object obj1 = wrapper.getPropertyValue(fields[i + 1]);
-			if (ObjectUtil.notEqual(obj, obj1)) {
-				context.disableDefaultConstraintViolation();
-				String message = context.getDefaultConstraintMessageTemplate();
-				context.buildConstraintViolationWithTemplate(CharSequenceUtil.format(message, Arrays.toString(this.fields))).addConstraintViolation();
-				return false;
-			}
-		}
+            Object obj = wrapper.getPropertyValue(fields[i]);
+            Object obj1 = wrapper.getPropertyValue(fields[i + 1]);
+            if (ObjectUtil.notEqual(obj, obj1)) {
+                context.disableDefaultConstraintViolation();
+                String message = context.getDefaultConstraintMessageTemplate();
+                context.buildConstraintViolationWithTemplate(CharSequenceUtil.format(message, Arrays.toString(this.fields))).addConstraintViolation();
+                return false;
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 }

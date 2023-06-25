@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class SmsTokenGranter implements ITokenGranter {
 
-	private static final Logger logger = LoggerFactory.getLogger(SmsTokenGranter.class);
+    private static final Logger logger = LoggerFactory.getLogger(SmsTokenGranter.class);
 
-	public static final String GRANT_TYPE = "sms";
+    public static final String GRANT_TYPE = "sms";
 
-	@Override
-	public void grant() {
-		logger.info("短信登录");
-	}
+    @Override
+    public void grant() {
+        logger.info("短信登录");
+    }
 }

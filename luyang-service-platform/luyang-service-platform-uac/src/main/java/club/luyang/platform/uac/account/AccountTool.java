@@ -12,13 +12,13 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class AccountTool {
 
-	static AccountRepository accountRepository;
+    static AccountRepository accountRepository;
 
-	private static AccountRepository getAccountRepository() {
-		return BeanUtil.isNotEmpty(accountRepository) ? accountRepository : SpringUtil.getBean(AccountRepository.class);
-	}
+    private static AccountRepository getAccountRepository() {
+        return BeanUtil.isNotEmpty(accountRepository) ? accountRepository : SpringUtil.getBean(AccountRepository.class);
+    }
 
-	static void checkAccountUnique(String identifier){
-		Assert.isFalse(getAccountRepository().hasAccount(identifier));
-	}
+    static void checkAccountUnique(String identifier){
+        Assert.isFalse(getAccountRepository().hasAccount(identifier));
+    }
 }

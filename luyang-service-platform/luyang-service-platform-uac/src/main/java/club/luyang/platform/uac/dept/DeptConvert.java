@@ -15,27 +15,27 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface DeptConvert {
 
-	DeptConvert INSTANCE = Mappers.getMapper(DeptConvert.class);
+    DeptConvert INSTANCE = Mappers.getMapper(DeptConvert.class);
 
-	/**
-	 * Create request body -> Entity
-	 *
-	 * @param request  创建部门请求体
-	 * @return DeptEntity 部门实体
-	 * @author lu_yang
-	 */
-	@Mapping(source = "deptName", target = "name")
-	@Mapping(source = "parentDeptId", target = "parentId")
-	DeptEntity toEntity(CreateDeptRequest request);
+    /**
+     * Create request body -> Entity
+     *
+     * @param request  创建部门请求体
+     * @return DeptEntity 部门实体
+     * @author lu_yang
+     */
+    @Mapping(source = "deptName", target = "name")
+    @Mapping(source = "parentDeptId", target = "parentId")
+    DeptEntity toEntity(CreateDeptRequest request);
 
-	/**
-	 * Update request body -> Entity
-	 *
-	 * @param request  创建部门请求体
-	 * @return DeptEntity 部门实体
-	 * @author lu_yang
-	 */
-	@Mapping(source = "deptName", target = "name")
-	@Mapping(source = "parentDeptId", target = "parentId")
+    /**
+     * Update request body -> Entity
+     *
+     * @param request  创建部门请求体
+     * @return DeptEntity 部门实体
+     * @author lu_yang
+     */
+    @Mapping(source = "deptName", target = "name")
+    @Mapping(source = "parentDeptId", target = "parentId")
     DeptEntity toEntity(UpdateDeptRequest request);
 }

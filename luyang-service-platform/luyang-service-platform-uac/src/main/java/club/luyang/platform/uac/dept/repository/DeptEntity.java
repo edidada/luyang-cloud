@@ -13,9 +13,9 @@ import lombok.Setter;
 @TableName("uac_dept")
 public class DeptEntity extends BaseEntity<DeptEntity> {
 
-	private Long parentId;
-	private String name;
-	private String fullPath;
-	private String fullName;
-	private Integer sortNum;
+    private Long parentId;
+    private String name;
+    private String fullPath;
+    private String fullName;
+    private Integer sortNum;
 }

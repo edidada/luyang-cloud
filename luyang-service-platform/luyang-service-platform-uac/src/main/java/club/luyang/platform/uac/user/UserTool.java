@@ -11,9 +11,9 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class UserTool {
 
-	static UserRepository userRepository;
+    static UserRepository userRepository;
 
-	private static UserRepository getUserRepository() {
-		return BeanUtil.isNotEmpty(userRepository) ? userRepository : SpringUtil.getBean(UserRepository.class);
-	}
+    private static UserRepository getUserRepository() {
+        return BeanUtil.isNotEmpty(userRepository) ? userRepository : SpringUtil.getBean(UserRepository.class);
+    }
 }

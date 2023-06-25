@@ -13,20 +13,20 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum AccountStatusEnum implements IBaseEnum {
 
-	UNACTIVATED(1, "未激活"),
-	ACTIVATE(2, "激活");
+    UNACTIVATED(1, "未激活"),
+    ACTIVATE(2, "激活");
 
-	@EnumValue
-	private final int code;
-	private final String message;
+    @EnumValue
+    private final int code;
+    private final String message;
 
-	@Override
-	public int getCode() {
-		return this.code;
-	}
+    @Override
+    public int getCode() {
+        return this.code;
+    }
 
-	@Override
-	public String getMessage() {
-		return this.message;
-	}
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
 }

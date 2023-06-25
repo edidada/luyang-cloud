@@ -14,34 +14,34 @@ import java.util.Objects;
  */
 public class DefaultFieldHandler implements MetaObjectHandler {
 
-	/**
-	 * 创建时间
-	 */
-	private static final String FIELD_CREATE_TIME = "createTime";
+    /**
+     * 创建时间
+     */
+    private static final String FIELD_CREATE_TIME = "createTime";
 
-	/**
-	 * 更新时间
-	 */
-	private static final String FIELD_UPDATE_TIME = "updateTime";
+    /**
+     * 更新时间
+     */
+    private static final String FIELD_UPDATE_TIME = "updateTime";
 
-	@Override
-	public void insertFill(MetaObject metaObject) {
-		if (Objects.isNull(metaObject) || !(metaObject.getOriginalObject() instanceof BaseEntity)) {
-			return;
-		}
+    @Override
+    public void insertFill(MetaObject metaObject) {
+        if (Objects.isNull(metaObject) || !(metaObject.getOriginalObject() instanceof BaseEntity)) {
+            return;
+        }
 
-		LocalDateTime currentTime = LocalDateTime.now();
-		this.strictInsertFill(metaObject, FIELD_CREATE_TIME, LocalDateTime.class, currentTime);
-		this.strictInsertFill(metaObject, FIELD_UPDATE_TIME, LocalDateTime.class, currentTime);
-	}
+        LocalDateTime currentTime = LocalDateTime.now();
+        this.strictInsertFill(metaObject, FIELD_CREATE_TIME, LocalDateTime.class, currentTime);
+        this.strictInsertFill(metaObject, FIELD_UPDATE_TIME, LocalDateTime.class, currentTime);
+    }
 
-	@Override
-	public void updateFill(MetaObject metaObject) {
-		Object updateTime = getFieldValByName(FIELD_UPDATE_TIME, metaObject);
-		if (Objects.nonNull(updateTime)) {
-			return;
-		}
+    @Override
+    public void updateFill(MetaObject metaObject) {
+        Object updateTime = getFieldValByName(FIELD_UPDATE_TIME, metaObject);
+        if (Objects.nonNull(updateTime)) {
+            return;
+        }
 
-		this.strictUpdateFill(metaObject, FIELD_UPDATE_TIME, LocalDateTime.class, LocalDateTime.now());
-	}
+        this.strictUpdateFill(metaObject, FIELD_UPDATE_TIME, LocalDateTime.class, LocalDateTime.now());
+    }
 }

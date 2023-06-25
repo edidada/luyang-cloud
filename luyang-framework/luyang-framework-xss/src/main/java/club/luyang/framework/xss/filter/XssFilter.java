@@ -15,9 +15,9 @@ import java.io.IOException;
  */
 public class XssFilter extends OncePerRequestFilter {
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		// 放行当前过滤器 交由request包装类XssRequestWrapper处理当前请求过滤
-		filterChain.doFilter(new XssRequestWrapper(request), response);
-	}
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        // 放行当前过滤器 交由request包装类XssRequestWrapper处理当前请求过滤
+        filterChain.doFilter(new XssRequestWrapper(request), response);
+    }
 }

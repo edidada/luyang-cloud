@@ -18,17 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
 
-	private final AccountService accountService;
-	private final DeptService deptService;
+    private final AccountService accountService;
+    private final DeptService deptService;
 
-	@Transactional
-	public void createUser(CreateUserRequest request) {
+    @Transactional
+    public void createUser(CreateUserRequest request) {
 
-		ValidationUtil.valid(request);
+        ValidationUtil.valid(request);
 
-		long userId = IdUtil.getSnowflakeNextId();
-		accountService.createAccount(new CreateAccountParam(userId, request.email(), IdentityTypeEnum.EMAIL));
-		deptService.addUserToDept(userId, request.deptIds());
-		UserConvert.INSTANCE.toEntity(request, userId).insert();
-	}
+        long userId = IdUtil.getSnowflakeNextId();
+        accountService.createAccount(new CreateAccountParam(userId, request.email(), IdentityTypeEnum.EMAIL));
+        deptService.addUserToDept(userId, request.deptIds());
+        UserConvert.INSTANCE.toEntity(request, userId).insert();
+    }
 }

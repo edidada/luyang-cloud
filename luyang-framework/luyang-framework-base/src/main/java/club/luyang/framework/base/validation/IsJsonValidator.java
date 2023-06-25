@@ -12,21 +12,21 @@ import jakarta.validation.ConstraintValidatorContext;
  */
 public class IsJsonValidator implements ConstraintValidator<IsJson, String> {
 
-	private IsJson annotation;
+    private IsJson annotation;
 
-	@Override
-	public void initialize(IsJson constraintAnnotation) {
-		this.annotation = constraintAnnotation;
-	}
+    @Override
+    public void initialize(IsJson constraintAnnotation) {
+        this.annotation = constraintAnnotation;
+    }
 
-	@Override
-	public boolean isValid(String val, ConstraintValidatorContext constraintValidatorContext) {
+    @Override
+    public boolean isValid(String val, ConstraintValidatorContext constraintValidatorContext) {
 
-		// 允许为空且值为null 则放行
-		if (annotation.allowEmpty() && CharSequenceUtil.isBlank(val)) {
-			return true;
-		}
+        // 允许为空且值为null 则放行
+        if (annotation.allowEmpty() && CharSequenceUtil.isBlank(val)) {
+            return true;
+        }
 
-		return JsonUtil.isJson(val);
-	}
+        return JsonUtil.isJson(val);
+    }
 }

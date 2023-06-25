@@ -11,20 +11,20 @@ import org.redisson.config.Config;
  */
 public class RedissonConfigContext {
 
-	private final RedissonConfigProvide redissonConfigProvide;
+    private final RedissonConfigProvide redissonConfigProvide;
 
-	public RedissonConfigContext(RedissonConfigProvide redissonConfigProvide) {
-		this.redissonConfigProvide = redissonConfigProvide;
-	}
+    public RedissonConfigContext(RedissonConfigProvide redissonConfigProvide) {
+        this.redissonConfigProvide = redissonConfigProvide;
+    }
 
-	/**
-	 * 构建策略产出的 Redisson 配置
-	 *
-	 * @param redissonProperties redisson 配置
-	 * @return org.redisson.config.Config
-	 * @author lu_yang
-	 */
-	public Config buildRedissonConfig(RedissonProperties redissonProperties) {
-		return this.redissonConfigProvide.buildRedissonConfig(redissonProperties);
-	}
+    /**
+     * 构建策略产出的 Redisson 配置
+     *
+     * @param redissonProperties redisson 配置
+     * @return org.redisson.config.Config
+     * @author lu_yang
+     */
+    public Config buildRedissonConfig(RedissonProperties redissonProperties) {
+        return this.redissonConfigProvide.buildRedissonConfig(redissonProperties);
+    }
 }

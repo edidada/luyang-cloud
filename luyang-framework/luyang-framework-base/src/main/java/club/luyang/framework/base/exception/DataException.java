@@ -10,11 +10,11 @@ import club.luyang.framework.base.api.ResultEnum;
  */
 public class DataException extends BaseException {
 
-	public DataException(String message) {
-		super(ResultEnum.DATA_EXCEPTION, message);
-	}
+    public DataException(String message) {
+        super(ResultEnum.DATA_EXCEPTION, message);
+    }
 
-	public DataException(IBaseEnum baseEnum, String message) {
-		super(baseEnum, message);
-	}
+    public DataException(IBaseEnum baseEnum, String message) {
+        super(baseEnum, message);
+    }
 }

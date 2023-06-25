@@ -17,29 +17,29 @@ import org.hibernate.validator.constraints.Range;
 @Setter
 public class UpdateDeptRequest {
 
-	/**
-	 * 部门ID
-	 */
-	@NotNull
-	private Long deptId;
+    /**
+     * 部门ID
+     */
+    @NotNull
+    private Long deptId;
 
-	/**
-	 * 父ID
-	 */
-	@NotNull
-	private Long parentDeptId;
+    /**
+     * 父ID
+     */
+    @NotNull
+    private Long parentDeptId;
 
-	/**
-	 * 部门名称
-	 */
-	@NotBlank
-	@Length(max = 128)
-	private String deptName;
+    /**
+     * 部门名称
+     */
+    @NotBlank
+    @Length(max = 128)
+    private String deptName;
 
-	/**
-	 * 排序号，值越大越靠前 <br/>
-	 * 取值范围(0, 2^32)
-	 */
-	@Range(min = 1, max = 255)
-	private int sortNum;
+    /**
+     * 排序号，值越大越靠前 <br/>
+     * 取值范围(0, 2^32)
+     */
+    @Range(min = 1, max = 255)
+    private int sortNum;
 }

@@ -14,8 +14,8 @@ import lombok.Setter;
 @TableName("uac_user")
 public class UserEntity extends BaseEntity<UserEntity> {
 
-	private String name;
-	private String avatar;
-	private String remark;
-	private GenderEnum gender;
+    private String name;
+    private String avatar;
+    private String remark;
+    private GenderEnum gender;
 }

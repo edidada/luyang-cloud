@@ -13,27 +13,27 @@ import org.springframework.data.redis.core.RedisTemplate;
 @SuppressWarnings("all")
 public class RedisHelper {
 
-	private static final Logger logger = LoggerFactory.getLogger(RedisHelper.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisHelper.class);
 
-	private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
-	public RedisHelper(RedisTemplate<String, Object> redisTemplate) {
-		this.redisTemplate = redisTemplate;
-	}
+    public RedisHelper(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
-	public <T> void set(String key, T value) {
-		if (CharSequenceUtil.isBlank(key)) {
-			return;
-		}
+    public <T> void set(String key, T value) {
+        if (CharSequenceUtil.isBlank(key)) {
+            return;
+        }
 
-		this.redisTemplate.opsForValue().set(key, value);
-	}
+        this.redisTemplate.opsForValue().set(key, value);
+    }
 
-	public <T> T get(String key) {
-		if (CharSequenceUtil.isBlank(key)) {
-			return null;
-		}
+    public <T> T get(String key) {
+        if (CharSequenceUtil.isBlank(key)) {
+            return null;
+        }
 
-		return (T) redisTemplate.opsForValue().get(key);
-	}
+        return (T) redisTemplate.opsForValue().get(key);
+    }
 }

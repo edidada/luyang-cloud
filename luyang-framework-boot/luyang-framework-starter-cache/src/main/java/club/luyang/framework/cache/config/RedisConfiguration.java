@@ -24,33 +24,33 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 public class RedisConfiguration {
 
-	/**
-	 * key前缀
-	 */
-	@Value("${spring.data.redis.key-prefix:}")
-	private String keyPrefix;
+    /**
+     * key前缀
+     */
+    @Value("${spring.data.redis.key-prefix:}")
+    private String keyPrefix;
 
-	@Bean(name = "redisTemplate")
-	@ConditionalOnClass(RedisOperations.class)
-	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-		RedisKeyStringSerializer keyStringSerializer = new RedisKeyStringSerializer(keyPrefix);
-		RedisTemplate<String, Object> template = new RedisTemplate<>();
-		template.setConnectionFactory(factory);
-		// Key 采用String 的序列化方式
-		template.setKeySerializer(keyStringSerializer);
-		// hash 的 key 也采用 String 的序列化方式
-		template.setHashKeySerializer(keyStringSerializer);
-		// value 序列化方式采用 jackson
-		template.setValueSerializer(RedisSerializer.json());
-		// hash的value序列化方式采用jackson
-		template.setHashValueSerializer(RedisSerializer.json());
-		template.afterPropertiesSet();
-		return template;
-	}
+    @Bean(name = "redisTemplate")
+    @ConditionalOnClass(RedisOperations.class)
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+        RedisKeyStringSerializer keyStringSerializer = new RedisKeyStringSerializer(keyPrefix);
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(factory);
+        // Key 采用String 的序列化方式
+        template.setKeySerializer(keyStringSerializer);
+        // hash 的 key 也采用 String 的序列化方式
+        template.setHashKeySerializer(keyStringSerializer);
+        // value 序列化方式采用 jackson
+        template.setValueSerializer(RedisSerializer.json());
+        // hash的value序列化方式采用jackson
+        template.setHashValueSerializer(RedisSerializer.json());
+        template.afterPropertiesSet();
+        return template;
+    }
 
-	@Bean
-	@ConditionalOnBean(name = "redisTemplate")
-	public RedisHelper redisHelper(RedisTemplate<String, Object> redisTemplate) {
-		return new RedisHelper(redisTemplate);
-	}
+    @Bean
+    @ConditionalOnBean(name = "redisTemplate")
+    public RedisHelper redisHelper(RedisTemplate<String, Object> redisTemplate) {
+        return new RedisHelper(redisTemplate);
+    }
 }

@@ -21,21 +21,21 @@ import java.util.Locale;
 @ConditionalOnProperty(name = "luyang.i18n.enabled", havingValue = "true", matchIfMissing = true)
 public class I18nConfiguration implements WebMvcConfigurer {
 
-	@Value("${luyang.i18n.local-head-name:locale}")
-	private String localHeadName;
+    @Value("${luyang.i18n.local-head-name:locale}")
+    private String localHeadName;
 
-	@Bean
-	public LocaleResolver localeResolver() {
-		CookieLocaleResolver resolver = new CookieLocaleResolver();
-		resolver.setCookieMaxAge(Duration.ofSeconds(3600));
-		resolver.setDefaultLocale(Locale.US);
-		return new CookieLocaleResolver();
-	}
+    @Bean
+    public LocaleResolver localeResolver() {
+        CookieLocaleResolver resolver = new CookieLocaleResolver();
+        resolver.setCookieMaxAge(Duration.ofSeconds(3600));
+        resolver.setDefaultLocale(Locale.US);
+        return new CookieLocaleResolver();
+    }
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		RedefineLocaleChangeInterceptor localeInterceptor = new RedefineLocaleChangeInterceptor();
-		localeInterceptor.setParamName(localHeadName);
-		registry.addInterceptor(localeInterceptor);
-	}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        RedefineLocaleChangeInterceptor localeInterceptor = new RedefineLocaleChangeInterceptor();
+        localeInterceptor.setParamName(localHeadName);
+        registry.addInterceptor(localeInterceptor);
+    }
 }

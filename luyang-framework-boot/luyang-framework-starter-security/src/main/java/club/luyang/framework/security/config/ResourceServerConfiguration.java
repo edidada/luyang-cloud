@@ -15,24 +15,24 @@
 //@EnableConfigurationProperties(AnonymousUriProperties.class)
 //public class ResourceServerConfiguration {
 //
-//	private final AnonymousUriProperties anonymousUriProperties;
+//    private final AnonymousUriProperties anonymousUriProperties;
 //
-//	public ResourceServerConfiguration(AnonymousUriProperties anonymousUriProperties) {
-//		this.anonymousUriProperties = anonymousUriProperties;
-//	}
+//    public ResourceServerConfiguration(AnonymousUriProperties anonymousUriProperties) {
+//        this.anonymousUriProperties = anonymousUriProperties;
+//    }
 //
-////	@Bean
-////	@Order(Ordered.HIGHEST_PRECEDENCE)
-////	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-////		http
-////			.authorizeHttpRequests(authorize ->
-////				authorize
-////					// 允许匿名访问
-////					.requestMatchers(ArrayUtil.toArray(anonymousUriProperties.getUrls(), String.class)).permitAll()
-////					// 所有请求都需要认证
-////					.anyRequest().authenticated()
-////			);
+////    @Bean
+////    @Order(Ordered.HIGHEST_PRECEDENCE)
+////    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+////        http
+////            .authorizeHttpRequests(authorize ->
+////                authorize
+////                    // 允许匿名访问
+////                    .requestMatchers(ArrayUtil.toArray(anonymousUriProperties.getUrls(), String.class)).permitAll()
+////                    // 所有请求都需要认证
+////                    .anyRequest().authenticated()
+////            );
 ////
-////		return http.build();
-////	}
+////        return http.build();
+////    }
 //}
