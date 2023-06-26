@@ -28,11 +28,9 @@ public class DefaultSecurityConfiguration {
                         // 放行静态资源
                         .requestMatchers("/assets/**", "/webjars/**", "/login").permitAll()
                         .anyRequest().authenticated()
-                )
-                // 指定登录页面
-                .formLogin(formLogin ->
+                ).formLogin(formLogin ->
                         formLogin.loginPage("/login")
-                );
+        );
         // 添加BearerTokenAuthenticationFilter，将认证服务当做一个资源服务，解析请求头中的token
         http.oauth2ResourceServer((resourceServer) -> resourceServer
                 .jwt(Customizer.withDefaults()));

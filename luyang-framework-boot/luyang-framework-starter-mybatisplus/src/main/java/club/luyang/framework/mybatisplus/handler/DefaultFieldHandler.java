@@ -2,10 +2,9 @@ package club.luyang.framework.mybatisplus.handler;
 
 import club.luyang.framework.mybatisplus.base.BaseEntity;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import org.apache.ibatis.reflection.MetaObject;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
+import org.apache.ibatis.reflection.MetaObject;
 
 /**
  * 自动填充字段

@@ -2,7 +2,6 @@ package club.luyang.framework.base.exception;
 
 import club.luyang.framework.base.IBaseEnum;
 import club.luyang.framework.base.api.ResultEnum;
-
 import java.io.Serial;
 
 /**

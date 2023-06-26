@@ -23,13 +23,13 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public Result<Void> createPost(@RequestBody CreatePostRequest request){
+    public Result<Void> createPost(@RequestBody CreatePostRequest request) {
         postService.createPost(request);
         return Result.success();
     }
 
     @PutMapping
-    public Result<Void> updatePost(@RequestBody UpdatePostRequest request){
+    public Result<Void> updatePost(@RequestBody UpdatePostRequest request) {
         postService.updatePost(request);
         return Result.success();
     }

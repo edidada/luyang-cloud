@@ -1,8 +1,6 @@
 package club.luyang.framework.base.api;
-
 import club.luyang.framework.base.IBaseEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serial;
 import java.io.Serializable;
 

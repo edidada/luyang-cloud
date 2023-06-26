@@ -3,13 +3,12 @@ package club.luyang.framework.web.banner;
 import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.thread.ThreadUtil;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.env.Environment;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * 项目启动成功后，提供文档相关的地址

@@ -1,13 +1,12 @@
 package club.luyang.framework.redisson.strategy;
 
 import club.luyang.framework.redisson.config.props.RedissonProperties;
+import java.util.List;
 import org.redisson.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.util.StringUtils;
-
-import java.util.List;
 
 /**
  * 集群环境配置
