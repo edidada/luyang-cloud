@@ -55,10 +55,7 @@ public class AuthServerConfiguration {
                                 new LoginUrlAuthenticationEntryPoint("/login"),
                                 new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
                         )
-                )
-                // 处理使用access token访问用户信息端点和客户端注册端点
-                .oauth2ResourceServer((resourceServer) -> resourceServer
-                        .jwt(Customizer.withDefaults()));
+                );
 
         return http.build();
     }

@@ -12,6 +12,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
+ * 服务安全相关配置
+ *
  * @author Luyang
  */
 @EnableWebSecurity
@@ -25,15 +27,12 @@ public class DefaultSecurityConfiguration {
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
-                        // 放行静态资源
-                        .requestMatchers("/assets/**", "/webjars/**", "/login").permitAll()
-                        .anyRequest().authenticated()
-                ).formLogin(formLogin ->
-                        formLogin.loginPage("/login")
+                // 放行静态资源
+                .requestMatchers("/assets/**", "/webjars/**", "/login").permitAll()
+                .anyRequest().authenticated()
+        ).formLogin(formLogin ->
+                formLogin.loginPage("/login")
         );
-        // 添加BearerTokenAuthenticationFilter，将认证服务当做一个资源服务，解析请求头中的token
-        http.oauth2ResourceServer((resourceServer) -> resourceServer
-                .jwt(Customizer.withDefaults()));
 
         return http.build();
     }
