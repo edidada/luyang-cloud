@@ -51,7 +51,9 @@ public class AccessTokenGenerator implements OAuth2TokenGenerator<OAuth2AccessTo
         Set<String> authorizedScopes = context.getAuthorizedScopes();
         Authentication authentication = context.getPrincipal();
 
+        // token签发时间
         Instant issuedAt = Instant.now();
+        // token过期时间
         Instant expiresAt = issuedAt.plus(registeredClient.getTokenSettings().getAccessTokenTimeToLive());
 
         OAuth2TokenClaimsSet.Builder claimsBuilder = OAuth2TokenClaimsSet.builder();
