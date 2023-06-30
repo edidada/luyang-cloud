@@ -21,6 +21,10 @@
         </dependency>
         <dependency>
             <groupId>club.luyang</groupId>
+            <artifactId>luyang-framework-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>club.luyang</groupId>
             <artifactId>luyang-framework-starter-mybatisplus</artifactId>
         </dependency>
 

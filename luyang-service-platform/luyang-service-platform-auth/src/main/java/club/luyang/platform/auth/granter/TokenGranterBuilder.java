@@ -1,9 +1,9 @@
 package club.luyang.platform.auth.granter;
 
+import club.luyang.framework.base.util.SpringUtil;
 import club.luyang.platform.auth.granter.branch.PasswordTokenGranter;
 import club.luyang.platform.auth.granter.branch.SmsTokenGranter;
 import cn.hutool.core.lang.Assert;
-import cn.hutool.extra.spring.SpringUtil;
 import lombok.experimental.UtilityClass;
 
 import java.util.Map;

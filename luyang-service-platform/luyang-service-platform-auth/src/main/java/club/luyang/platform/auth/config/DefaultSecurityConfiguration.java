@@ -16,7 +16,6 @@ import org.springframework.security.web.SecurityFilterChain;
  *
  * @author Luyang
  */
-@EnableWebSecurity
 @Configuration(proxyBeanMethods = false)
 public class DefaultSecurityConfiguration {
 

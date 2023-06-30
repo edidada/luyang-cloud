@@ -48,9 +48,9 @@ public class RedisConfiguration {
         return template;
     }
 
-    @Bean
-    @ConditionalOnBean(name = "redisTemplate")
-    public RedisHelper redisHelper(RedisTemplate<String, Object> redisTemplate) {
-        return new RedisHelper(redisTemplate);
-    }
+    // @Bean
+    // @ConditionalOnBean(name = "redisTemplate")
+    // public RedisHelper redisHelper(RedisTemplate<String, Object> redisTemplate) {
+    //     return new RedisHelper(redisTemplate);
+    // }
 }

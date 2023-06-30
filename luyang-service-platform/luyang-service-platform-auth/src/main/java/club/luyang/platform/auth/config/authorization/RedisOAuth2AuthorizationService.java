@@ -1,5 +1,6 @@
 package club.luyang.platform.auth.config.authorization;
 
+import club.luyang.framework.cache.helper.RedisHelper;
 import cn.hutool.core.lang.Assert;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2RefreshToken;
@@ -10,11 +11,11 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.stereotype.Component;
 
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 授权信息存储
@@ -25,32 +26,44 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationService {
 
-    private static final Map<String, OAuth2Authorization> MAP_POOL = new ConcurrentHashMap<>();
-
     @Override
     public void save(OAuth2Authorization authorization) {
         Assert.notNull(authorization, "authorization cannot be null");
 
         if (isState(authorization)) {
             String token = authorization.getAttribute(OAuth2ParameterNames.STATE);
-            MAP_POOL.put(buildKey(OAuth2ParameterNames.STATE, token), authorization);
+            RedisHelper.set(buildKey(OAuth2ParameterNames.STATE, token), authorization, 10L, TimeUnit.MINUTES);
         }
 
         if (isCode(authorization)) {
             OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode = authorization
                     .getToken(OAuth2AuthorizationCode.class);
             OAuth2AuthorizationCode authorizationCodeToken = authorizationCode.getToken();
-            MAP_POOL.put(buildKey(OAuth2ParameterNames.CODE, authorizationCodeToken.getTokenValue()), authorization);
+            long between = ChronoUnit.MINUTES.between(authorizationCodeToken.getIssuedAt(),
+                    authorizationCodeToken.getExpiresAt());
+            RedisHelper.set(
+                    buildKey(OAuth2ParameterNames.CODE, authorizationCodeToken.getTokenValue()),
+                    authorization,
+                    between,
+                    TimeUnit.MINUTES);
         }
 
         if (isRefreshToken(authorization)) {
             OAuth2RefreshToken refreshToken = authorization.getRefreshToken().getToken();
-            MAP_POOL.put(buildKey(OAuth2ParameterNames.REFRESH_TOKEN, refreshToken.getTokenValue()), authorization);
+            long between = ChronoUnit.SECONDS.between(refreshToken.getIssuedAt(), refreshToken.getExpiresAt());
+            RedisHelper.set(buildKey(OAuth2ParameterNames.REFRESH_TOKEN, refreshToken.getTokenValue()), authorization,
+                    between,
+                    TimeUnit.SECONDS);
         }
 
         if (isAccessToken(authorization)) {
             OAuth2AccessToken accessToken = authorization.getAccessToken().getToken();
-            MAP_POOL.put(buildKey(OAuth2ParameterNames.ACCESS_TOKEN, accessToken.getTokenValue()), authorization);
+            long between = ChronoUnit.SECONDS.between(accessToken.getIssuedAt(), accessToken.getExpiresAt());
+            RedisHelper.set(
+                    buildKey(OAuth2ParameterNames.ACCESS_TOKEN, accessToken.getTokenValue()),
+                    authorization,
+                    between,
+                    TimeUnit.SECONDS);
         }
     }
 
@@ -81,7 +94,7 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
             keys.add(buildKey(OAuth2ParameterNames.ACCESS_TOKEN, accessToken.getTokenValue()));
         }
 
-        keys.forEach(MAP_POOL::remove);
+        RedisHelper.getRedisTemplate().delete(keys);
     }
 
     @Override
@@ -91,7 +104,7 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
 
     @Override
     public OAuth2Authorization findByToken(String token, OAuth2TokenType tokenType) {
-        return MAP_POOL.get(buildKey(tokenType.getValue(), token));
+        return RedisHelper.get(buildKey(tokenType.getValue(), token));
     }
 
     private String buildKey(String type, String id) {

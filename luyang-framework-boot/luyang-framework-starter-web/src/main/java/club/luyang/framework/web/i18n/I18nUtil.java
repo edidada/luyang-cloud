@@ -1,6 +1,6 @@
 package club.luyang.framework.web.i18n;
 
-import cn.hutool.extra.spring.SpringUtil;
+import club.luyang.framework.base.util.SpringUtil;
 import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
