@@ -5,6 +5,8 @@ import club.luyang.platform.auth.config.token.RefreshTokenGenerator;
 import club.luyang.platform.auth.config.token.TokenCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,7 +27,7 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
  * @author Luyang
  */
 @Configuration
-public class AuthServerConfiguration {
+public class AuthServerConfigConfiguration {
 
     private static final String CUSTOM_CONSENT_PAGE_URI = "/oauth2/consent";
 
@@ -37,6 +39,7 @@ public class AuthServerConfiguration {
      * @throws Exception 抛出
      */
     @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
 
         // 配置默认的设置，忽略认证端点的csrf校验

@@ -2,10 +2,10 @@ package club.luyang.framework.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
@@ -18,7 +18,6 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityResourceServerConfiguration {
 
     @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain resourceSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize ->
@@ -29,11 +28,11 @@ public class SecurityResourceServerConfiguration {
                                 .anyRequest().authenticated())
                 .oauth2ResourceServer(resource ->
                         resource.opaqueToken(opaqueToken -> opaqueToken.introspector(new SecurityOpaqueTokenIntrospector()))
-                                // .bearerTokenResolver(new SecurityBearerTokenResolver())
-                                // .authenticationEntryPoint(new SecurityAuthenticationEntryPoint())
-                );/* .headers(headersConfigurer ->
+                                .bearerTokenResolver(new SecurityBearerTokenResolver())
+                                .authenticationEntryPoint(new SecurityAuthenticationEntryPoint())
+                ).headers(headersConfigurer ->
                         headersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-                .csrf(CsrfConfigurer::disable); */
+                .csrf(CsrfConfigurer::disable);
 
         return http.build();
     }
