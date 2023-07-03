@@ -75,12 +75,6 @@
             </dependency>
             <dependency>
                 <groupId>club.luyang</groupId>
-                <artifactId>luyang-framework-xss</artifactId>
-                <version>${luyang.framework.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>club.luyang</groupId>
                 <artifactId>luyang-framework-starter-cache</artifactId>
                 <version>${luyang.framework.version}</version>
             </dependency>

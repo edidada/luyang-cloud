@@ -23,7 +23,7 @@
 
     <modules>
         <module>luyang-cloud-dependencies</module>
-        <module>luyang-framework</module>
+        <module>luyang-framework-base</module>
         <module>luyang-framework-boot</module>
         <module>luyang-service-platform</module>
     </modules>
