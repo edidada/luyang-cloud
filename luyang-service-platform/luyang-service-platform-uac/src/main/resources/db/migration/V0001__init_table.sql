@@ -6,15 +6,15 @@ CREATE TABLE `uac_account`
     `identifier`             VARCHAR(64)  NOT NULL COMMENT '识别码(账号)',
     `credential`             VARCHAR(128) NOT NULL COMMENT '密码凭证',
     `salt`                   VARCHAR(128) NOT NULL COMMENT '盐',
-    `identity_type`          int         DEFAULT 1 COMMENT '识别码类型(账号) {[1:邮箱号] [2:手机号] [3:工号]}',
-    `credential_change_date` date        DEFAULT NULL COMMENT '密码凭证上次变更日期',
-    `status`                 int         default 1 comment '账号状态{[1:未激活] [2:激活]}',
-    `has_delete`             bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `identity_type`          int    DEFAULT 1 COMMENT '识别码类型(账号) {[1:邮箱号] [2:手机号] [3:工号]}',
+    `credential_change_date` date   DEFAULT NULL COMMENT '密码凭证上次变更日期',
+    `status`                 int    default 1 comment '账号状态{[1:未激活] [2:激活]}',
+    `has_delete`             bit(1) DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
     `update_time`            datetime(3) DEFAULT NULL COMMENT '更新时间',
     `create_time`            datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE,
     UNIQUE INDEX `uniq_identifier` (`identifier`) USING BTREE COMMENT '识别码唯一索引',
-    INDEX `idx_user_id` (`user_id`) USING BTREE COMMENT '用户ID普通索引'
+    INDEX                    `idx_user_id` (`user_id`) USING BTREE COMMENT '用户ID普通索引'
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
@@ -26,9 +26,9 @@ CREATE TABLE `uac_credential_record`
     `id`          BIGINT NOT NULL COMMENT '主键ID',
     `account_id`  BIGINT NOT NULL COMMENT '账号ID',
     `credential`  VARCHAR(128) DEFAULT NULL COMMENT '密码凭证',
-    `create_time` datetime(3)  DEFAULT NULL COMMENT '创建时间',
+    `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE,
-    INDEX `idx_account_id` (`account_id`) USING BTREE COMMENT '账号ID普通索引'
+    INDEX         `idx_account_id` (`account_id`) USING BTREE COMMENT '账号ID普通索引'
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
@@ -39,12 +39,15 @@ CREATE TABLE `uac_user`
 (
     `id`          BIGINT       NOT NULL COMMENT '主键ID',
     `name`        VARCHAR(128) NOT NULL COMMENT '姓名',
+    `email`       varchar(32)  not null comment '邮箱号',
+    `credential`  VARCHAR(128) NOT NULL COMMENT '密码凭证',
+    `salt`        VARCHAR(64)  NOT NULL COMMENT '盐',
     `gender`      int          DEFAULT 3 COMMENT '性别 {[1:男] [2:女] [3:保密]}',
     `avatar`      VARCHAR(255) default null comment '头像',
     `remark`      VARCHAR(255) DEFAULT NULL COMMENT '备注',
     `has_delete`  bit(1)       DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
-    `update_time` datetime(3)  DEFAULT NULL COMMENT '更新时间',
-    `create_time` datetime(3)  DEFAULT NULL COMMENT '创建时间',
+    `update_time` datetime(3) DEFAULT NULL COMMENT '更新时间',
+    `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4
@@ -60,7 +63,7 @@ CREATE TABLE `uac_dept`
     `full_path`   VARCHAR(1024) NOT NULL COMMENT '祖级列表路径',
     `full_name`   VARCHAR(1024) NOT NULL COMMENT '祖级列表名称',
     `sort_num`    INT COMMENT '排序号，值越大越靠前',
-    `has_delete`  bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `has_delete`  bit(1) DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
     `update_time` datetime(3) DEFAULT NULL COMMENT '更新时间',
     `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
@@ -78,8 +81,8 @@ CREATE TABLE `uac_post`
     `sort_num`    INT COMMENT '排序号，值越大越靠前',
     `remark`      VARCHAR(255) DEFAULT NULL COMMENT '备注',
     `has_delete`  bit(1)       DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
-    `update_time` datetime(3)  DEFAULT NULL COMMENT '更新时间',
-    `create_time` datetime(3)  DEFAULT NULL COMMENT '创建时间',
+    `update_time` datetime(3) DEFAULT NULL COMMENT '更新时间',
+    `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4
@@ -96,7 +99,8 @@ INSERT INTO `uac_post` (`id`, `post_code`, `post_name`, `sort_num`, `remark`, `h
 VALUES (1624071119463841793, 'RD', '研发', 3, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
 INSERT INTO `uac_post` (`id`, `post_code`, `post_name`, `sort_num`, `remark`, `has_delete`, `update_time`,
                         `create_time`)
-VALUES (1624071119468036096, 'DBA', '数据库管理员', 1, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
+VALUES (1624071119468036096, 'DBA', '数据库管理员', 1, NULL, b'0', '2023-02-10 23:41:43.155',
+        '2023-02-10 23:41:43.155');
 INSERT INTO `uac_post` (`id`, `post_code`, `post_name`, `sort_num`, `remark`, `has_delete`, `update_time`,
                         `create_time`)
 VALUES (1624071119468036097, 'PM', '产品经理', 9, NULL, b'0', '2023-02-10 23:41:43.155', '2023-02-10 23:41:43.155');
@@ -110,7 +114,7 @@ CREATE TABLE `uac_user_dept`
     `id`          BIGINT NOT NULL COMMENT '主键ID',
     `user_id`     BIGINT NOT NULL COMMENT '用户ID',
     `dept_id`     BIGINT NOT NULL COMMENT '部门ID',
-    `has_delete`  bit(1)      DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
+    `has_delete`  bit(1) DEFAULT b'0' COMMENT '是否删除: {[1:删除:true] [0:未删除:false]}',
     `update_time` datetime(3) DEFAULT NULL COMMENT '更新时间',
     `create_time` datetime(3) DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
