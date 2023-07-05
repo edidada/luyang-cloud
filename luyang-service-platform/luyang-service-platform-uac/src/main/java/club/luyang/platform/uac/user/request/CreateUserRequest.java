@@ -1,7 +1,7 @@
 package club.luyang.platform.uac.user.request;
 
-import club.luyang.framework.base.validation.IsEmail;
-import club.luyang.framework.base.validation.IsEnum;
+import club.luyang.framework.web.validation.IsEmail;
+import club.luyang.framework.web.validation.IsEnum;
 import club.luyang.platform.uac.user.constant.enums.GenderEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
