@@ -1,7 +1,6 @@
 package club.luyang.framework.security.config;
 
 import club.luyang.framework.base.api.Result;
-import club.luyang.framework.base.util.json.JsonUtil;
 import cn.hutool.core.text.StrPool;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -37,7 +36,7 @@ public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoin
             failure = Result.failure(401, "无效请求令牌");
         }
 
-        response.getWriter().write(JsonUtil.toString(failure));
+        response.getWriter().write("");
         response.flushBuffer();
     }
 }

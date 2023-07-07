@@ -1,6 +1,5 @@
 package club.luyang.framework.web.validation;
 
-import club.luyang.framework.base.util.json.JsonUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -27,6 +26,8 @@ public class IsJsonValidator implements ConstraintValidator<IsJson, String> {
             return true;
         }
 
-        return JsonUtil.isJson(val);
+        // return JsonUtil.isJson(val);
+
+        return true;
     }
 }
