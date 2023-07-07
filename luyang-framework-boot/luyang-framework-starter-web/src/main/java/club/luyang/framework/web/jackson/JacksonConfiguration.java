@@ -50,6 +50,7 @@ public class JacksonConfiguration {
             /* 针对于JDK新时间类。序列化时带有T的问题，自定义格式化字符串 */
             SimpleModule simpleModule = new SimpleModule();
             simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
+            simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
             simpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
             // yyyy-MM-dd HH:mm:ss
             simpleModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DatePattern.NORM_DATETIME_FORMATTER));
