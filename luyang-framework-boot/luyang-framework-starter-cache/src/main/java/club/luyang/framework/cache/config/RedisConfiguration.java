@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -32,7 +33,7 @@ public class RedisConfiguration {
 
     @Bean(name = "redisTemplate")
     @ConditionalOnClass(RedisOperations.class)
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+    public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory factory) {
         RedisKeyStringSerializer keyStringSerializer = new RedisKeyStringSerializer(keyPrefix);
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
@@ -47,10 +48,4 @@ public class RedisConfiguration {
         template.afterPropertiesSet();
         return template;
     }
-
-    // @Bean
-    // @ConditionalOnBean(name = "redisTemplate")
-    // public RedisHelper redisHelper(RedisTemplate<String, Object> redisTemplate) {
-    //     return new RedisHelper(redisTemplate);
-    // }
 }
