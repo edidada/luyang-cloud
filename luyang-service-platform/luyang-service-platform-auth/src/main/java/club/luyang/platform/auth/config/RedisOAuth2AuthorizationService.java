@@ -2,7 +2,6 @@ package club.luyang.platform.auth.config;
 
 import club.luyang.framework.cache.helper.RedisHelper;
 import cn.hutool.core.lang.Assert;
-import com.alibaba.fastjson2.JSON;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2RefreshToken;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
@@ -14,9 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
