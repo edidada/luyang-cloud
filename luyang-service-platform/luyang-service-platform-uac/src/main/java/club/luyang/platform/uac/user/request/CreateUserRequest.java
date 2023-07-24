@@ -6,8 +6,9 @@ import club.luyang.platform.uac.user.constant.enums.GenderEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.util.List;
 import org.hibernate.validator.constraints.Length;
+
+import java.util.List;
 
 
 /**

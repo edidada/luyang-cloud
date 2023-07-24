@@ -1,0 +1,2 @@
+club.luyang.boot.cache.config.RedisConfiguration
+club.luyang.boot.cache.config.CaffeineConfiguration

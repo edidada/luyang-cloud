@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.post.repository;
 
-import club.luyang.framework.mybatisplus.base.BaseEntity;
+import club.luyang.boot.mybatisplus.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;

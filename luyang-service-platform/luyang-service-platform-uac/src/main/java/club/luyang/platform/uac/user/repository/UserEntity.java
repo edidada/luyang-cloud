@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.user.repository;
 
-import club.luyang.framework.mybatisplus.base.BaseEntity;
+import club.luyang.boot.mybatisplus.base.BaseEntity;
 import club.luyang.platform.uac.user.constant.enums.GenderEnum;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;

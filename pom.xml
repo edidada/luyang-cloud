@@ -10,11 +10,11 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>17</java.version>
+        <!--<java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
 
         <spring-boot-maven-plugin.version>3.0.0</spring-boot-maven-plugin.version>
         <versions-maven-plugin.version>2.13.0</versions-maven-plugin.version>
@@ -22,9 +22,7 @@
     </properties>
 
     <modules>
-        <module>luyang-cloud-dependencies</module>
-        <module>luyang-framework-base</module>
-        <module>luyang-framework-boot</module>
+        <module>luyang-boot</module>
         <module>luyang-service-platform</module>
     </modules>
 
@@ -32,8 +30,8 @@
         <dependencies>
             <dependency>
                 <groupId>club.luyang</groupId>
-                <artifactId>luyang-cloud-dependencies</artifactId>
-                <version>1.0.0</version>
+                <artifactId>dependencies</artifactId>
+                <version>1.0.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

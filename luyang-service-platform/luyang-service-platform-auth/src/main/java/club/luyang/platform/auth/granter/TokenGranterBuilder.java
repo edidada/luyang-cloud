@@ -1,6 +1,6 @@
 package club.luyang.platform.auth.granter;
 
-import club.luyang.framework.base.util.SpringUtil;
+import club.luyang.boot.base.util.SpringUtil;
 import club.luyang.platform.auth.granter.branch.PasswordTokenGranter;
 import club.luyang.platform.auth.granter.branch.SmsTokenGranter;
 import cn.hutool.core.lang.Assert;

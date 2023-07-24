@@ -1,6 +1,5 @@
 package club.luyang.platform.uac.user.repository;
 
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.validation.annotation.Validated;
 
 /**

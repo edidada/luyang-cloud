@@ -1,9 +1,10 @@
 package club.luyang.platform.uac.dept.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author lu_yang

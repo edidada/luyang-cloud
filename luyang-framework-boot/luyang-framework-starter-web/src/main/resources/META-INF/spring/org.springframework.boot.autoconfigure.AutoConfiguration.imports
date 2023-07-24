@@ -1,4 +1,0 @@
-club.luyang.framework.web.banner.BannerApplicationStarter
-club.luyang.framework.web.i18n.I18nConfiguration
-club.luyang.framework.web.jackson.JacksonConfiguration
-club.luyang.framework.web.error.GlobalRestExceptionTranslator

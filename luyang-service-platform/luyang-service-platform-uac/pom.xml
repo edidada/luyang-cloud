@@ -13,15 +13,15 @@
     <dependencies>
         <dependency>
             <groupId>club.luyang</groupId>
-            <artifactId>luyang-framework-starter-web</artifactId>
+            <artifactId>luyang-boot-starter-base</artifactId>
         </dependency>
         <dependency>
             <groupId>club.luyang</groupId>
-            <artifactId>luyang-framework-starter-mybatisplus</artifactId>
+            <artifactId>luyang-boot-starter-mybatisplus</artifactId>
         </dependency>
         <dependency>
             <groupId>club.luyang</groupId>
-            <artifactId>luyang-framework-starter-security</artifactId>
+            <artifactId>luyang-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 
