@@ -1,4 +1,4 @@
-package club.luyang.boot.web.validation;
+package club.luyang.boot.base.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

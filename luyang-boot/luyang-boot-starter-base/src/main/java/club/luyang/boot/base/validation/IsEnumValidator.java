@@ -1,4 +1,4 @@
-package club.luyang.boot.web.validation;
+package club.luyang.boot.base.validation;
 
 import club.luyang.boot.base.IBaseEnum;
 import jakarta.validation.ConstraintValidator;

@@ -1,4 +1,4 @@
-package club.luyang.boot.web.validation;
+package club.luyang.boot.base.validation;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.ObjectUtil;

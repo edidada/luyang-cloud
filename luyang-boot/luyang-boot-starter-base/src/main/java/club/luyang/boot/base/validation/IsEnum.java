@@ -1,5 +1,6 @@
-package club.luyang.boot.web.validation;
+package club.luyang.boot.base.validation;
 
+import club.luyang.boot.base.IBaseEnum;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -11,21 +12,26 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 有效JSON
+ * 有效枚举
  *
  * @author lu_yang
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Repeatable(IsJson.List.class)
-@Constraint(validatedBy = IsJsonValidator.class)
+@Repeatable(IsEnum.List.class)
+@Constraint(validatedBy = IsEnumValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
-public @interface IsJson {
+public @interface IsEnum {
 
     /**
      * 提示消息
      */
-    String message() default "无效JSON格式";
+    String message() default "无效值";
+
+    /**
+     * 指定目标枚举类型
+     */
+    Class<? extends IBaseEnum> value();
 
     /**
      * 是否允许为空 true允许
@@ -40,6 +46,6 @@ public @interface IsJson {
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     public @interface List {
-        IsJson[] value();
+        IsEnum[] value();
     }
 }

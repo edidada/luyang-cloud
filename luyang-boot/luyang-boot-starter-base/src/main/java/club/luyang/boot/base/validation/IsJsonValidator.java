@@ -1,6 +1,6 @@
-package club.luyang.boot.web.validation;
+package club.luyang.boot.base.validation;
 
-import cn.hutool.core.lang.Validator;
+import club.luyang.boot.base.util.jackson.JsonUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -10,12 +10,12 @@ import jakarta.validation.ConstraintValidatorContext;
  *
  * @author lu_yang
  */
-public class IsEmailValidator implements ConstraintValidator<IsEmail, String> {
+public class IsJsonValidator implements ConstraintValidator<IsJson, String> {
 
-    private IsEmail annotation;
+    private IsJson annotation;
 
     @Override
-    public void initialize(IsEmail constraintAnnotation) {
+    public void initialize(IsJson constraintAnnotation) {
         this.annotation = constraintAnnotation;
     }
 
@@ -27,6 +27,6 @@ public class IsEmailValidator implements ConstraintValidator<IsEmail, String> {
             return true;
         }
 
-        return Validator.isEmail(val);
+        return JsonUtil.isJson(val);
     }
 }
