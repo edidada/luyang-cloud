@@ -4,6 +4,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.ValidationException;
 import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import lombok.experimental.UtilityClass;
 import org.springframework.util.CollectionUtils;
 
@@ -15,7 +16,13 @@ import java.util.Set;
 @UtilityClass
 public class ValidationUtil {
 
-    private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
+    private static final Validator VALIDATOR;
+
+    static {
+        try (ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory()) {
+            VALIDATOR = validatorFactory.getValidator();
+        }
+    }
 
     public static void valid(Object obj, Class<?>... clazz) {
         valid(VALIDATOR.validate(obj, clazz));
