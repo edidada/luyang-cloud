@@ -1,5 +1,6 @@
 package club.luyang.boot.cache.helper;
 
+import club.luyang.boot.base.util.SpringUtil;
 import org.springframework.cache.Cache;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 
@@ -10,23 +11,27 @@ import org.springframework.cache.caffeine.CaffeineCacheManager;
  */
 public class CaffeineHelper {
 
-    private final CaffeineCacheManager caffeineCacheManager;
+    private static CaffeineCacheManager caffeineCacheManager;
 
-    public CaffeineHelper(CaffeineCacheManager caffeineCacheManager) {
-        this.caffeineCacheManager = caffeineCacheManager;
+    public static CaffeineCacheManager getCaffeineCacheManager() {
+        if (null == caffeineCacheManager) {
+            caffeineCacheManager = SpringUtil.getBean(CaffeineCacheManager.class);
+        }
+
+        return caffeineCacheManager;
     }
 
-    public Cache getCache(String name) {
-        return caffeineCacheManager.getCache(name);
+    public static Cache getCache(String name) {
+        return getCaffeineCacheManager().getCache(name);
     }
 
-    public void put(String cacheName, String key, Object value) {
-        Cache cache = this.getCache(cacheName);
+    public static void put(String cacheName, String key, Object value) {
+        Cache cache = getCache(cacheName);
         cache.put(key, value);
     }
 
-    public <T> T get(String cacheName, String key) {
-        Cache cache = this.getCache(cacheName);
+    public static <T> T get(String cacheName, String key) {
+        Cache cache = getCache(cacheName);
         Cache.ValueWrapper valueWrapper = cache.get(key);
         if (null == valueWrapper) {
             return null;

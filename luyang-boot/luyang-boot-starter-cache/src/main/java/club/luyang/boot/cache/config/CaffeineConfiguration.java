@@ -48,10 +48,4 @@ public class CaffeineConfiguration {
         properties.map(CaffeineProperties::getRefreshAfterWrite).ifPresent(v -> caffeine.refreshAfterWrite(v, TimeUnit.SECONDS));
         return caffeine.build();
     }
-
-    @Bean
-    @ConditionalOnBean(name = "caffeineCacheManager")
-    public CaffeineHelper caffeineHelper(CaffeineCacheManager caffeineCacheManager) {
-        return new CaffeineHelper(caffeineCacheManager);
-    }
 }
