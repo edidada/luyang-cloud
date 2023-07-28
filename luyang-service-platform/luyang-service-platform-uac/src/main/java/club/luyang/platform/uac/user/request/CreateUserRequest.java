@@ -1,8 +1,6 @@
 package club.luyang.platform.uac.user.request;
 
-import club.luyang.framework.web.validation.IsEmail;
-import club.luyang.framework.web.validation.IsEnum;
-import club.luyang.platform.uac.user.constant.enums.GenderEnum;
+import club.luyang.boot.base.validation.IsEmail;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,7 +25,7 @@ public record CreateUserRequest(
     @IsEmail
     String email,
 
-    @IsEnum(value = GenderEnum.class)
+    // @IsEnum(value = GenderEnum.class)
     Integer gender,
 
     @Length(max = 255)

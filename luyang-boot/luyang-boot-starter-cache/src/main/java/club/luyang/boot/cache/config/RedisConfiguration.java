@@ -1,6 +1,8 @@
 package club.luyang.boot.cache.config;
 
 import club.luyang.boot.cache.config.serializer.RedisKeyStringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -21,6 +23,8 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 public class RedisConfiguration {
 
+    private static final Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
+
     @Value("${spring.data.redis.key-prefix:}")
     private String keyPrefix;
 
@@ -39,6 +43,7 @@ public class RedisConfiguration {
         // hash的value序列化方式采用jackson
         template.setHashValueSerializer(RedisSerializer.json());
         template.afterPropertiesSet();
+        logger.info("[LUYANG] |- Bean [RedisTemplate] Auto Configure.");
         return template;
     }
 }

@@ -49,7 +49,7 @@ public class JacksonConfiguration {
             customSimpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
             builder.modules(customSimpleModule);
 
-            logger.info("[Dolphin] |- Bean [ObjectMapper] Auto Configure.");
+            logger.info("[LUYANG] |- Bean [ObjectMapper] Auto Configure.");
         };
     }
 }

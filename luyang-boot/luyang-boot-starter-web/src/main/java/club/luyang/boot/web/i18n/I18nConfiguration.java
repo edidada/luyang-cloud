@@ -1,5 +1,7 @@
 package club.luyang.boot.web.i18n;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +23,8 @@ import java.util.Locale;
 @ConditionalOnProperty(name = "luyang.i18n.enabled", havingValue = "true", matchIfMissing = true)
 public class I18nConfiguration implements WebMvcConfigurer {
 
+    private static final Logger logger = LoggerFactory.getLogger(I18nConfiguration.class);
+
     @Value("${luyang.i18n.local-head-name:locale}")
     private String localHeadName;
 
@@ -29,7 +33,9 @@ public class I18nConfiguration implements WebMvcConfigurer {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
         resolver.setCookieMaxAge(Duration.ofSeconds(3600));
         resolver.setDefaultLocale(Locale.US);
-        return new CookieLocaleResolver();
+        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        logger.info("[LUYANG] |- Bean [LocaleResolver] Auto Configure.");
+        return cookieLocaleResolver;
     }
 
     @Override

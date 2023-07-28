@@ -1,10 +1,8 @@
 package club.luyang.boot.cache.config;
 
 import club.luyang.boot.cache.config.props.CaffeineProperties;
-import club.luyang.boot.cache.helper.CaffeineHelper;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
