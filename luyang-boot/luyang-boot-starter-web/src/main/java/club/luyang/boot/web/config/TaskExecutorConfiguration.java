@@ -48,7 +48,7 @@ public class TaskExecutorConfiguration {
         taskExecutor.setKeepAliveSeconds(Optional.ofNullable(properties.getKeepAliveSeconds()).orElse(60));
         taskExecutor.setThreadNamePrefix(Optional.ofNullable(properties.getNamePrefix()).orElse("Task-Thread-"));
         taskExecutor.initialize();
-        logger.info("[LUYANG] |- Bean [ThreadPoolTaskExecutor] Auto Configure.");
+        logger.info("[LUYANG] |- Bean [TaskExecutor] Auto Configure.");
         return taskExecutor;
     }
 
