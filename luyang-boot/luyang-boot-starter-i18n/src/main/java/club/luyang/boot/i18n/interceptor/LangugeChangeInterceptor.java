@@ -1,4 +1,4 @@
-package club.luyang.boot.web.i18n;
+package club.luyang.boot.i18n.interceptor;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.text.CharSequenceUtil;
@@ -17,18 +17,18 @@ import java.util.Arrays;
  *
  * @author lu_yang
  */
-@SuppressWarnings("all")
-public class RedefineLocaleChangeInterceptor extends LocaleChangeInterceptor {
+
+public class LangugeChangeInterceptor extends LocaleChangeInterceptor {
 
     @Override
+    @SuppressWarnings("NullableProblems")
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
 
         String newLocale = request.getHeader(this.getParamName());
         if (CharSequenceUtil.isNotBlank(newLocale) && this.checkHttpMethod(request.getMethod())) {
             LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-            Assert.notNull(localeResolver, () -> new IllegalStateException("No LocaleResolver found: not in a DispatcherServlet request?"));
-
             try {
+                assert localeResolver != null;
                 localeResolver.setLocale(request, response, super.parseLocaleValue(newLocale));
             } catch (IllegalArgumentException e) {
                 Assert.isTrue(super.isIgnoreInvalidLocale(), () -> e);

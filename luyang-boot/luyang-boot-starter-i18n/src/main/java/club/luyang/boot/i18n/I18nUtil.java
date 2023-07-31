@@ -1,4 +1,4 @@
-package club.luyang.boot.web.i18n;
+package club.luyang.boot.i18n;
 
 import club.luyang.boot.base.util.SpringUtil;
 import lombok.experimental.UtilityClass;

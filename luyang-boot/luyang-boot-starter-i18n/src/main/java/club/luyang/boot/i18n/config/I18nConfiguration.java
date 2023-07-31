@@ -1,9 +1,12 @@
-package club.luyang.boot.web.i18n;
+package club.luyang.boot.i18n.config;
 
+import club.luyang.boot.i18n.config.props.I18nProperties;
+import club.luyang.boot.i18n.interceptor.LangugeChangeInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -20,6 +23,7 @@ import java.util.Locale;
  * @author lu_yang
  */
 @Configuration(proxyBeanMethods = false)
+@EnableConfigurationProperties(I18nProperties.class)
 @ConditionalOnProperty(name = "luyang.i18n.enabled", havingValue = "true", matchIfMissing = true)
 public class I18nConfiguration implements WebMvcConfigurer {
 
@@ -40,7 +44,7 @@ public class I18nConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        RedefineLocaleChangeInterceptor localeInterceptor = new RedefineLocaleChangeInterceptor();
+        LangugeChangeInterceptor localeInterceptor = new LangugeChangeInterceptor();
         localeInterceptor.setParamName(localHeadName);
         registry.addInterceptor(localeInterceptor);
     }

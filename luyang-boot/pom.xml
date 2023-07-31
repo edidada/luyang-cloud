@@ -19,6 +19,7 @@
         <module>dependencies</module>
         <module>luyang-boot-starter-base</module>
         <module>luyang-boot-starter-cache</module>
+        <module>luyang-boot-starter-i18n</module>
         <module>luyang-boot-starter-mybatisplus</module>
         <module>luyang-boot-starter-redisson</module>
         <module>luyang-boot-starter-security</module>
