@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.dept;
 
-import club.luyang.framework.base.api.Result;
+import club.luyang.boot.base.api.Result;
 import club.luyang.platform.uac.dept.request.CreateDeptRequest;
 import club.luyang.platform.uac.dept.request.UpdateDeptRequest;
 import club.luyang.platform.uac.dept.response.AddDeptResponse;

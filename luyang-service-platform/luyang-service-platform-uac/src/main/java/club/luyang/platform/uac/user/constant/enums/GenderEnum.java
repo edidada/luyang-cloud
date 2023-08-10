@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.user.constant.enums;
 
-import club.luyang.framework.base.IBaseEnum;
+import club.luyang.boot.base.IBaseEnum;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public enum GenderEnum implements IBaseEnum {
 
     @EnumValue
     private final int code;
-    private final String message;
+    private final String desc;
 
     @Override
     public int getCode() {
@@ -26,7 +26,9 @@ public enum GenderEnum implements IBaseEnum {
     }
 
     @Override
-    public String getMessage() {
-        return this.message;
+    public String getDesc() {
+        return this.desc;
     }
+
+
 }

@@ -10,22 +10,23 @@ import club.luyang.boot.base.IBaseEnum;
  */
 public enum ResultEnum implements IBaseEnum {
 
-    SUCCESS(0, "success"),
-    FAILURE(-1, "failure"),
-    UN_AUTHORIZED(401, "请求未授权"),
-    NOT_FOUND(404, "服务未找到"),
-    MSG_NOT_READABLE(400, "消息不能读取"),
-    METHOD_NOT_SUPPORTED(405, "不支持当前请求方法"),
-    MEDIA_TYPE_NOT_SUPPORTED(415, "不支持当前媒体类型"),
-    REQ_REJECT(403, "请求被拒绝"),
-    INTERNAL_SERVER_ERROR(500, "服务器异常");
+    SUCCESS(0, "{SUCCESS}"),
+    FAILURE(-1, "{FAILURE}"),
+    INTERNAL_SERVER_ERROR(500, "{SERVER.EXCEPTION}"),
+    UN_AUTHORIZED(401, "{请求未授权}"),
+    NOT_FOUND(404, "{服务未找到}"),
+    MSG_NOT_READABLE(400, "{消息不能读取}"),
+    METHOD_NOT_SUPPORTED(405, "{不支持当前请求方法}"),
+    MEDIA_TYPE_NOT_SUPPORTED(415, "{不支持当前媒体类型}"),
+    REQ_REJECT(403, "{请求被拒绝}")
+    ;
 
     private final int code;
-    private final String message;
+    private final String desc;
 
-    ResultEnum(int code, String message) {
+    ResultEnum(int code, String desc) {
         this.code = code;
-        this.message = message;
+        this.desc = desc;
     }
 
     @Override
@@ -34,7 +35,7 @@ public enum ResultEnum implements IBaseEnum {
     }
 
     @Override
-    public String getMessage() {
-        return this.message;
+    public String getDesc() {
+        return this.desc;
     }
 }

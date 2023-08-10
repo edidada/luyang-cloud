@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.post;
 
-import club.luyang.framework.base.util.validation.ValidationUtil;
+import club.luyang.boot.base.util.ValidationUtil;
 import club.luyang.platform.uac.post.repository.PostRepository;
 import club.luyang.platform.uac.post.request.CreatePostRequest;
 import club.luyang.platform.uac.post.request.UpdatePostRequest;

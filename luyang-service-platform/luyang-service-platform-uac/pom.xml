@@ -13,7 +13,11 @@
     <dependencies>
         <dependency>
             <groupId>club.luyang</groupId>
-            <artifactId>luyang-boot-starter-base</artifactId>
+            <artifactId>luyang-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>club.luyang</groupId>
+            <artifactId>luyang-boot-starter-i18n</artifactId>
         </dependency>
         <dependency>
             <groupId>club.luyang</groupId>

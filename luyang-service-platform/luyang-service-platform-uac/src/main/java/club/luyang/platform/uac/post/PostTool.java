@@ -1,13 +1,11 @@
 package club.luyang.platform.uac.post;
 
-import club.luyang.framework.base.api.ResultEnum;
-import club.luyang.framework.base.exception.DataException;
+import club.luyang.boot.base.util.SpringUtil;
 import club.luyang.platform.uac.post.repository.PostEntity;
 import club.luyang.platform.uac.post.repository.PostRepository;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.NumberUtil;
-import cn.hutool.extra.spring.SpringUtil;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -24,7 +22,7 @@ public class PostTool {
 
     static void checkPostIdExist(Long postId) {
         boolean exist = getPostRepository().existById(postId);
-        Assert.isTrue(exist, () -> new DataException(ResultEnum.DATA_NOT_FOUND, "岗位信息不存在"));
+        Assert.isTrue(exist, () -> new RuntimeException("岗位信息不存在"));
     }
 
     static void checkPostCodeUnique(Long postId, String postCode) {
@@ -34,7 +32,7 @@ public class PostTool {
         }
 
         if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
-            throw new DataException(ResultEnum.DATA_EXIST, "岗位编号已存在");
+            throw new RuntimeException("岗位编号已存在");
         }
     }
 
@@ -45,7 +43,7 @@ public class PostTool {
         }
 
         if (null == postId || !NumberUtil.equals(postId, entity.getId())) {
-            throw new DataException(ResultEnum.DATA_EXIST, "岗位名称已存在");
+            throw new RuntimeException("岗位名称已存在");
         }
     }
 }

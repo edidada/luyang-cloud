@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.post;
 
-import club.luyang.framework.base.api.Result;
+import club.luyang.boot.base.api.Result;
 import club.luyang.platform.uac.post.request.CreatePostRequest;
 import club.luyang.platform.uac.post.request.UpdatePostRequest;
 import lombok.RequiredArgsConstructor;

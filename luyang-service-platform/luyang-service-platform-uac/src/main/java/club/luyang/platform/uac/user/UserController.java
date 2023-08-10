@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.user;
 
-import club.luyang.framework.base.api.Result;
+import club.luyang.boot.base.api.Result;
 import club.luyang.platform.uac.user.bean.UserId;
 import club.luyang.platform.uac.user.request.CreateUserRequest;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.account;
 
-import club.luyang.framework.base.util.SpringUtil;
+import club.luyang.boot.base.util.SpringUtil;
 import club.luyang.platform.uac.account.repository.AccountRepository;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;

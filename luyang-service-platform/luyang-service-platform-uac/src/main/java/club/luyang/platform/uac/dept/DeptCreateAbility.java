@@ -1,8 +1,8 @@
 package club.luyang.platform.uac.dept;
 
-import club.luyang.framework.base.util.ability.AbilityContext;
-import club.luyang.framework.base.util.ability.BaseAbility;
-import club.luyang.framework.base.util.validation.ValidationUtil;
+import club.luyang.boot.base.component.ability.AbilityContext;
+import club.luyang.boot.base.component.ability.BaseAbility;
+import club.luyang.boot.base.util.ValidationUtil;
 import club.luyang.platform.uac.dept.constant.DeptConstant;
 import club.luyang.platform.uac.dept.repository.DeptEntity;
 import club.luyang.platform.uac.dept.request.CreateDeptRequest;

@@ -1,8 +1,8 @@
 package club.luyang.platform.uac.user;
 
+import club.luyang.boot.base.util.SpringUtil;
 import club.luyang.platform.uac.user.repository.UserRepository;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.extra.spring.SpringUtil;
 import lombok.experimental.UtilityClass;
 
 /**

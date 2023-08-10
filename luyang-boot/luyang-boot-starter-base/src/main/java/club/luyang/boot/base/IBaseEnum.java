@@ -13,7 +13,7 @@ public interface IBaseEnum extends Serializable {
 
     int getCode();
 
-    String getMessage();
+    String getDesc();
 
     /**
      * 根据Code码匹配对应枚举 <br/>
@@ -60,7 +60,7 @@ public interface IBaseEnum extends Serializable {
      * 根据枚举属性值匹配对应的枚举 <br/>
      *
      * <pre class="code">
-     *     ResultEnum SUCCESS_ENUM = IBaseEnum.getByProperty(ResultEnum.class, ResultEnum::getMessage, "success");
+     *     ResultEnum SUCCESS_ENUM = IBaseEnum.getByProperty(ResultEnum.class, ResultEnum::getDesc, "success");
      * </pre>
      *
      * @param tClass   待匹配枚举类
@@ -80,7 +80,7 @@ public interface IBaseEnum extends Serializable {
      * 根据枚举属性值匹配对应的枚举 <br/>
      *
      * <pre class="code">
-     *     ResultEnum SUCCESS_ENUM = IBaseEnum.getByProperty(ResultEnum.class, ResultEnum::getMessage, "success", () -> new IllegalArgumentException(""));
+     *     ResultEnum SUCCESS_ENUM = IBaseEnum.getByProperty(ResultEnum.class, ResultEnum::getDesc, "success", () -> new IllegalArgumentException(""));
      * </pre>
      *
      * @param tClass        待匹配枚举类

@@ -23,7 +23,7 @@ public class Result<T> implements Serializable {
     }
 
     private Result(IBaseEnum baseEnum) {
-        this(baseEnum, baseEnum.getMessage(), null);
+        this(baseEnum, baseEnum.getDesc(), null);
     }
 
     private Result(IBaseEnum baseEnum, String message) {
@@ -46,7 +46,7 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> success(T data) {
-        return new Result<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
+        return new Result<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getDesc(), data);
     }
 
     public static <T> Result<T> failure(String message) {

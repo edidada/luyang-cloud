@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.user;
 
-import club.luyang.framework.web.validation.ValidationUtil;
+import club.luyang.boot.base.util.ValidationUtil;
 import club.luyang.platform.uac.account.AccountService;
 import club.luyang.platform.uac.account.bean.CreateAccountParam;
 import club.luyang.platform.uac.account.constant.enums.IdentityTypeEnum;

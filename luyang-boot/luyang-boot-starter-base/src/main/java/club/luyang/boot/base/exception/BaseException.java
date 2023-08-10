@@ -23,7 +23,7 @@ public class BaseException extends RuntimeException {
     }
 
     public BaseException(IBaseEnum baseEnum) {
-        super(baseEnum.getMessage());
+        super(baseEnum.getDesc());
         this.baseEnum = baseEnum;
     }
 

@@ -1,6 +1,6 @@
 package club.luyang.platform.uac.account.constant.enums;
 
-import club.luyang.framework.base.IBaseEnum;
+import club.luyang.boot.base.IBaseEnum;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
 import com.baomidou.mybatisplus.annotation.EnumValue;
@@ -31,7 +31,7 @@ public enum IdentityTypeEnum implements IBaseEnum {
 
     @EnumValue
     private final int code;
-    private final String message;
+    private final String desc;
     public abstract void checkAccountNorm(String identity);
 
     @Override
@@ -40,7 +40,7 @@ public enum IdentityTypeEnum implements IBaseEnum {
     }
 
     @Override
-    public String getMessage() {
-        return this.message;
+    public String getDesc() {
+        return this.desc;
     }
 }
