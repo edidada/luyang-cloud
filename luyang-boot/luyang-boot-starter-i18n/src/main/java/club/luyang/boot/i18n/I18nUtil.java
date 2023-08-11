@@ -8,6 +8,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
 
+import java.util.Locale;
+
 /**
  * @author lu_yang
  */
@@ -26,9 +28,18 @@ public class I18nUtil {
         return messageSource;
     }
 
-    public static String get(String key) {
+    public static String get(String key, Object... args) {
         try {
-            return getMessageSource().getMessage(key, null, LocaleContextHolder.getLocale());
+            return getMessageSource().getMessage(key, args, LocaleContextHolder.getLocale());
+        } catch (NoSuchMessageException e) {
+            logger.warn("未获取到:[ {} ]国际化.", key);
+            return key;
+        }
+    }
+
+    public static String get(String key, LocaleEnum localeEnum, Object... args) {
+        try {
+            return getMessageSource().getMessage(key, args, localeEnum.getLocale());
         } catch (NoSuchMessageException e) {
             logger.warn("未获取到:[ {} ]国际化.", key);
             return key;
