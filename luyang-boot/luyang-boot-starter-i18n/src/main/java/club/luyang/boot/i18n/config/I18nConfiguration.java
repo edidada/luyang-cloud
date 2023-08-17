@@ -60,7 +60,7 @@ public class I18nConfiguration implements WebMvcConfigurer {
 
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
-        messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(StringUtils.trimAllWhitespace("language/base")));
+        messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(StringUtils.trimAllWhitespace("language/global")));
 
         // messageSource.setFallbackToSystemLocale(properties.isFallbackToSystemLocale());
         // Duration cacheDuration = properties.getCacheDuration();

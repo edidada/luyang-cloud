@@ -23,10 +23,10 @@
             <groupId>club.luyang</groupId>
             <artifactId>luyang-boot-starter-mybatisplus</artifactId>
         </dependency>
-        <dependency>
-            <groupId>club.luyang</groupId>
-            <artifactId>luyang-boot-starter-security</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>club.luyang</groupId>-->
+<!--            <artifactId>luyang-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

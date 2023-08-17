@@ -6,8 +6,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST}/uac?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&&serverTimezone=Asia/Shanghai&useSSL=false
-    username: ${MYSQL_NAME}
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/uac?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&&serverTimezone=Asia/Shanghai&useSSL=false
+    username: ${MYSQL_USER}
     password: ${MYSQL_PASSWORD}
     hikari:
       minimum-idle: 5 # 最小空闲连接数量
