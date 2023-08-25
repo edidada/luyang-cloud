@@ -18,14 +18,23 @@ public class RedisHelper {
 
     private static final Logger logger = LoggerFactory.getLogger(RedisHelper.class);
 
-    private static RedisTemplate<String, Object> redisTemplate;
+    private static RedisTemplate<String, Object> jsonRedisTemplate;
+    private static RedisTemplate<String, Object> javaRedisTemplate;
 
-    public static RedisTemplate<String, Object> getRedisTemplate() {
-        if (null == redisTemplate) {
-            redisTemplate = SpringUtil.getBean("redisTemplate");
+    public static RedisTemplate<String, Object> getJsonRedisTemplate() {
+        if (null == jsonRedisTemplate) {
+            jsonRedisTemplate = SpringUtil.getBean("jsonRedisTemplate");
         }
 
-        return redisTemplate;
+        return jsonRedisTemplate;
+    }
+
+    public static RedisTemplate<String, Object> getJavaRedisTemplate() {
+        if (null == javaRedisTemplate) {
+            javaRedisTemplate = SpringUtil.getBean("javaRedisTemplate");
+        }
+
+        return javaRedisTemplate;
     }
 
     public static <T> void set(String key, T value) {
@@ -33,7 +42,7 @@ public class RedisHelper {
             return;
         }
 
-        getRedisTemplate().opsForValue().set(key, value);
+        getJsonRedisTemplate().opsForValue().set(key, value);
     }
 
     public static <T> void set(String key, T value, long time, TimeUnit timeUnit) {
@@ -42,11 +51,11 @@ public class RedisHelper {
         }
 
         if (time > 0) {
-            getRedisTemplate().opsForValue().set(key, value, time, timeUnit);
+            getJsonRedisTemplate().opsForValue().set(key, value, time, timeUnit);
             return;
         }
 
-        getRedisTemplate().opsForValue().set(key, value);
+        getJsonRedisTemplate().opsForValue().set(key, value);
     }
 
     public static <T> T get(String key) {
@@ -54,6 +63,6 @@ public class RedisHelper {
             return null;
         }
 
-        return (T) getRedisTemplate().opsForValue().get(key);
+        return (T) getJsonRedisTemplate().opsForValue().get(key);
     }
 }

@@ -2,6 +2,7 @@ package club.luyang.platform.auth.config;
 
 import club.luyang.boot.cache.helper.RedisHelper;
 import cn.hutool.core.lang.Assert;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2RefreshToken;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
@@ -32,7 +33,9 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
 
         if (isState(authorization)) {
             String token = authorization.getAttribute(OAuth2ParameterNames.STATE);
-            RedisHelper.set(buildKey(OAuth2ParameterNames.STATE, token), authorization, 10L, TimeUnit.MINUTES);
+            RedisHelper.getJavaRedisTemplate()
+                    .opsForValue()
+                    .set(buildKey(OAuth2ParameterNames.STATE, token), authorization, 10L, TimeUnit.MINUTES);
         }
 
         if (isCode(authorization)) {
@@ -41,31 +44,40 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
             OAuth2AuthorizationCode authorizationCodeToken = authorizationCode.getToken();
             long between = ChronoUnit.MINUTES.between(Objects.requireNonNull(authorizationCodeToken.getIssuedAt()),
                     authorizationCodeToken.getExpiresAt());
-            RedisHelper.set(
-                    buildKey(OAuth2ParameterNames.CODE, authorizationCodeToken.getTokenValue()),
-                    authorization,
-                    between,
-                    TimeUnit.MINUTES);
+
+            RedisHelper.getJavaRedisTemplate()
+                    .opsForValue()
+                    .set(
+                            buildKey(OAuth2ParameterNames.CODE, authorizationCodeToken.getTokenValue()),
+                            authorization,
+                            between,
+                            TimeUnit.MINUTES
+                    );
         }
 
         if (isRefreshToken(authorization)) {
             OAuth2RefreshToken refreshToken = Objects.requireNonNull(authorization.getRefreshToken()).getToken();
             long between = ChronoUnit.SECONDS.between(Objects.requireNonNull(refreshToken.getIssuedAt()), refreshToken.getExpiresAt());
-            RedisHelper.set(buildKey(OAuth2ParameterNames.REFRESH_TOKEN, refreshToken.getTokenValue()), authorization,
-                    between,
-                    TimeUnit.SECONDS);
-
-            // MAP.put(buildKey(OAuth2ParameterNames.REFRESH_TOKEN, refreshToken.getTokenValue()), authorization);
+            RedisHelper.getJavaRedisTemplate()
+                    .opsForValue()
+                    .set(
+                            buildKey(OAuth2ParameterNames.REFRESH_TOKEN, refreshToken.getTokenValue()), authorization,
+                            between,
+                            TimeUnit.SECONDS
+                    );
         }
 
         if (isAccessToken(authorization)) {
             OAuth2AccessToken accessToken = authorization.getAccessToken().getToken();
             long between = ChronoUnit.SECONDS.between(Objects.requireNonNull(accessToken.getIssuedAt()), accessToken.getExpiresAt());
-            RedisHelper.set(
-                    buildKey(OAuth2ParameterNames.ACCESS_TOKEN, accessToken.getTokenValue()),
-                    authorization,
-                    between,
-                    TimeUnit.SECONDS);
+            RedisHelper.getJavaRedisTemplate()
+                    .opsForValue()
+                    .set(
+                            buildKey(OAuth2ParameterNames.ACCESS_TOKEN, accessToken.getTokenValue()),
+                            authorization,
+                            between,
+                            TimeUnit.SECONDS
+                    );
         }
     }
 
@@ -96,7 +108,7 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
             keys.add(buildKey(OAuth2ParameterNames.ACCESS_TOKEN, accessToken.getTokenValue()));
         }
 
-        RedisHelper.getRedisTemplate().delete(keys);
+        RedisHelper.getJavaRedisTemplate().delete(keys);
     }
 
     @Override
@@ -106,7 +118,10 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
 
     @Override
     public OAuth2Authorization findByToken(String token, OAuth2TokenType tokenType) {
-        return RedisHelper.get(buildKey(tokenType.getValue(), token));
+        Assert.notNull(tokenType, "tokenType cannot be empty");
+        return (OAuth2Authorization) RedisHelper.getJavaRedisTemplate()
+                .opsForValue()
+                .get(buildKey(tokenType.getValue(), token));
     }
 
     private String buildKey(String type, String id) {

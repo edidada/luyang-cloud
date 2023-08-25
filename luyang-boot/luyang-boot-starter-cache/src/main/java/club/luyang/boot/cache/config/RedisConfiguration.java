@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -28,9 +29,23 @@ public class RedisConfiguration {
     @Value("${spring.data.redis.key-prefix:}")
     private String keyPrefix;
 
-    @Bean(name = "redisTemplate")
+    @Bean(name = "jsonRedisTemplate")
     @ConditionalOnClass(RedisOperations.class)
-    public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory factory) {
+    public RedisTemplate<String, Object> jsonRedisTemplate(LettuceConnectionFactory factory) {
+        RedisTemplate<String, Object> template = buildRedisTemplate(factory, RedisSerializer.json());
+        logger.info("[LUYANG] |- Bean [JsonRedisTemplate] Auto Configure.");
+        return template;
+    }
+
+    @Bean(name = "javaRedisTemplate")
+    @ConditionalOnClass(RedisOperations.class)
+    public RedisTemplate<String, Object> javaRedisTemplate(RedisConnectionFactory factory) {
+        RedisTemplate<String, Object> template = buildRedisTemplate(factory, RedisSerializer.java());
+        logger.info("[LUYANG] |- Bean [JavaRedisTemplate] Auto Configure.");
+        return template;
+    }
+
+    private RedisTemplate<String, Object> buildRedisTemplate(RedisConnectionFactory factory, RedisSerializer<?> serializer){
         RedisKeyStringSerializer keyStringSerializer = new RedisKeyStringSerializer(keyPrefix);
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
@@ -39,11 +54,10 @@ public class RedisConfiguration {
         // hash 的 key 也采用 String 的序列化方式
         template.setHashKeySerializer(keyStringSerializer);
         // value 序列化方式采用 jackson
-        template.setValueSerializer(RedisSerializer.json());
+        template.setValueSerializer(serializer);
         // hash的value序列化方式采用jackson
-        template.setHashValueSerializer(RedisSerializer.json());
+        template.setHashValueSerializer(serializer);
         template.afterPropertiesSet();
-        logger.info("[LUYANG] |- Bean [RedisTemplate] Auto Configure.");
         return template;
     }
 }
