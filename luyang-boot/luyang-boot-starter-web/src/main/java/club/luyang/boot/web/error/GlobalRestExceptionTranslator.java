@@ -3,7 +3,6 @@ package club.luyang.boot.web.error;
 import club.luyang.boot.base.api.Result;
 import club.luyang.boot.base.api.ResultEnum;
 import club.luyang.boot.base.exception.BaseException;
-import club.luyang.boot.i18n.I18nUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ValidationException;
 import org.slf4j.Logger;

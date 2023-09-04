@@ -2,7 +2,6 @@ package club.luyang.platform.auth.config;
 
 import club.luyang.boot.cache.helper.RedisHelper;
 import cn.hutool.core.lang.Assert;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2RefreshToken;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
